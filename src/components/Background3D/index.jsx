@@ -4,7 +4,7 @@ import { OrbitControls, useGLTF, PerspectiveCamera } from '@react-three/drei';
 import { useScroll } from 'framer-motion';
 
 const VehicleModel = () => {
-  const gltf = useGLTF('/破裂的头.glb', true);
+  const gltf = useGLTF('/kalliope.glb', true);
   const { scrollYProgress } = useScroll();
 
   useFrame(() => {
