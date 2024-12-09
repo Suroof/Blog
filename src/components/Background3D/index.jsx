@@ -4,7 +4,7 @@ import { OrbitControls, useGLTF, PerspectiveCamera } from '@react-three/drei';
 import { useScroll } from 'framer-motion';
 
 const VehicleModel = () => {
-  const gltf = useGLTF('/kalliope.glb', true);
+  const gltf = useGLTF('/Car.glb', true);
   const { scrollYProgress } = useScroll();
 
   useFrame(() => {
@@ -15,17 +15,17 @@ const VehicleModel = () => {
       gltf.scene.rotation.y = progress * Math.PI * 2;
 
       // 缩放效果：从8倍大小开始，随着滚动最大可以达到15倍大小
-      const baseScale = 30;
-      const maxScaleIncrease = 35;
+      const baseScale = 2;
+      const maxScaleIncrease = 8;
       const scale = baseScale + (progress * maxScaleIncrease);
       gltf.scene.scale.set(scale, scale, scale);
 
       // 对角线移动效果
       // 移动路径
-      const startX = -8;
-      const startY = -60;
-      const endX = 30;
-      const endY = -115;
+      const startX = -30;
+      const startY = -4;
+      const endX = 60;
+      const endY = -4;
 
       // 计算当前位置
       const currentX = startX + (progress * (endX - startX));
