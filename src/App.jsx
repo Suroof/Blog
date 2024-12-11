@@ -7,7 +7,7 @@ import Background3D from './components/Background3D/index';
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
 const Articles = lazy(() => import('./pages/Articles'));
-// const Projects = lazy(() => import('./pages/Projects'));
+const Projects = lazy(() => import('./pages/Projects'));
 const Gaming = lazy(() => import('./pages/articles/Gaming'));
 const Music = lazy(() => import('./pages/articles/Music'));
 const Life = lazy(() => import('./pages/articles/Life'));
