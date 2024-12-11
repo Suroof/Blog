@@ -5,15 +5,15 @@ const Projects = () => {
   const projects = [
     {
       title: "3D Portfolio",
-      description: "Personal portfolio website with Three.js animations",
+      description: "更美的场景",
       tech: ["React", "Three.js", "Tailwind CSS"],
-      github: "https://github.com/username/3d-portfolio"
+      link: "https://lapblog.netlify.app/"
     },
     {
-      title: "Blog Platform",
-      description: "Modern blogging platform with markdown support",
-      tech: ["Next.js", "MongoDB", "TypeScript"],
-      github: "https://github.com/username/blog-platform"
+      title: "智能点餐系统",
+      description: "网页和小程序端",
+      tech: [Java、Spring Boot、MySQL、Vue.js、],
+      github: "https://github.com/Suroof/Sunroof"
     }
   ];
 
