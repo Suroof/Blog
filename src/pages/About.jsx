@@ -15,19 +15,15 @@ const About = () => {
         </h1>
         <div className="space-y-6 text-gray-300">
           <p>
-            Hi! I'm a passionate developer who loves creating beautiful and functional web experiences.
-            With expertise in modern web technologies, I specialize in building interactive 3D applications
-            and responsive user interfaces.
+            我喜欢阅读、写 作、艺术和旅行，这些兴趣为我带来了创意灵感。我将不断追逐我的梦想，never give up！
           </p>
           <p>
-            My journey in web development started with a fascination for creating visually stunning
-            websites that push the boundaries of what's possible in a browser. Today, I work with
-            cutting-edge technologies like Three.js, React, and WebGL to bring creative visions to life.
+            我希望能在互联网的世界不断学习，拓展技术栈，同时提高自我的认知，不断深掘人在旅途的意义，思考人的一生，在有限的一生中留下哪怕一丝足迹
           </p>
           <div className="mt-8">
-            <h2 className="text-2xl font-semibold mb-4">Skills</h2>
+            <h2 className="text-2xl font-semibold mb-4">Hobby</h2>
             <div className="flex flex-wrap gap-2">
-              {['React', 'Three.js', 'WebGL', 'Node.js', 'TypeScript', 'Tailwind CSS'].map((skill) => (
+              {['电影', '旅行', '编程', '画画', '篮球', '魔方'].map((skill) => (
                 <span
                   key={skill}
                   className="px-3 py-1 bg-blue-500/20 rounded-full text-blue-300"
