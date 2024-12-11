@@ -12,7 +12,7 @@ const Projects = () => {
     {
       title: "智能点餐系统",
       description: "网页和小程序端",
-      tech: [Java、Spring Boot、MySQL、Vue.js、],
+      tech: ["Java","Spring Boot","MySQL","Vue.js"],
       github: "https://github.com/Suroof/Sunroof"
     }
   ];
