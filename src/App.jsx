@@ -7,12 +7,12 @@ import Background3D from './components/Background3D/index';
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
 const Articles = lazy(() => import('./pages/Articles'));
-const Projects = lazy(() => import('./pages/Projects'));
+// const Projects = lazy(() => import('./pages/Projects'));
 const Gaming = lazy(() => import('./pages/articles/Gaming'));
 const Music = lazy(() => import('./pages/articles/Music'));
 const Life = lazy(() => import('./pages/articles/Life'));
 const Tech = lazy(() => import('./pages/articles/Tech'));
-const Design = lazy(() => import('./pages/projects/Design'));
+const Design = lazy(() => import('./pages/articles/Design'));
 const TravelStories = lazy(() => import('./pages/articles/TravelStories'));
 
 // 加载中的占位组件
@@ -34,17 +34,18 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/articles" element={<Articles />} />
-              <Route path="/projects" element={<Projects />} />
+              {/* <Route path="/projects" element={<Projects />} /> */}
 
               {/* Article category routes */}
               <Route path="/articles/gaming" element={<Gaming />} />
               <Route path="/articles/music" element={<Music />} />
               <Route path="/articles/life" element={<Life />} />
               <Route path="/articles/tech" element={<Tech />} />
+              <Route path="/articles/design" element={<Design />} />
               <Route path="/articles/travel-stories" element={<TravelStories />} />
 
-              {/* Project category routes */}
-              <Route path="/projects/design" element={<Design />} />
+              {/* Project routes */}
+
             </Routes>
           </Suspense>
         </div>
