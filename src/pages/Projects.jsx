@@ -7,7 +7,7 @@ const Projects = () => {
       title: "3D Portfolio",
       description: "更美的场景",
       tech: ["React", "Three.js", "Tailwind CSS"],
-      link: "https://lapblog.netlify.app/"
+      github: "https://lapblog.netlify.app/"
     },
     {
       title: "智能点餐系统",
@@ -37,7 +37,7 @@ const Projects = () => {
               rel="noopener noreferrer"
               className="text-blue-400 hover:text-blue-300"
             >
-              View on GitHub →
+              立即前往 →
             </a>
           </div>
         ))}
