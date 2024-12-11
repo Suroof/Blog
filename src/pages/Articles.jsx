@@ -4,14 +4,14 @@ import PageLayout from '../components/layout/PageLayout';
 const Articles = () => {
   const articles = [
     {
-      title: "Getting Started with Three.js",
+      title: "学习Vue",
       date: "2024-01-20",
-      description: "Learn how to create amazing 3D experiences on the web"
+      description: "布局，对接，依赖，响应式"
     },
     {
-      title: "Modern React Best Practices",
-      date: "2024-01-15",
-      description: "Explore the latest patterns and practices in React development"
+      title: "Three.js",
+      date: "2024-08-15",
+      description: "canvas,leva，建模"
     }
   ];
 
