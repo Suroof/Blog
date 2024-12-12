@@ -11,7 +11,7 @@ export const PERSONAL_INFO_CARDS = [
     title: "Work Experience",
     description: "查看我的工作经历和项目案例",
     icon: "👨‍💻",
-    link: "/projects",
+    link: "/articles/work",
     backgroundImage: "/air.jpeg"
   },
   {
