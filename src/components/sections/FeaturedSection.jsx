@@ -8,18 +8,16 @@ const FeaturedSection = () => {
   const projects = [
     {
       id: 1,
-      title: "Project A",
-      description: "点我去向作者github项目主页",
-      // 如果是内部路由跳转，使用路径
+      title: "作者Github主页",
+      description: "查看开源项目",
       link: "https://github.com/Suroof",
-      // 如果是外部链接，使用完整URL
-      // link: "https://example.com/project1"
+      
     },
     {
       id: 2,
-      title: "Project B",
-      description: "点我触发神秘机关",
-      link: "/projects/2",
+      title: "AI工具合集",
+      description: "提高开发效率",
+      link: "https://ai-bot.cn/#term-2",
     }
   ];
 
