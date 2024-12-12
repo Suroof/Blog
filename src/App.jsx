@@ -7,8 +7,8 @@ import Background3D from './components/Background3D/index';
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
 const Articles = lazy(() => import('./pages/Articles'));
-const Projects = lazy(() => import('./pages/Projects'));
-const Gaming = lazy(() => import('./pages/articles/Gaming'));
+const Projects = lazy(() => import('./pages/articles/Design'));
+const Work = lazy(() => import('./pages/articles/Work'));
 const Music = lazy(() => import('./pages/articles/Music'));
 const Life = lazy(() => import('./pages/articles/Life'));
 const Tech = lazy(() => import('./pages/articles/Tech'));
@@ -34,10 +34,10 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/articles" element={<Articles />} />
-               <Route path="/projects" element={<Projects />} /> 
+              <Route path="/projects" element={<Projects />} />
 
               {/* Article category routes */}
-              <Route path="/articles/gaming" element={<Gaming />} />
+              <Route path="/articles/work" element={<Work />} />
               <Route path="/articles/music" element={<Music />} />
               <Route path="/articles/life" element={<Life />} />
               <Route path="/articles/tech" element={<Tech />} />
