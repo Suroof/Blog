@@ -5,27 +5,27 @@ import PageLayout from '../../components/layout/PageLayout';
 const Design = () => {
   const projects = [
     {
-      title: "现代化博客设计",
+      title: "3D交互页面",
       type: "UI/UX Design",
-      description: "一个融合了3D效果、动态交互和现代设计语言的个人博客项目。采用深色主题，强调内容的可读性和视觉层次。",
-      tools: ["Figma", "Blender", "Photoshop"],
-      image: "/design/blog.jpg",
-      link: "#"
+      description: "融合了3D效果、动态交互和现代设计语言的项目。采用深色主题，强调内容的可读性和视觉层次。",
+      tools: ["Three", "Blender", "Framer"],
+      image: "/3D.png",
+      link: "https://3dcool.netlify.app/"
     },
     {
-      title: "电商App界面设计",
-      type: "Mobile UI",
-      description: "专注于用户体验的电商应用设计，包含完整的购物流程、个性化推荐和社交功能。采用极简设计风格。",
-      tools: ["Sketch", "Principle", "InVision"],
-      image: "/design/ecommerce.jpg",
-      link: "#"
+      title: "智能点餐系统设计",
+      type: "management system",
+      description: "专注于用户体验的点餐系统设计，包含完整的购物流程、个性化推荐和社交功能。采用极简设计风格。",
+      tools: ["Springboot", "Vue.js", "微信开发者工具"],
+      image: "/zn1.png",
+      link: "https://github.com/Suroof/Sunroof"
     },
     {
-      title: "数据可视化面板",
+      title: "旅游网站",
       type: "Dashboard Design",
-      description: "为企业级应用设计的数据分析面板，通过图表和交互设计，让复杂的数据更容易理解和使用。",
-      tools: ["Figma", "D3.js", "Adobe XD"],
-      image: "/design/dashboard.jpg",
+      description: "旅游网站的设计，包含旅游路线规划、景点介绍、用户评价和在线预订等功能。采用现代设计风格。",
+      tools: ["React", "Tailwind", "Vite"],
+      image: "/旅游页面.png",
       link: "#"
     }
   ];
