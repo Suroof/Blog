@@ -31,10 +31,16 @@ const Card3D = ({ title, description, icon, link, backgroundImage }) => {
   };
 
   const handleClick = () => {
+    // Immediately reset all animations and effects
+    setRotateX(0);
+    setRotateY(0);
+    setIsHovered(false);
+    
+    // Navigate immediately without animation
     if (link.startsWith('http')) {
       window.open(link, '_blank');
     } else {
-      navigate(link);
+      navigate(link, { replace: true });
     }
   };
 
@@ -45,9 +51,11 @@ const Card3D = ({ title, description, icon, link, backgroundImage }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
+      initial={false}
       style={{
         transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
-        transition: 'transform 0.1s ease-out',
+        transition: 'transform 0.2s ease',
+        willChange: 'transform',
       }}
     >
       <div
