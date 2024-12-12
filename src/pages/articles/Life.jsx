@@ -5,24 +5,24 @@ import PageLayout from '../../components/layout/PageLayout';
 const Life = () => {
   const stories = [
     {
-      title: "旅行日记：杭州西湖",
+      title: "一个人逛西湖",
       date: "2023-10-15",
       content: "秋天的西湖，微风轻拂，金色的阳光洒在湖面上，波光粼粼。断桥残雪虽无雪，却有别样的韵味...",
-      image: "/life/westlake.jpg",
+      image: "/西湖.jpg",
       tags: ["旅行", "摄影", "风景"]
     },
     {
       title: "我的阅读角落",
       date: "2023-09-28",
       content: "在家里打造了一个温馨的阅读角落，一盏暖色调的台灯，一把舒适的椅子，还有一杯冒着热气的咖啡...",
-      image: "/life/reading.jpg",
+      image: "/阅读.jpg",
       tags: ["生活", "阅读", "家居"]
     },
     {
       title: "城市漫步",
       date: "2023-08-20",
       content: "傍晚时分的城市街道总是充满魅力，霓虹灯初上，人来人往，每个人都在演绎着自己的故事...",
-      image: "/life/city.jpg",
+      image: "/城市漫步.jpg",
       tags: ["城市", "随笔", "感悟"]
     }
   ];
