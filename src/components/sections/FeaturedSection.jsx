@@ -11,7 +11,7 @@ const FeaturedSection = () => {
       title: "Project A",
       description: "点我去向作者github项目主页",
       // 如果是内部路由跳转，使用路径
-      link: "https://github.com/Suroof/FrontProject",
+      link: "https://github.com/Suroof",
       // 如果是外部链接，使用完整URL
       // link: "https://example.com/project1"
     },
