@@ -58,7 +58,7 @@ const TravelStories = () => {
                   {story.excerpt}
                 </p>
 
-                <a
+                {/* <a
                   href={story.link}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -78,7 +78,7 @@ const TravelStories = () => {
                       d="M14 5l7 7m0 0l-7 7m7-7H3"
                     />
                   </svg>
-                </a>
+                </a> */}
               </div>
             </div>
           </motion.div>
