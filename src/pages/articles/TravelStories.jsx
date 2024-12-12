@@ -1,94 +1,90 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import PageLayout from '../../components/layout/PageLayout';
 
 const TravelStories = () => {
   const stories = [
     {
-      title: "Journey Through Japan",
+      title: "贵州之行",
       date: "2024-01-15",
-      excerpt: "Exploring the ancient temples of Kyoto and the modern streets of Tokyo...",
-      image: "https://source.unsplash.com/random/800x600/?japan"
+      excerpt: "在千户苗寨，我体验了苗族文化的独特魅力，在贵阳，我参观了甲秀楼，品尝了贵州的美食。",
+      image: "/贵州.jpg",
+      link: "" // 添加链接
     },
     {
-      title: "European Adventure",
+      title: "新加坡之旅",
       date: "2024-02-20",
-      excerpt: "From the romantic streets of Paris to the historic ruins of Rome...",
-      image: "https://source.unsplash.com/random/800x600/?europe"
+      excerpt: "新加坡之旅让我印象深刻，美丽的花园城市，体验到了多元文化的交融",
+      image: "/新加坡.jpg",
+      link: "#" // 添加链接
     },
     {
-      title: "Southeast Asian Tales",
+      title: "五羊广州",
       date: "2024-03-10",
-      excerpt: "Discovering the hidden beaches of Thailand and ancient temples of Cambodia...",
-      image: "https://source.unsplash.com/random/800x600/?thailand"
+      excerpt: "在广州，我探索了这座千年商都的历史遗迹，品尝了地道的广式早茶，感受了南粤文化的独特魅力。",
+      image: "/广州.jpg",
+      link: "#" // 添加链接
     }
   ];
 
-  const containerVariants = {
-    initial: { opacity: 0 },
-    animate: { 
-      opacity: 1,
-      transition: {
-        duration: 0.3,
-        ease: "easeOut",
-        when: "beforeChildren",
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    initial: { opacity: 0, y: 0 },
-    animate: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.3,
-        ease: "easeOut"
-      }
-    }
-  };
-
   return (
-    <motion.div
-      variants={containerVariants}
-      initial="initial"
-      animate="animate"
-      className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white p-8"
-    >
-      <div className="max-w-6xl mx-auto">
-        <motion.h1 
-          variants={itemVariants}
-          className="text-4xl font-bold mb-8 text-center"
-        >
-          Travel Stories
-        </motion.h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {stories.map((story, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
-            >
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={story.image}
-                  alt={story.title}
-                  className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
-                />
+    <PageLayout title="Travel Stories">
+      <div className="space-y-16">
+        {stories.map((story, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="bg-gray-800 shadow-lg rounded-lg overflow-hidden h-[400px]"
+          >
+            <div className="h-full md:grid md:grid-cols-2 gap-8">
+              <div className="h-full w-full">
+                <div className="h-full w-full bg-gray-700">
+                  <img
+                    src={story.image}
+                    alt={story.title}
+                    className="h-full w-full object-cover object-center"
+                  />
+                </div>
               </div>
-              <div className="p-6">
-                <div className="text-sm text-gray-400 mb-2">{story.date}</div>
-                <h2 className="text-xl font-semibold mb-3">{story.title}</h2>
-                <p className="text-gray-300">{story.excerpt}</p>
-                <button className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors duration-200">
-                  Read More
-                </button>
+              <div className="p-8 overflow-y-auto">
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-3xl font-bold text-white">{story.title}</h2>
+                  <span className="text-lg text-gray-400">{story.date}</span>
+                </div>
+
+                <p className="text-gray-300 mb-8 leading-relaxed text-lg">
+                  {story.excerpt}
+                </p>
+
+                <a
+                  href={story.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors text-white font-semibold"
+                >
+                  阅读更多
+                  <svg
+                    className="ml-2 w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </a>
               </div>
-            </motion.div>
-          ))}
-        </div>
+            </div>
+          </motion.div>
+        ))}
       </div>
-    </motion.div>
+    </PageLayout>
   );
 };
 
