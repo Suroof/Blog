@@ -24,9 +24,9 @@ const Design = () => {
       title: "旅游网站",
       type: "Dashboard Design",
       description: "旅游网站的设计，包含旅游路线规划、景点介绍、用户评价和在线预订等功能。采用现代设计风格。",
-      tools: ["React", "Tailwind", "Vite"],
+      tools: ["React", "Tailwind", "Node.js"],
       image: "/旅游页面.png",
-      link: "#"
+      link: "https://github.com/Suroof/Travel/tree/master"
     }
   ];
 
