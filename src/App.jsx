@@ -1,58 +1,57 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import Card3D from '../components/Card3D';
-import AceternityCard from '../components/AceternityCard';
-import { PERSONAL_INFO_CARDS } from '../utils/constants';
-import FeaturedSection from '../components/sections/FeaturedSection';
-import SkillsSection from '../components/sections/SkillsSection';
-import ContactSection from '../components/sections/ContactSection';
+import React, { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Background3D from './components/Background3D/index';
 
+// 使用懒加载导入页面组件
+const Home = lazy(() => import('./pages/Home'));
+const About = lazy(() => import('./pages/About'));
+const Articles = lazy(() => import('./pages/Articles'));
+const Projects = lazy(() => import('./pages/articles/Design'));
+const Work = lazy(() => import('./pages/articles/Work'));
+const Music = lazy(() => import('./pages/articles/Music'));
+const Life = lazy(() => import('./pages/articles/Life'));
+const Tech = lazy(() => import('./pages/articles/Tech'));
+const Design = lazy(() => import('./pages/articles/Design'));
+const TravelStories = lazy(() => import('./pages/articles/TravelStories'));
 
-const Home = () => {
+// 加载中的占位组件
+const LoadingSpinner = () => (
+  <div className="min-h-screen flex items-center justify-center">
+    <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-500"></div>
+  </div>
+);
+
+function App() {
   return (
-    <div className="min-h-screen pt-20">
-      {/* Hero Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="max-w-7xl mx-auto px-4 mb-32"
-      >
-        <div className="text-center mb-16">
-          <h1 className="text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
-            Welcome to My Space
-          </h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-16">
-            灵感总在长夜迸发
-          </p>
+    <Router>
+      <div className="relative">
+        <Background3D />
+        <div className="relative z-10">
+          <Navbar />
+          <Suspense fallback={<LoadingSpinner />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/articles" element={<Articles />} />
+              <Route path="/projects" element={<Projects />} />
 
-          {/* 新增的 Aceternity UI 卡片 */}
-          <div className="mb-32">
-            <AceternityCard />
-          </div>
+              {/* Article category routes */}
+              <Route path="/articles/work" element={<Work />} />
+              <Route path="/articles/music" element={<Music />} />
+              <Route path="/articles/life" element={<Life />} />
+              <Route path="/articles/tech" element={<Tech />} />
+              <Route path="/articles/design" element={<Design />} />
+              <Route path="/articles/travel-stories" element={<TravelStories />} />
+
+              {/* Project routes */}
+
+            </Routes>
+          </Suspense>
         </div>
-
-        {/* 原有的卡片布局 */}
-        <div className="flex flex-wrap justify-center gap-16">
-          {PERSONAL_INFO_CARDS.map((card, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`transform ${
-                index % 2 === 0 ? 'scale-110' : 'scale-90 mt-16'
-              }`}
-            >
-              <Card3D {...card} />
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
-
-
-    </div>
+      </div>
+    </Router>
   );
-};
+}
 
-export default Home;
+export default App;
