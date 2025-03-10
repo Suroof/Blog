@@ -7,6 +7,7 @@ import FeaturedSection from '../components/sections/FeaturedSection';
 import SkillsSection from '../components/sections/SkillsSection';
 import ContactSection from '../components/sections/ContactSection';
 
+
 const Home = () => {
   return (
     <div className="min-h-screen pt-20">
@@ -49,9 +50,7 @@ const Home = () => {
         </div>
       </motion.div>
 
-      <FeaturedSection />
-      <SkillsSection />
-      <ContactSection />
+
     </div>
   );
 };
