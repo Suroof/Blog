@@ -13,13 +13,16 @@ export default defineConfig({
   publicDir: 'public',
   build: {
     rollupOptions: {
-      external: [],
+      // 确保正确处理GSAP模块
       output: {
-        manualChunks: (id) => {
-          if (id.includes('node_modules/gsap')) {
-            return 'gsap';
-          }
-        }
+        // 改进的代码分割配置
+        manualChunks: {
+          'gsap': ['gsap']
+        },
+        // 确保生成正确的资源路径
+        assetFileNames: 'assets/[name].[hash].[ext]',
+        chunkFileNames: 'assets/[name].[hash].js',
+        entryFileNames: 'assets/[name].[hash].js'
       }
     }
   }
