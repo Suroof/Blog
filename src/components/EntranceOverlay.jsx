@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import gsap from 'gsap';
+import gsap from '/node_modules/gsap/index.js';
 import GridDistortion from './GridDistortion';
 
 const EntranceOverlay = ({ onEnter }) => {
