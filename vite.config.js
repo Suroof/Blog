@@ -7,8 +7,7 @@ export default defineConfig({
   assetsInclude: ['**/*.glb'],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
-      'gsap': path.resolve(__dirname, 'node_modules/gsap/index.js')
+      '@': path.resolve(__dirname, 'src')
     },
   },
   publicDir: 'public',
