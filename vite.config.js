@@ -8,12 +8,18 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
+      'gsap': path.resolve(__dirname, 'node_modules/gsap/index.js')
     },
   },
-   build: {
+  publicDir: 'public',
+  build: {
     rollupOptions: {
-      external: ['gsap'],
-    },
-  },
-  publicDir: 'public'
+      external: [],
+      output: {
+        manualChunks: {
+          'gsap': ['gsap']
+        }
+      }
+    }
+  }
 })
