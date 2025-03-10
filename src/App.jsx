@@ -1,7 +1,8 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Background3D from './components/Background3D/index';
+import EntranceOverlay from './components/EntranceOverlay';
 
 // 使用懒加载导入页面组件
 const Home = lazy(() => import('./pages/Home'));
@@ -23,32 +24,41 @@ const LoadingSpinner = () => (
 );
 
 function App() {
+  const [hasEntered, setHasEntered] = useState(false);
+
+  const handleEnter = () => {
+    setHasEntered(true);
+  };
+
   return (
     <Router>
       <div className="relative">
         <Background3D />
-        <div className="relative z-10">
-          <Navbar />
-          <Suspense fallback={<LoadingSpinner />}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/articles" element={<Articles />} />
-              <Route path="/projects" element={<Projects />} />
+        {hasEntered ? (
+          <div className="relative z-10">
+            <Navbar />
+            <Suspense fallback={<LoadingSpinner />}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/articles" element={<Articles />} />
+                <Route path="/projects" element={<Projects />} />
 
-              {/* Article category routes */}
-              <Route path="/articles/work" element={<Work />} />
-              <Route path="/articles/music" element={<Music />} />
-              <Route path="/articles/life" element={<Life />} />
-              <Route path="/articles/tech" element={<Tech />} />
-              <Route path="/articles/design" element={<Design />} />
-              <Route path="/articles/travel-stories" element={<TravelStories />} />
+                {/* Article category routes */}
+                <Route path="/articles/work" element={<Work />} />
+                <Route path="/articles/music" element={<Music />} />
+                <Route path="/articles/life" element={<Life />} />
+                <Route path="/articles/tech" element={<Tech />} />
+                <Route path="/articles/design" element={<Design />} />
+                <Route path="/articles/travel-stories" element={<TravelStories />} />
 
-              {/* Project routes */}
+                {/* Project routes */}
 
-            </Routes>
-          </Suspense>
-        </div>
+              </Routes>
+            </Suspense>
+          </div>
+        ) : null}
+        <EntranceOverlay onEnter={handleEnter} />
       </div>
     </Router>
   );
