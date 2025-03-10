@@ -24,9 +24,17 @@ const Design = () => {
       title: "旅游网站",
       type: "Dashboard Design",
       description: "旅游网站的设计，包含旅游路线规划、景点介绍、用户评价和在线预订等功能。采用现代设计风格。",
-      tools: ["React", "Tailwind", "Node.js"],
+      tools: ["React", "Tailwind", "Vite"],
       image: "/旅游页面.png",
-      link: "https://github.com/Suroof/Travel/tree/master"
+      link: "https://github.com/Suroof/Travel"
+    },
+    {
+      title: "企业品牌网站",
+      type: "Dashboard Design",
+      description: "企业品牌展示，产品，门店，联系等页面。",
+      tools: ["Vue", "Tailwind"],
+      image: "/tea.jpg",
+      link: "https://tea4u.netlify.app/"
     }
   ];
 
