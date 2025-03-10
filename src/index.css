@@ -1,53 +1,26 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import path from 'path'
 
-:root {
-  color-scheme: dark;
-}
-
-body {
-  background-color: #000;
-  color: #fff;
-}
-
-.perspective-1000 {
-  perspective: 1000px;
-}
-
-.transform-preserve-3d {
-  transform-style: preserve-3d;
-}
-
-.backface-hidden {
-  backface-visibility: hidden;
-}
-
-/* 入场页面样式 */
-.grid-overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.grid-cell-entrance {
-  position: absolute;
-  width: 10%;
-  height: 10%;
-  background-color: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  animation: pulse 3s infinite alternate;
-  transform-origin: center;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(0.95) rotate(-2deg);
-    opacity: 0.5;
+export default defineConfig({
+  plugins: [react()],
+  assetsInclude: ['**/*.glb'],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src')
+    },
+  },
+  publicDir: 'public',
+  build: {
+    rollupOptions: {
+      // 移除external空数组，避免与manualChunks冲突
+      output: {
+        manualChunks: (id) => {
+          if (id.includes('node_modules/gsap')) {
+            return 'gsap';
+          }
+        }
+      }
+    }
   }
-  100% {
-    transform: scale(1.05) rotate(2deg);
-    opacity: 0.8;
-  }
-}
+})
