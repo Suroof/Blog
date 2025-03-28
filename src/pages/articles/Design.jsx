@@ -35,6 +35,14 @@ const Design = () => {
       tools: ["Vue", "Tailwind"],
       image: "/tea.jpg",
       link: "https://tea4u.netlify.app/"
+    },
+    {
+      title: "花样生活app",
+      type: "uni-app",
+      description: "综合生活各个方面的app",
+      tools: ["Uni-app", "​Vue.js","CSS"],
+      image: "/muti.jpg",
+      link: "https://github.com/Suroof/MutiLife"
     }
   ];
 

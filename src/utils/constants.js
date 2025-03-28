@@ -3,7 +3,9 @@ export const NAVIGATION_LINKS = [
   { path: '/', label: 'Home' },
   { path: '/about', label: 'About' },
   { path: '/articles', label: 'Articles' },
-  { path: '/projects', label: 'Projects' }
+  { path: '/projects', label: 'Projects' },
+  { path: '/gallery', label: 'Phote' },
+  { path: '/resources', label: 'Resourse' }
 ];
 
 export const PERSONAL_INFO_CARDS = [

@@ -15,6 +15,11 @@ const Tech = lazy(() => import('./pages/articles/Tech'));
 const Design = lazy(() => import('./pages/articles/Design'));
 const TravelStories = lazy(() => import('./pages/articles/TravelStories'));
 
+// 新增页面
+const Gallery = lazy(() => import('./pages/Gallery'));
+const Resources = lazy(() => import('./pages/Resources'));
+const BlogPost = lazy(() => import('./pages/BlogPost'));
+
 // 加载中的占位组件
 const LoadingSpinner = () => (
   <div className="min-h-screen flex items-center justify-center">
@@ -35,6 +40,12 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/articles" element={<Articles />} />
               <Route path="/projects" element={<Projects />} />
+
+              {/* 新增路由 */}
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/resources" element={<Resources />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/category/:categoryName" element={<Articles />} />
 
               {/* Article category routes */}
               <Route path="/articles/work" element={<Work />} />
