@@ -4,7 +4,7 @@ export const NAVIGATION_LINKS = [
   { path: '/about', label: 'About' },
   { path: '/articles', label: 'Articles' },
   { path: '/projects', label: 'Projects' },
-  { path: '/gallery', label: 'Phote' },
+  { path: '/gallery', label: 'Photo' },
   { path: '/resources', label: 'Resourse' }
 ];
 

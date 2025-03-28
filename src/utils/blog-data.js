@@ -119,7 +119,7 @@ export const BLOG_POSTS = [
       "(尼布尔并不真正以斯多葛主义者而闻名，但这句话很好地总结了这一思想。感谢我最喜欢的人告诉我这句名言)",
       {
         type: "image",
-        src: "https://images.unsplash.com/photo-1433086966358-54859d0ed716?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+        src: "/leaves.jpg",
         alt: "平静的自然风光",
         caption: "平静的自然景观，象征斯多葛主义的内心平和"
       },

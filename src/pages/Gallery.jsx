@@ -6,63 +6,63 @@ const GALLERY_IMAGES = [
   {
     id: 1,
     title: '城市天际线',
-    src: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df',
+    src: '/skyline.jpg',
     category: 'urban',
     date: '2023-04-15'
   },
   {
     id: 2,
     title: '山脉日落',
-    src: 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e',
+    src: '/mout.jpg',
     category: 'nature',
     date: '2023-05-22'
   },
   {
     id: 3,
     title: '海滩风光',
-    src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e',
+    src: '/sunset.jpg',
     category: 'travel',
     date: '2023-06-10'
   },
   {
     id: 4,
     title: '街头艺术',
-    src: 'https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8',
+    src: '/streetart.jpg',
     category: 'urban',
     date: '2023-07-05'
   },
   {
     id: 5,
     title: '森林小径',
-    src: 'https://images.unsplash.com/photo-1448375240586-882707db888b',
+    src: '/forest.jpg',
     category: 'nature',
     date: '2023-08-12'
   },
   {
     id: 6,
     title: '咖啡馆一角',
-    src: 'https://images.unsplash.com/photo-1511081692775-05d0f180a065',
+    src: '/cafeee.jpg',
     category: 'lifestyle',
     date: '2023-09-01'
   },
   {
     id: 7,
     title: '建筑之美',
-    src: 'https://images.unsplash.com/photo-1494145904049-0dca59b4bbad',
+    src: '/church.jpg',
     category: 'architecture',
     date: '2023-10-19'
   },
   {
     id: 8,
     title: '极光奇观',
-    src: 'https://images.unsplash.com/photo-1483347756197-71ef80e95f73',
+    src: '/aurora.jpg',
     category: 'nature',
     date: '2023-11-24'
   },
   {
     id: 9,
     title: '城市夜景',
-    src: 'https://images.unsplash.com/photo-1519501025264-65ba15a82390',
+    src: '/bridge.jpg',
     category: 'urban',
     date: '2023-12-30'
   }
