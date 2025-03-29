@@ -178,8 +178,8 @@ export const BLOG_POSTS = [
       "在深入学习React的过程中，最深刻的体会是它重新定义了构建用户界面的思维方式。组件化开发让复杂的UI像搭积木一样清晰可控，每个组件独立管理状态和逻辑的设计，既提升了复用性，又通过单向数据流规避了混乱的数据依赖。使用Vue构建用户界面的关键步骤包括：",
       {
         type: "image",
-        src: "https://tse1-mm.cn.bing.net/th/id/OIP-C.B4kpb5iKzofy3OA9KGfLwAHaE8?w=277&h=184&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-        alt: "代码编辑器中的Vue代码",
+        src: "/react.jpg",
+        alt: "代码编辑器中的React代码",
         caption: "React不仅是一个UI库",
       },
       {
