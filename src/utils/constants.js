@@ -1,11 +1,11 @@
 //六张3D卡片
 export const NAVIGATION_LINKS = [
-  { path: '/', label: 'Home' ,icon:'../../public/icons/首页.png'},
-  { path: '/about', label: 'About' ,icon:'../../public/icons/关于.png' },
-  { path: '/articles', label: 'Articles'  ,icon:'../../public/icons/文章.png'},
-  { path: '/projects', label: 'Projects' ,icon:'../../public/icons/项目.png' },
-  { path: '/gallery', label: 'Photo' ,icon:'../../public/icons/相册.png' },
-  { path: '/resources', label: 'Resourse' ,icon:'../../public/icons/资源.png' }
+  { path: '/', label: 'Home' ,icon:'https://pic1.imgdb.cn/item/68133b6958cb8da5c8d60fdf.png'},
+  { path: '/about', label: 'About' ,icon:'https://pic1.imgdb.cn/item/68133b6958cb8da5c8d60fdd.png' },
+  { path: '/articles', label: 'Articles'  ,icon:'https://pic1.imgdb.cn/item/68133b6958cb8da5c8d60fde.png'},
+  { path: '/projects', label: 'Projects' ,icon:'https://pic1.imgdb.cn/item/68133b6958cb8da5c8d60fe0.png' },
+  { path: '/gallery', label: 'Photo' ,icon:'https://pic1.imgdb.cn/item/68133b6958cb8da5c8d60fdc.png' },
+  { path: '/resources', label: 'Resourse' ,icon:'https://pic1.imgdb.cn/item/68133b6958cb8da5c8d60fdb.png' }
 ];
 
 export const PERSONAL_INFO_CARDS = [
