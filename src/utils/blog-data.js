@@ -164,7 +164,7 @@ export const BLOG_POSTS = [
     id: 4,
     title: "学习React",
     slug: "learning-react",
-    date: "2024-12-01",
+    date: "2024-6-15",
     author: "博主",
     authorAvatar: "/author.jpeg",
     categories: ["前端", "React", "JavaScript"],
@@ -202,54 +202,8 @@ export const BLOG_POSTS = [
       "未来计划深入探索服务端组件和编译器优化等新方向，毕竟在这个前端技术快速迭代的时代，唯有持续理解框架的设计哲学，才能让技术真正服务于业务价值。",
     ],
     nextPost: {
-      slug: "learning-vue",
-      title: "学习Vue",
-    },
-  },
-  {
-    id: 4,
-    title: "学习React",
-    slug: "learning-react",
-    date: "2024-12-01",
-    author: "博主",
-    authorAvatar: "/author.jpeg",
-    categories: ["前端", "React", "JavaScript"],
-    description: "组件化，响应式",
-    content: [
-      "React通过组件化构建UI的理念彻底改变了前端开发模式。通过将界面拆分为独立、可复用的组件，实现了代码的高内聚低耦合。实践中发现，合理的组件拆分（如容器组件/展示组件）能显著提升项目的可维护性。",
-      {
-        type: "heading",
-        content: "React的核心概念",
-      },
-      "在深入学习React的过程中，最深刻的体会是它重新定义了构建用户界面的思维方式。组件化开发让复杂的UI像搭积木一样清晰可控，每个组件独立管理状态和逻辑的设计，既提升了复用性，又通过单向数据流规避了混乱的数据依赖。使用Vue构建用户界面的关键步骤包括：",
-      {
-        type: "image",
-        src: "/react.jpg",
-        alt: "代码编辑器中的React代码",
-        caption: "React不仅是一个UI库",
-      },
-      {
-        type: "heading",
-        content: "Hooks",
-      },
-      "从最初的类组件到如今主推的函数式组件，Hooks的引入堪称革命性突破",
-      "用useState和useEffect处理状态与副作用，配合useMemo优化性能，不仅代码更简洁，还促使开发者更关注逻辑的纯粹性。",
-      {
-        type: "quote",
-        content: "Life is 10% what happens to you and 90% how you react to it.",
-        author: "~查尔斯·斯温多尔",
-      },
-      {
-        type: "heading",
-        content: "状态管理",
-      },
-      "如今面对复杂业务时，会优先考虑用Context+Reducer构建轻量级状态管理，搭配TypeScript强化类型约束",
-      "而像虚拟列表渲染、动态代码分割这些性能优化手段，也成了项目中的常规操作。随着对Fiber架构和调度机制的理解加深，愈发感受到React在保持API简洁的同时，底层设计的前瞻性。",
-      "未来计划深入探索服务端组件和编译器优化等新方向，毕竟在这个前端技术快速迭代的时代，唯有持续理解框架的设计哲学，才能让技术真正服务于业务价值。",
-    ],
-    nextPost: {
-      slug: "learning-vue",
-      title: "学习Vue",
+      slug: "learning-tailwind",
+      title: "学习Tailwind",
     },
   },
   {
@@ -294,8 +248,8 @@ export const BLOG_POSTS = [
       "在实际项目中，Tailwind的JIT（即时编译）模式大大提升了开发体验，按需生成的CSS确保了最终打包文件的最小化。结合现代化的构建工具，Tailwind已经成为前端开发不可或缺的工具之一。",
     ],
     nextPost: {
-      slug: "learning-vue",
-      title: "学习Vue",
+      slug: "learning-nodejs",
+      title: "学习Node.js",
     },
   },
   {
@@ -340,8 +294,8 @@ export const BLOG_POSTS = [
       "在实践中，Node.js生态系统的丰富性使其成为了全栈开发的理想选择。从Web服务器（Express/Koa）到实时应用（Socket.IO），从API开发到微服务架构，Node.js都能胜任。结合现代化的开发工具和框架，它已经成为后端开发不可或缺的技术栈之一。",
     ],
     nextPost: {
-      slug: "learning-vue",
-      title: "学习Vue",
+      slug: "vue2-vs-vue3",
+      title: "Vue2与Vue3对比学习",
     },
   },
   {

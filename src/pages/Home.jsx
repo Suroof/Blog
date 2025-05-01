@@ -4,9 +4,7 @@ import { Link } from 'react-router-dom';
 import Card3D from '../components/Card3D';
 import AceternityCard from '../components/AceternityCard';
 import { PERSONAL_INFO_CARDS } from '../utils/constants';
-import FeaturedSection from '../components/sections/FeaturedSection';
-import SkillsSection from '../components/sections/SkillsSection';
-import ContactSection from '../components/sections/ContactSection';
+
 
 
 const Home = () => {
