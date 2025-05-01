@@ -99,7 +99,7 @@ const AceternityCard = () => {
         <CardItem
           as="p"
           translateZ="60"
-          className="text-neutral-500 text-sm mt-2 dark:text-neutral-300"
+          className="text-neutral-100 text-sm mt-2 dark:text-neutral-300"
         >
           Live and Learn
         </CardItem>
@@ -113,10 +113,10 @@ const AceternityCard = () => {
         <CardItem
           translateZ={20}
           as="p"
-          className="mt-4 text-sm text-neutral-500 dark:text-neutral-300 leading-relaxed"
+          className="mt-4 text-sm text-neutral-100 dark:text-neutral-300 leading-relaxed"
         >
           自学前端，热爱永不停止！
-          
+
         </CardItem>
       </CardBody>
     </CardContainer>

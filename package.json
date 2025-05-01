@@ -15,7 +15,7 @@
     "@types/three": "^0.161.2",
     "autoprefixer": "^10.4.17",
     "clsx": "^2.1.0",
-    "framer-motion": "^11.0.3",
+    "framer-motion": "^11.18.2",
     "postcss": "^8.4.35",
     "react": "^18.2.0",
     "react-bits": "^1.0.5",
@@ -24,12 +24,17 @@
     "react-router-dom": "^6.22.0",
     "tailwind-merge": "^2.2.1",
     "tailwindcss": "^3.4.1",
-    "three": "^0.161.0"
+    "three": "^0.167.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@vitejs/plugin-react": "^4.2.1",
     "vite": "^5.0.8"
-  }
+  },
+  "description": "博客连接:https://sroof.netlify.app/\r ![b491eaea698acf70bd1fce60cfa9970](https://github.com/user-attachments/assets/285a9e64-64df-4816-8a54-ac97bfaca7fa)",
+  "main": "postcss.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

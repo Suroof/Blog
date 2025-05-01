@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Background3D from './components/Background3D/index';
+import SplashCursor from './blocks/Animations/SplashCursor/SplashCursor';
 
 // 使用懒加载导入页面组件
 const Home = lazy(() => import('./pages/Home'));
@@ -29,6 +30,8 @@ const LoadingSpinner = () => (
 
 function App() {
   return (
+    <>
+      <SplashCursor />
     <Router>
       <div className="relative">
         <Background3D />
@@ -62,6 +65,7 @@ function App() {
         </div>
       </div>
     </Router>
+    </>
   );
 }
 

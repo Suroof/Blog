@@ -64,7 +64,7 @@ const Design = () => {
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="h-full w-full object-cover"
+                      className="w-auto h-auto max-h-64 max-w-full object-contain mx-auto"
                     />
                   ) : (
                     <span>No Image</span>
