@@ -1,7 +1,7 @@
 //六张3D卡片
 export const NAVIGATION_LINKS = [
   { path: '/', label: 'Home' ,icon:'../../public/icons/首页.png'},
-  { path: '/about', label: 'About' ,icon:'../../public/icons/关于.png' },
+  { path: '/about', label: 'About' ,icon:'../../public/icons/about.png' },
   { path: '/articles', label: 'Articles'  ,icon:'../../public/icons/文章.png'},
   { path: '/projects', label: 'Projects' ,icon:'../../public/icons/项目.png' },
   { path: '/gallery', label: 'Photo' ,icon:'../../public/icons/相册.png' },
