@@ -67,7 +67,7 @@ const Home = () => {
         <div className="text-center mb-16">
           <BlurText
             text="灵感总在长夜迸发"
-            delay={300}
+            delay={100}
             animateBy="letters"
             direction="top"
             className="text-2xl font-bold text-center mt-6 mb-6 text-white"

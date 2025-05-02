@@ -5,7 +5,8 @@ export const NAVIGATION_LINKS = [
   { path: '/articles', label: 'Articles'  ,icon:'https://pic1.imgdb.cn/item/68133b6958cb8da5c8d60fde.png'},
   { path: '/projects', label: 'Projects' ,icon:'https://pic1.imgdb.cn/item/68133b6958cb8da5c8d60fe0.png' },
   { path: '/gallery', label: 'Photo' ,icon:'https://pic1.imgdb.cn/item/68133b6958cb8da5c8d60fdc.png' },
-  { path: '/resources', label: 'Resourse' ,icon:'https://pic1.imgdb.cn/item/68133b6958cb8da5c8d60fdb.png' }
+  { path: '/resources', label: 'Resourse' ,icon:'https://pic1.imgdb.cn/item/68133b6958cb8da5c8d60fdb.png' },
+  { path: '/secondhome', label: 'secondhome' ,icon:'https://pic1.imgdb.cn/item/68133b6958cb8da5c8d60fdb.png' }
 ];
 
 export const PERSONAL_INFO_CARDS = [

@@ -43,6 +43,14 @@ const Design = () => {
       tools: ["Uni-app", "​Vue.js","CSS"],
       image: "/muti.jpg",
       link: "https://github.com/Suroof/MutiLife"
+    },
+    {
+      title: "Shangri-la购物网站",
+      type: "uni-app",
+      description: "综合生活各个方面的app",
+      tools: ["Uni-app", "​Vue.js","CSS"],
+      image: "/购物网站.jpg",
+      link: "https://shanghop.netlify.app/"
     }
   ];
 
