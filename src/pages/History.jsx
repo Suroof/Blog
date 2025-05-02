@@ -9,7 +9,7 @@ const History = () => {
       content: (
         <div>
           <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-            Built and launched Aceternity UI and Aceternity UI Pro from scratch
+              决定走前端，认真的学习了vue和小程序，开始了自己的前端学习，逐步熟悉更多的框架如react。
           </p>
           <div className="grid grid-cols-2 gap-4">
             <img
@@ -45,16 +45,14 @@ const History = () => {
       ),
     },
     {
-      title: "Early 2023",
+      title: "2023",
       content: (
         <div>
           <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-            I usually run out of copy, but when I see content this big, I try to
-            integrate lorem ipsum.
+           学习Java和python，但那时还没有接触框架，只是跟着学校进度走
           </p>
           <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-            Lorem ipsum is for people who are too lazy to write copy. But we are
-            not. Here are some more example of beautiful designs I built.
+            同一时刻学习路html和css,也就是这时，开始了真正意义上前后端的学习，为后面选择方向埋下伏笔
           </p>
           <div className="grid grid-cols-2 gap-4">
             <img
@@ -90,11 +88,11 @@ const History = () => {
       ),
     },
     {
-      title: "Changelog",
+      title: "2022",
       content: (
         <div>
           <p className="mb-4 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-            Deployed 5 new components on Aceternity today
+            高考完的我没有想象中的那么自由的暑假，没想到错失了人生最后一个放松的假期哈哈哈，左思右想最后选择了计算机，说实话这是盲目入股了，随大流了，但不后悔哈哈哈。
           </p>
           <div className="mb-8">
             <div className="flex items-center gap-2 text-xs text-neutral-700 md:text-sm dark:text-neutral-300">

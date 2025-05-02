@@ -1,15 +1,51 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import PageLayout from '../components/layout/PageLayout';
-import { BLOG_POSTS, BLOG_CATEGORIES } from '../utils/blog-data';
+import React from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import PageLayout from "../components/layout/PageLayout";
+import { BLOG_POSTS, BLOG_CATEGORIES } from "../utils/blog-data";
+import { IconCloud } from "@/components/magicui/icon-cloud";
 
 const Articles = () => {
   // 按日期排序文章（从新到旧）
-  const sortedArticles = [...BLOG_POSTS].sort((a, b) =>
-    new Date(b.date) - new Date(a.date)
+  const sortedArticles = [...BLOG_POSTS].sort(
+    (a, b) => new Date(b.date) - new Date(a.date)
   );
-
+  const slugs = [
+    "typescript",
+    "javascript",
+    "dart",
+    "java",
+    "react",
+    "flutter",
+    "android",
+    "html5",
+    "css3",
+    "nodedotjs",
+    "express",
+    "nextdotjs",
+    "prisma",
+    "amazonaws",
+    "postgresql",
+    "firebase",
+    "nginx",
+    "vercel",
+    "testinglibrary",
+    "jest",
+    "cypress",
+    "docker",
+    "git",
+    "jira",
+    "github",
+    "gitlab",
+    "visualstudiocode",
+    "androidstudio",
+    "sonarqube",
+    "figma",
+  ];
+   
+  const images = slugs.map(
+    (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`,
+  );
   return (
     <PageLayout title="Articles">
       {/* 分类标签 */}
@@ -25,6 +61,10 @@ const Articles = () => {
         ))}
       </div>
 
+      <div className="relative flex size-full items-center justify-center overflow-hidden">
+        <IconCloud images={images} />
+      </div>
+
       {/* 文章列表 */}
       <div className="grid gap-6">
         {sortedArticles.map((article) => (
@@ -38,7 +78,9 @@ const Articles = () => {
               className="block bg-gray-900/50 backdrop-blur-sm rounded-lg p-6 hover:shadow-lg hover:shadow-blue-500/10 transition-all"
             >
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
-                <h2 className="text-2xl font-bold mb-2 sm:mb-0 text-white">{article.title}</h2>
+                <h2 className="text-2xl font-bold mb-2 sm:mb-0 text-white">
+                  {article.title}
+                </h2>
                 <p className="text-gray-400 text-sm">{article.date}</p>
               </div>
 
