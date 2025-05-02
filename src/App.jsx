@@ -22,18 +22,16 @@ const Home = lazy(() => import('./pages/Home').then(module => {
 // 使用懒加载导入其他页面组件
 const About = lazy(() => import('./pages/About'));
 const Articles = lazy(() => import('./pages/Articles'));
-const Projects = lazy(() => import('./pages/articles/Design'));
+const Projects = lazy(() => import('./pages/Projects'));
 const Work = lazy(() => import('./pages/articles/Work'));
 const Music = lazy(() => import('./pages/articles/Music'));
 const Life = lazy(() => import('./pages/articles/Life'));
 const Tech = lazy(() => import('./pages/articles/Tech'));
-const Design = lazy(() => import('./pages/articles/Design'));
 const TravelStories = lazy(() => import('./pages/articles/TravelStories'));
-
+const History = lazy(() => import('./pages/History'));
 const Gallery = lazy(() => import('./pages/Gallery'));
 const Resources = lazy(() => import('./pages/Resources'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
-const SecondHome = lazy(() => import('./pages/SecondHome'));
 
 // 路由变更处理组件 - 用于路由变化时优化
 const RouteChangeHandler = ({ children }) => {
@@ -147,18 +145,17 @@ function App() {
                   <Route path="/about" element={<About />} />
                   <Route path="/articles" element={<Articles />} />
                   <Route path="/projects" element={<Projects />} />
-                  <Route path="/secondhome" element={<SecondHome />} />
                   <Route path="/gallery" element={<Gallery />} />
                   <Route path="/resources" element={<Resources />} />
                   <Route path="/blog/:slug" element={<BlogPost />} />
                   <Route path="/category/:categoryName" element={<Articles />} />
-
+                  <Route path="/history" element={<History />} />
                   {/* Article category routes */}
                   <Route path="/articles/work" element={<Work />} />
                   <Route path="/articles/music" element={<Music />} />
                   <Route path="/articles/life" element={<Life />} />
                   <Route path="/articles/tech" element={<Tech />} />
-                  <Route path="/articles/design" element={<Design />} />
+                  <Route path="/articles/projects" element={<Projects />} />
                   <Route path="/articles/travel-stories" element={<TravelStories />} />
                 </Routes>
               </Suspense>

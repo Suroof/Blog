@@ -1,45 +1,98 @@
-import React from 'react';
-import PageLayout from '../components/layout/PageLayout';
+import React from "react";
+import { motion } from "framer-motion";
+import PageLayout from "../components/layout/PageLayout";
 
 const Projects = () => {
+  const handleProjectClick = (project) => {
+    console.log("项目被点击:", project.title);
+    window.open(project.link, "_blank");
+  };
+
   const projects = [
     {
-      title: "3D Portfolio",
-      description: "更美的场景",
-      tech: ["React", "Three.js", "Tailwind CSS"],
-      github: "https://lapblog.netlify.app/"
+      title: "3D交互页面",
+      type: "UI/UX Design",
+      description:
+        "融合了3D效果、动态交互和现代设计语言的项目。采用深色主题，强调内容的可读性和视觉层次。",
+      tools: ["Three", "Blender", "Framer"],
+      image: "/3D.png",
+      link: "https://3dcool.netlify.app/",
     },
     {
-      title: "智能点餐系统",
-      description: "网页和小程序端",
-      tech: ["Java","Spring Boot","MySQL","Vue.js"],
-      github: "https://github.com/Suroof/Sunroof"
-    }
+      title: "智能点餐系统设计",
+      type: "management system",
+      description:
+        "专注于用户体验的点餐系统设计，包含完整的购物流程、个性化推荐和社交功能。采用极简设计风格。",
+      tools: ["Springboot", "Vue.js", "微信开发者工具"],
+      image: "/zn1.png",
+      link: "https://github.com/Suroof/Sunroof",
+    },
+    {
+      title: "旅游网站",
+      type: "Dashboard Design",
+      description:
+        "旅游网站的设计，包含旅游路线规划、景点介绍、用户评价和在线预订等功能。采用现代设计风格。",
+      tools: ["React", "Tailwind", "Vite"],
+      image: "/旅游页面.png",
+      link: "https://github.com/Suroof/Travel",
+    },
+    {
+      title: "企业品牌网站",
+      type: "Dashboard Design",
+      description: "企业品牌展示，产品，门店，联系等页面。",
+      tools: ["Vue", "Tailwind"],
+      image: "/tea.jpg",
+      link: "https://tea4u.netlify.app/",
+    },
+    {
+      title: "花样生活app",
+      type: "uni-app",
+      description: "综合生活各个方面的app",
+      tools: ["Uni-app", "​Vue.js", "CSS"],
+      image: "/muti.jpg",
+      link: "https://github.com/Suroof/MutiLife",
+    },
+    {
+      title: "Shangri-la购物网站",
+      type: "uni-app",
+      description: "综合生活各个方面的app",
+      tools: ["Uni-app", "​Vue.js", "CSS"],
+      image: "/购物网站.jpg",
+      link: "https://shanghop.netlify.app/",
+    },
   ];
 
   return (
-    <PageLayout title="Projects">
-      <div className="grid gap-6">
+    <PageLayout title="Design Portfolio">
+      <div className="space-y-12">
         {projects.map((project, index) => (
-          <div key={index} className="bg-gray-900/50 backdrop-blur-sm rounded-lg p-6">
-            <h2 className="text-2xl font-bold mb-2">{project.title}</h2>
-            <p className="text-gray-300 mb-4">{project.description}</p>
-            <div className="flex gap-2 mb-4">
-              {project.tech.map((tech, i) => (
-                <span key={i} className="px-3 py-1 bg-blue-500/20 rounded-full text-sm">
-                  {tech}
-                </span>
-              ))}
-            </div>
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-400 hover:text-blue-300"
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="bg-gray-900/50 backdrop-blur-sm rounded-lg overflow-hidden"
+          >
+            <div
+              class="relative overflow-hidden w-100 h-80 rounded-3xl cursor-pointer text-2xl font-bold bg-purple-400"
+              onClick={() => handleProjectClick(project)}
             >
-              立即前往 →
-            </a>
-          </div>
+              <div class="z-10 absolute w-full h-full peer"></div>
+              <div class="absolute peer-hover:-top-20 peer-hover:-left-16 peer-hover:w-[140%] peer-hover:h-[140%] -top-32 -left-16 w-32 h-44 rounded-full bg-purple-300 transition-all duration-500"></div>
+              <div class="absolute flex text-xl text-center items-end justify-end peer-hover:right-0 peer-hover:rounded-b-none peer-hover:bottom-0 peer-hover:items-center peer-hover:justify-center peer-hover:w-full peer-hover:h-full -bottom-32 -right-16 w-36 h-44 rounded-full bg-purple-300 transition-all duration-500">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-auto h-auto max-h-full max-w-full object-contain mx-auto"
+                />
+              </div>
+              <div class="w-full h-full items-center justify-center flex uppercase">
+                {project.title}
+                <br />
+                {project.type}
+              </div>
+            </div>
+          </motion.div>
         ))}
       </div>
     </PageLayout>

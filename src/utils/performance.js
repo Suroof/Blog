@@ -69,7 +69,6 @@ export function monitorFrameRate() {
       fps = frames;
       frames = 0;
       lastTime = now;
-      console.log(`[Performance] Current FPS: ${fps}`);
 
       // 如果帧率低于30fps，可能需要降级渲染
       if (fps < 30) {
