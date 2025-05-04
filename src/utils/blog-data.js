@@ -44,9 +44,9 @@ export const BLOG_POSTS = [
       "Vue组件通常包含三个部分：模板(template)、脚本(script)和样式(style)。这种单文件组件的方式使得代码组织更加清晰。",
       "学习Vue的过程中，我发现最有效的方法是通过实战项目来巩固知识点。从简单的TODO应用开始，逐步过渡到更复杂的单页应用是一个不错的学习路径。",
     ],
-    nextPost: {
-      slug: "threejs-exploration",
-      title: "Three.js探索",
+    prevPost: {
+      title: "学习React",
+      slug: "learning-react",
     },
   },
   {
@@ -94,12 +94,12 @@ export const BLOG_POSTS = [
       "学习Three.js的过程充满挑战，但也非常有趣。从简单的几何体开始，逐步探索更复杂的功能，可以不断提升对3D图形编程的理解和技能。",
     ],
     prevPost: {
-      slug: "learning-vue",
-      title: "学习Vue",
+      title: "Vue2与Vue3对比学习",
+      slug: "vue2-vs-vue3",
     },
     nextPost: {
-      slug: "stoicism-philosophy",
-      title: "斯多葛主义：改变你能改变的事物",
+      title: "学习Node.js",
+      slug: "learning-nodejs",
     },
   },
   {
@@ -156,8 +156,12 @@ export const BLOG_POSTS = [
       "如果你愿意，你总是可以选择惊慌。有太多可以惊慌的事情。但这一特定情况不必成为你需要惊慌的事情之一。所以，再回去想想后果。这次，关注它们会影响你多久以及多强烈。很可能，你不需要因为大学小组项目中一个你没有纠正的错别字而去另一个大陆办理假身份证。更不用说因为周围人的正常人类行为而惊慌了。生命短暂。你最好找到你的平静。并且保持它。",
     ],
     prevPost: {
-      slug: "threejs-exploration",
-      title: "Three.js探索",
+      title: "学习Node.js",
+      slug: "learning-nodejs",
+    },
+    nextPost: {
+      slug: "learning-react",
+      title: "学习React",
     },
   },
   {
@@ -202,15 +206,15 @@ export const BLOG_POSTS = [
       "未来计划深入探索服务端组件和编译器优化等新方向，毕竟在这个前端技术快速迭代的时代，唯有持续理解框架的设计哲学，才能让技术真正服务于业务价值。",
     ],
     nextPost: {
-      slug: "learning-tailwind",
-      title: "学习Tailwind",
+      title: "学习Vue",
+      slug: "learning-vue",
     },
   },
   {
     id: 5,
     title: "学习Tailwind",
     slug: "learning-tailwind",
-    date: "2024-11-25",
+    date: "2024-12-03",
     author: "博主",
     authorAvatar: "/author.jpeg",
     categories: ["CSS", "Tailwind"],
@@ -248,15 +252,15 @@ export const BLOG_POSTS = [
       "在实际项目中，Tailwind的JIT（即时编译）模式大大提升了开发体验，按需生成的CSS确保了最终打包文件的最小化。结合现代化的构建工具，Tailwind已经成为前端开发不可或缺的工具之一。",
     ],
     nextPost: {
-      slug: "learning-nodejs",
-      title: "学习Node.js",
+      slug: "vue2-vs-vue3",
+      title: "Vue2与Vue3对比学习",
     },
   },
   {
     id: 6,
     title: "学习Node.js",
     slug: "learning-nodejs",
-    date: "2024-11-25",
+    date: "2024-8-11",
     author: "博主",
     authorAvatar: "/author.jpeg",
     categories: ["后端", "Node.js", "JavaScript"],
@@ -293,9 +297,13 @@ export const BLOG_POSTS = [
       "模块化编程示例：\nconst express = require('express');\nconst app = express();\napp.get('/', (req, res) => {\n  res.send('Hello, Node.js!');\n});",
       "在实践中，Node.js生态系统的丰富性使其成为了全栈开发的理想选择。从Web服务器（Express/Koa）到实时应用（Socket.IO），从API开发到微服务架构，Node.js都能胜任。结合现代化的开发工具和框架，它已经成为后端开发不可或缺的技术栈之一。",
     ],
+    prevPost: {
+      title: "Three.js",
+      slug: "threejs-exploration",
+    },
     nextPost: {
-      slug: "vue2-vs-vue3",
-      title: "Vue2与Vue3对比学习",
+      title: "斯多葛主义：改变你能改变的事物",
+      slug: "stoicism-philosophy",
     },
   },
   {
@@ -339,16 +347,20 @@ export const BLOG_POSTS = [
       "迁移策略示例：\n// 渐进式迁移\n// 1. 在Vue2项目中使用组合式API\nimport { defineComponent } from '@vue/composition-api'\nexport default defineComponent({\n  setup() {\n    // 组合式API代码\n  }\n})",
       "选择合适的版本需要考虑项目规模、团队熟悉度、性能需求等因素。对于新项目，Vue3是更好的选择；而对于现有Vue2项目，可以采用渐进式迁移策略，逐步引入Vue3的新特性。Vue3的生态系统日趋完善，主流库都提供了对应的支持版本。",
     ],
+    prevPost: {
+      title: "学习Tailwind",
+      slug: "learning-tailwind",
+    },
     nextPost: {
-      slug: "learning-vue",
-      title: "学习Vue",
+      title: "Three.js",
+      slug: "threejs-exploration",
     },
   },
 ];
 
 // 博客分类
 export const BLOG_CATEGORIES = [
-  { name: "前端", count: 2 },
+  { name: "前端", count: 6 },
   { name: "Vue", count: 1 },
   { name: "JavaScript", count: 1 },
   { name: "3D", count: 1 },
