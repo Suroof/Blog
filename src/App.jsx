@@ -48,6 +48,7 @@ const criticalImages = [
 // 路由变更处理组件 - 用于路由变化时优化
 const RouteChangeHandler = ({ children }) => {
   const location = useLocation();
+  const navigating = useRef(false);
   const prevLocation = useRef(location.pathname);
 
   useEffect(() => {
@@ -68,6 +69,33 @@ const RouteChangeHandler = ({ children }) => {
       console.log('关键图片预加载完成');
     });
   }, []);
+
+  useEffect(() => {
+    if (navigating.current) {
+      // 等待页面加载完成
+      const timer = setTimeout(() => {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'instant'
+        });
+      }, 100);
+      
+      return () => clearTimeout(timer);
+    }
+    navigating.current = true;
+    
+    // 首次加载
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'instant'
+    });
+    
+    return () => {
+      navigating.current = false;
+    };
+  }, [location]);
 
   return <>{children}</>;
 };
