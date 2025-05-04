@@ -140,3 +140,16 @@ export function optimizeForDevice() {
 
   return window.APP_CONFIG;
 }
+
+export function preloadImages(imagePaths) {
+  return Promise.all(
+    imagePaths.map(path => {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = resolve;
+        img.onerror = reject;
+        img.src = path;
+      });
+    })
+  );
+}

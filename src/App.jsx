@@ -13,7 +13,7 @@ import { SmoothCursor } from "./components/ui/smooth-cursor";
 
 // 导入进度加载器组件和性能工具
 import ProgressLoader from "./components/ProgressLoader";
-import { optimizeForDevice, monitorFrameRate } from "./utils/performance";
+import { optimizeForDevice, monitorFrameRate,preloadImages } from "./utils/performance";
 
 // 预先加载主页组件
 // eslint-disable-next-line
@@ -39,28 +39,35 @@ const History = lazy(() => import("./pages/History"));
 const Gallery = lazy(() => import("./pages/Gallery"));
 const Resources = lazy(() => import("./pages/Resources"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
-
+const criticalImages = [
+  '/3D.png',
+  '/zn1.png',
+  '/旅游页面.png',
+  '/购物网站.jpg'
+];
 // 路由变更处理组件 - 用于路由变化时优化
 const RouteChangeHandler = ({ children }) => {
   const location = useLocation();
   const prevLocation = useRef(location.pathname);
 
   useEffect(() => {
-    // 路由发生变化
-    if (location.pathname !== prevLocation.current) {
-      // 滚动到页面顶部
-      window.scrollTo(0, 0);
-
-      // 预加载可能的相关页面
-      if (location.pathname === "/articles") {
-        // 在文章主页预加载常用文章类别
-        import("./pages/articles/Tech");
-        import("./pages/articles/Life");
-      }
-
-      prevLocation.current = location.pathname;
+    if (location.pathname === '/projects') {
+      // 预加载项目页图片
+      const projectImages = [
+        '/3D.png',
+        '/zn1.png',
+        '/muti.jpg',
+        '/购物网站.jpg'
+      ];
+      preloadImages(projectImages);
     }
-  }, [location]);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    preloadImages(criticalImages).then(() => {
+      console.log('关键图片预加载完成');
+    });
+  }, []);
 
   return <>{children}</>;
 };
