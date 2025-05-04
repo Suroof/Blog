@@ -224,7 +224,7 @@ export const BLOG_POSTS = [
       "Tailwind的原子化设计理念彻底改变了传统CSS开发方式。每个类都代表一个特定的样式属性，这使得我们可以直接在HTML中组合样式，而无需编写自定义CSS。这种方法的优势包括：\n1. 减少了CSS文件的大小\n2. 提高了样式的复用性\n3. 降低了命名的心智负担\n4. 加快了开发速度",
       {
         type: "image",
-        src: "/tailwind-example.jpg",
+        src: "https://pic1.imgdb.cn/item/6817321058cb8da5c8db5e37.jpg",
         alt: "Tailwind CSS示例代码",
         caption: "使用Tailwind CSS构建现代化界面",
       },
@@ -270,9 +270,9 @@ export const BLOG_POSTS = [
       "Node.js的异步编程模型是其最显著的特性之一。通过回调函数、Promise和async/await，我们可以高效处理并发操作：\n1. 避免阻塞主线程\n2. 提高I/O操作效率\n3. 更好地处理并发请求\n4. 优化资源利用",
       {
         type: "image",
-        src: "/nodejs-example.jpg",
-        alt: "Node.js异步编程示例",
-        caption: "Node.js异步编程实践",
+        src: "https://pic1.imgdb.cn/item/6817324158cb8da5c8db5f2d.jpg",
+        alt: "Node.js",
+        caption: "Node.js",
       },
       {
         type: "heading",
@@ -316,9 +316,9 @@ export const BLOG_POSTS = [
       "Vue3相比Vue2有以下重大改进：\n1. 重写响应式系统，使用Proxy替代Object.defineProperty\n2. 优化虚拟DOM，提供更好的性能\n3. 改进TypeScript支持\n4. 新的组合式API，提供更灵活的逻辑组织方式",
       {
         type: "image",
-        src: "/vue-comparison.jpg",
-        alt: "Vue2和Vue3代码对比",
-        caption: "Vue2和Vue3编程范式对比",
+        src: "https://pic1.imgdb.cn/item/6817304b58cb8da5c8db5208.jpg",
+        alt: "html代码",
+        caption: "html代码",
       },
       {
         type: "heading",

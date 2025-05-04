@@ -91,32 +91,33 @@ function App() {
   const [showBackground, setShowBackground] = useState(false);
   const [appConfig, setAppConfig] = useState(null);
 
-  // 初始化应用配置和性能监控
   useEffect(() => {
-    // 根据设备性能优化应用配置
+    // 初始化应用配置和性能监控
     const config = optimizeForDevice();
     setAppConfig(config);
-
+  
     // 只在高性能设备上启用帧率监控
     if (config.enableHeavyAnimations) {
       monitorFrameRate();
     }
-
+  
     // 延迟加载非关键视觉元素以提高初始加载速度
-    const bgTimer = setTimeout(() => {
-      setShowBackground(true);
-    }, 800);
-
-    // 标记初始加载完成
-    const initialLoadTimer = setTimeout(() => {
-      setIsFirstLoad(false);
-    }, 3000);
-
-    return () => {
-      clearTimeout(bgTimer);
-      clearTimeout(initialLoadTimer);
-    };
-  }, []);
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        if (loaded) {
+          setShowLoader(false);
+        }
+      }, 800); // 至少显示 800ms，防止闪烁
+  
+      if (loaded && progress >= 100) {
+        clearTimeout(timer);
+        setShowLoader(false);
+      }
+  
+      return () => clearTimeout(timer); 
+    }, [loaded, progress]); // ✅ 内层 useEffect 依赖数组正确
+  
+  }, []); // ✅ 外层 useEffect 添加空依赖数组
 
   return (
     <>

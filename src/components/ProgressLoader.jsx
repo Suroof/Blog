@@ -5,6 +5,8 @@ import React, { useState, useEffect } from 'react';
  * 用于在页面或组件加载时提供视觉反馈，提升用户体验
  */
 const ProgressLoader = ({ minDuration = 500, initialProgress = 0 }) => {
+  const { progress: loaderProgress } = useProgress();
+  const actualProgress = progress || loaderProgress;
   const [progress, setProgress] = useState(initialProgress);
   const [visible, setVisible] = useState(true);
 
@@ -56,7 +58,7 @@ const ProgressLoader = ({ minDuration = 500, initialProgress = 0 }) => {
       <div className="mb-8 relative">
         <div className="w-16 h-16 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin"></div>
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-xs font-medium text-blue-500">{Math.floor(progress)}%</span>
+          <span className="text-xs font-medium text-blue-500">{Math.floor(actualProgress)}%</span>
         </div>
       </div>
 
