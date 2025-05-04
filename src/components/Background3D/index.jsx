@@ -1,11 +1,18 @@
-import React, { Suspense } from 'react';
+import React, { Suspense ,useEffect} from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, useGLTF, PerspectiveCamera } from '@react-three/drei';
 import { useScroll } from 'framer-motion';
 
-const VehicleModel = () => {
+const VehicleModel = ({ onLoaded }) => {
   const gltf = useGLTF('/Car.glb', true);
   const { scrollYProgress } = useScroll();
+
+  useEffect(() => {
+    if (gltf.scene) {
+      onLoaded();
+    }
+  }, [gltf.scene, onLoaded]);
+
 
   useFrame(() => {
     if (gltf.scene) {
@@ -49,7 +56,7 @@ const VehicleModel = () => {
   );
 };
 
-const Background3D = () => {
+const Background3D = ({ onLoaded }) => {
   return (
     <div className="fixed inset-0 -z-10">
       <Canvas
@@ -68,7 +75,7 @@ const Background3D = () => {
         <directionalLight position={[-10, -10, -5]} intensity={0.4} />
 
         <Suspense fallback={null}>
-          <VehicleModel />
+          <VehicleModel onLoaded={onLoaded} />  {/* 传递回调 */}
         </Suspense>
 
         <OrbitControls
