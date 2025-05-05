@@ -42,7 +42,7 @@ export const PERSONAL_INFO_CARDS = [
     title: "Design Portfolio",
     description: "我的设计作品集与UI/UX案例",
     icon: "🎨",
-    link: "/articles/design",
+    link: "/projects",
     backgroundImage: "/water.jpg"
   },
   {
