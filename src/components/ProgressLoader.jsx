@@ -9,33 +9,29 @@ const ProgressLoader = ({ minDuration = 500, initialProgress = 0 }) => {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    // 创建非线性进度增长，模拟真实加载过程
     const interval = setInterval(() => {
       setProgress(prev => {
-        // 快速增加到70%
-        if (prev < 70) return prev + (70 - prev) * 0.08;
-        // 慢速增加到95%
-        if (prev < 95) return prev + 0.3;
-        // 最后阶段极慢增加，等待实际加载完成
-        return Math.min(99, prev + 0.05);
+        // 快速增加到 95%
+        if (prev < 95) {
+          return Math.min(prev + 1, 95); // 每次加1，直到95%
+        }
+        // 最后阶段极慢增加，模拟等待实际加载完成
+        return Math.min(prev + 0.1, 99); // 接近99时缓慢推进
       });
     }, 100);
-
-    // 确保加载器显示至少minDuration毫秒，避免闪烁
+  
     const hideTimer = setTimeout(() => {
-      // 当实际完成加载时，快速完成进度并隐藏
       if (progress >= 99) {
         setProgress(100);
         setTimeout(() => setVisible(false), 300);
       }
     }, minDuration);
-
+  
     return () => {
       clearInterval(interval);
       clearTimeout(hideTimer);
     };
   }, [minDuration, progress]);
-
   // 当达到100%时触发淡出动画
   useEffect(() => {
     if (progress >= 100) {
