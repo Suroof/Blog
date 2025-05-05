@@ -4,7 +4,7 @@ import { OrbitControls, useGLTF, PerspectiveCamera } from '@react-three/drei';
 import { useScroll } from 'framer-motion';
 
 const VehicleModel = ({ onLoaded }) => {
-  const gltf = useGLTF('/Car-compressed.glb', true);
+  const gltf = useGLTF('/Car.glb', true);
   const { scrollYProgress } = useScroll();
 
   useEffect(() => {
