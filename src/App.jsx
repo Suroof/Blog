@@ -13,7 +13,11 @@ import { SmoothCursor } from "./components/ui/smooth-cursor";
 
 // 导入进度加载器组件和性能工具
 import ProgressLoader from "./components/ProgressLoader";
-import { optimizeForDevice, monitorFrameRate,preloadImages } from "./utils/performance";
+import {
+  optimizeForDevice,
+  monitorFrameRate,
+  preloadImages,
+} from "./utils/performance";
 
 // 预先加载主页组件
 // eslint-disable-next-line
@@ -40,25 +44,24 @@ const Gallery = lazy(() => import("./pages/Gallery"));
 const Resources = lazy(() => import("./pages/Resources"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 const criticalImages = [
-  '/3D.png',
-  '/zn1.png',
-  '/旅游页面.png',
-  '/购物网站.jpg'
+  "/3D.png",
+  "/zn1.png",
+  "/旅游页面.png",
+  "/购物网站.jpg",
 ];
 // 路由变更处理组件 - 用于路由变化时优化
 const RouteChangeHandler = ({ children }) => {
   const location = useLocation();
   const navigating = useRef(false);
-  const prevLocation = useRef(location.pathname);
 
   useEffect(() => {
-    if (location.pathname === '/projects') {
+    if (location.pathname === "/projects") {
       // 预加载项目页图片
       const projectImages = [
-        '/3D.png',
-        '/zn1.png',
-        '/muti.jpg',
-        '/购物网站.jpg'
+        "/3D.png",
+        "/zn1.png",
+        "/muti.jpg",
+        "/购物网站.jpg",
       ];
       preloadImages(projectImages);
     }
@@ -66,7 +69,7 @@ const RouteChangeHandler = ({ children }) => {
 
   useEffect(() => {
     preloadImages(criticalImages).then(() => {
-      console.log('关键图片预加载完成');
+      console.log("项目图片预加载完成");
     });
   }, []);
 
@@ -77,21 +80,21 @@ const RouteChangeHandler = ({ children }) => {
         window.scrollTo({
           top: 0,
           left: 0,
-          behavior: 'instant'
+          behavior: "instant",
         });
       }, 100);
-      
+
       return () => clearTimeout(timer);
     }
     navigating.current = true;
-    
+
     // 首次加载
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: 'instant'
+      behavior: "instant",
     });
-    
+
     return () => {
       navigating.current = false;
     };
@@ -129,9 +132,9 @@ const GlobalCursor = () => {
 };
 
 function App() {
-  const [isFirstLoad, setIsFirstLoad] = useState(true);
+  const [_isFirstLoad, setIsFirstLoad] = useState(true);
   const [showBackground, setShowBackground] = useState(false);
-  const [appConfig, setAppConfig] = useState(null);
+  const [_appConfig, setAppConfig] = useState(null);
   const [isModelLoaded, setIsModelLoaded] = useState(false);
 
   // 初始化应用配置和性能监控
@@ -177,41 +180,42 @@ function App() {
             )}
 
             <div className="relative z-10">
-            {isModelLoaded ? (
-    // 原有页面内容
-    <>
-              <Navbar />
+              {isModelLoaded ? (
+                // 原有页面内容
+                <>
+                  <Navbar />
 
-              {/* 使用更高级的加载指示器提升用户体验 */}
-              <Suspense fallback={<ProgressLoader minDuration={800} />}>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/articles" element={<Articles />} />
-                  <Route path="/projects" element={<Projects />} />
-                  <Route path="/gallery" element={<Gallery />} />
-                  <Route path="/resources" element={<Resources />} />
-                  <Route path="/blog/:slug" element={<BlogPost />} />
-                  <Route
-                    path="/category/:categoryName"
-                    element={<Articles />}
-                  />
-                  <Route path="/history" element={<History />} />
-                  {/* Article category routes */}
-                  <Route path="/articles/work" element={<Work />} />
-                  <Route path="/articles/music" element={<Music />} />
-                  <Route path="/articles/life" element={<Life />} />
-                  <Route path="/articles/tech" element={<Tech />} />
-                  <Route path="/articles/projects" element={<Projects />} />
-                  <Route
-                    path="/articles/travel-stories"
-                    element={<TravelStories />}
-                  />
-                </Routes>
-              </Suspense>
-              </>  ) : (
-    <ProgressLoader minDuration={800} />
-  )}
+                  {/* 使用更高级的加载指示器提升用户体验 */}
+                  <Suspense fallback={<ProgressLoader minDuration={800} />}>
+                    <Routes>
+                      <Route path="/" element={<Home />} />
+                      <Route path="/about" element={<About />} />
+                      <Route path="/articles" element={<Articles />} />
+                      <Route path="/projects" element={<Projects />} />
+                      <Route path="/gallery" element={<Gallery />} />
+                      <Route path="/resources" element={<Resources />} />
+                      <Route path="/blog/:slug" element={<BlogPost />} />
+                      <Route
+                        path="/category/:categoryName"
+                        element={<Articles />}
+                      />
+                      <Route path="/history" element={<History />} />
+                      {/* Article category routes */}
+                      <Route path="/articles/work" element={<Work />} />
+                      <Route path="/articles/music" element={<Music />} />
+                      <Route path="/articles/life" element={<Life />} />
+                      <Route path="/articles/tech" element={<Tech />} />
+                      <Route path="/articles/projects" element={<Projects />} />
+                      <Route
+                        path="/articles/travel-stories"
+                        element={<TravelStories />}
+                      />
+                    </Routes>
+                  </Suspense>
+                </>
+              ) : (
+                <ProgressLoader minDuration={800} />
+              )}
             </div>
           </div>
         </RouteChangeHandler>
