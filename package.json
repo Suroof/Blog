@@ -39,6 +39,7 @@
     "eslint": "^9.25.1",
     "eslint-plugin-react": "^7.37.5",
     "globals": "^16.0.0",
+    "gltf-pipeline": "^4.1.0",
     "tailwindcss-animate": "^1.0.7",
     "typescript-eslint": "^8.31.1",
     "vite": "^5.0.8"

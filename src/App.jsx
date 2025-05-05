@@ -154,6 +154,7 @@ function App() {
       setShowBackground(true);
     }
   }, 1500); // 延长延迟时间
+
     // 标记初始加载完成
     const initialLoadTimer = setTimeout(() => {
       setIsFirstLoad(false);

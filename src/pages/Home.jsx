@@ -74,11 +74,11 @@ const Home = () => {
           /> 
 
           {/* 使用Suspense延迟加载复杂组件 */}
-          {/* <div className="mb-32">
+          <div className="mb-32">
             <Suspense fallback={<LoadingFallback />}>
               <AceternityCard />
             </Suspense>
-          </div> */}
+          </div>
         </div>
 
         {/* 使用虚拟化技术，只渲染可见的卡片 */}
