@@ -71,14 +71,14 @@ const Home = () => {
             animateBy="letters"
             direction="top"
             className="text-2xl font-bold text-center mt-6 mb-6 text-white"
-          />
+          /> 
 
           {/* 使用Suspense延迟加载复杂组件 */}
-          <div className="mb-32">
+          {/* <div className="mb-32">
             <Suspense fallback={<LoadingFallback />}>
               <AceternityCard />
             </Suspense>
-          </div>
+          </div> */}
         </div>
 
         {/* 使用虚拟化技术，只渲染可见的卡片 */}
