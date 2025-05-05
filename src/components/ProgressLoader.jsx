@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import { AnimatedCircularProgressBar } from "@/components/magicui/animated-circular-progress-bar";
 /**
  * 高级进度加载器组件
  * 用于在页面或组件加载时提供视觉反馈，提升用户体验
@@ -9,29 +8,11 @@ const ProgressLoader = ({ minDuration = 500, initialProgress = 0 }) => {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress(prev => {
-        // 快速增加到 95%
-        if (prev < 90) {
-          return Math.min(prev + 1, 90); // 每次加1，直到95%
-        }
-        // 最后阶段极慢增加，模拟等待实际加载完成
-        return Math.min(prev + 0.1, 99); // 接近99时缓慢推进
-      });
-    }, 100);
-  
-    const hideTimer = setTimeout(() => {
-      if (progress >= 99) {
-        setProgress(100);
-        setTimeout(() => setVisible(false), 600);
-      }
-    }, minDuration);
-  
-    return () => {
-      clearInterval(interval);
-      clearTimeout(hideTimer);
-    };
-  }, [minDuration, progress]);
+    if (progress >= 99) {
+      setProgress(100);
+      setTimeout(() => setVisible(false), 600);
+    }
+  }, [progress]);
   // 当达到100%时触发淡出动画
   useEffect(() => {
     if (progress >= 100) {
