@@ -148,11 +148,12 @@ function App() {
       monitorFrameRate();
     }
 
-    // 延迟加载非关键视觉元素以提高初始加载速度
-    const bgTimer = setTimeout(() => {
+  // 延迟加载3D背景（根据设备性能）
+  const bgTimer = setTimeout(() => {
+    if (config.enable3DBackground) {
       setShowBackground(true);
-    }, 800);
-
+    }
+  }, 1500); // 延长延迟时间
     // 标记初始加载完成
     const initialLoadTimer = setTimeout(() => {
       setIsFirstLoad(false);
