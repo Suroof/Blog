@@ -12,7 +12,7 @@ const ProgressLoader = ({ minDuration = 500, initialProgress = 0 }) => {
     const interval = setInterval(() => {
       setProgress(prev => {
         // 快速增加到 95%
-        if (prev < 95) {
+        if (prev < 90) {
           return Math.min(prev + 1, 90); // 每次加1，直到95%
         }
         // 最后阶段极慢增加，模拟等待实际加载完成
@@ -66,11 +66,11 @@ const ProgressLoader = ({ minDuration = 500, initialProgress = 0 }) => {
 
       {/* 加载提示 */}
       <div className="text-center">
-        <p className="text-white text-sm font-medium mb-1">请稍候...</p>
+        <p className="text-white text-sm font-medium mb-1">Just a second...</p>
         <p className="text-gray-400 text-xs">
-          {progress < 40 ? '初始化页面' :
-           progress < 70 ? '加载资源中' :
-           progress < 90 ? '处理内容' : '即将完成'}
+          {progress < 40 ? 'Waiting' :
+           progress < 70 ? 'Loading' :
+           progress < 90 ? 'Almost here' :'Let\'s go!'}
         </p>
       </div>
     </div>
