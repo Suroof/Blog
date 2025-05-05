@@ -23,7 +23,7 @@ const ProgressLoader = ({ minDuration = 500, initialProgress = 0 }) => {
     const hideTimer = setTimeout(() => {
       if (progress >= 99) {
         setProgress(100);
-        setTimeout(() => setVisible(false), 300);
+        setTimeout(() => setVisible(false), 600);
       }
     }, minDuration);
   
