@@ -17,14 +17,7 @@ import {
 import { CRITICAL_IMAGES } from "./utils/constants";
 
 // 预先加载主页组件
-const Home = lazy(() =>
-  import("./pages/Home").then((module) => {
-    // 主页加载后预加载其他常用页面
-    import("./pages/About");
-    import("./pages/Gallery");
-    return module;
-  })
-);
+const Home = lazy(() => import("./pages/Home"));
 
 // 使用懒加载导入其他页面组件
 const About = lazy(() => import("./pages/About"));
@@ -45,8 +38,7 @@ const RouteChangeHandler = ({ children }) => {
   const navigating = useRef(false);
 
   useEffect(() => {
-    preloadImages(CRITICAL_IMAGES).then(() => {
-    });
+    preloadImages(CRITICAL_IMAGES).then(() => {});
   }, []);
 
   useEffect(() => {
@@ -124,12 +116,12 @@ function App() {
       monitorFrameRate();
     }
 
-  // 延迟加载3D背景（根据设备性能）
-  const bgTimer = setTimeout(() => {
-    if (config.enable3DBackground) {
-      setShowBackground(true);
-    }
-  }, 1500); // 延长延迟时间
+    // 延迟加载3D背景（根据设备性能）
+    const bgTimer = setTimeout(() => {
+      if (config.enable3DBackground) {
+        setShowBackground(true);
+      }
+    }, 1500); // 延长延迟时间
 
     // 标记初始加载完成
     const initialLoadTimer = setTimeout(() => {
