@@ -1,8 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Timeline } from "@/components/ui/timeline";
+import { HISTORY_IMAGES } from "@/utils/constants";
 
 const History = () => {
+  useEffect(() => {
+    HISTORY_IMAGES.forEach(image => {
+      const img = new Image();
+      img.src = image.src;
+    });
+  }, []);
+
   const data = [
     {
       title: "2024",

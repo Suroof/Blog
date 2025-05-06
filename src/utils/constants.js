@@ -64,5 +64,13 @@ export const CRITICAL_IMAGES = [
 ];
 
 export const HISTORY_IMAGES = [
-    
+  { src: "https://pic1.imgdb.cn/item/68175b7458cb8da5c8dc53d1.png", alt: "startup template" },
+  { src: "https://pic1.imgdb.cn/item/68175b9658cb8da5c8dc53e6.png", alt: "startup template" },
+  { src: "https://pic1.imgdb.cn/item/68175bee58cb8da5c8dc5400.png", alt: "startup template" },
+  { src: "https://pic1.imgdb.cn/item/68175c2d58cb8da5c8dc5404.png", alt: "startup template" },
+  { src: "https://pic1.imgdb.cn/item/68175c6e58cb8da5c8dc5419.png", alt: "hero template" },
+  { src: "https://pic1.imgdb.cn/item/68175ca958cb8da5c8dc5427.png", alt: "feature template" },
+  { src: "https://pic1.imgdb.cn/item/68175d1058cb8da5c8dc543d.png", alt: "bento template" },
+  { src: "https://pic1.imgdb.cn/item/68175d8458cb8da5c8dc5457.png", alt: "cards template" },
+  { src: "https://pic1.imgdb.cn/item/68175e3e58cb8da5c8dc5494.jpg", alt: "hero template" },
 ]

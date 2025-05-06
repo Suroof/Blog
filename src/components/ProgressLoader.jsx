@@ -11,18 +11,16 @@ const ProgressLoader = ({ minDuration = 500, initialProgress = 0 }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setProgress(prev => {
-        // 快速增加到 95%
-        if (prev < 95) {
-          return Math.min(prev + 1, 95); // 每次加1，直到95%
+        // 确保进度能增加到100%
+        if (prev < 100) {
+          return Math.min(prev + 1, 100);
         }
-        // 最后阶段极慢增加，模拟等待实际加载完成
-        return Math.min(prev + 0.1, 99); // 接近99时缓慢推进
+        return prev;
       });
     }, 100);
   
     const hideTimer = setTimeout(() => {
-      if (progress >= 99) {
-        setProgress(100);
+      if (progress >= 100) {
         setTimeout(() => setVisible(false), 600);
       }
     }, minDuration);
