@@ -3,7 +3,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, useGLTF, PerspectiveCamera } from '@react-three/drei';
 import { useScroll } from 'framer-motion';
 
-const VehicleModel = ({ onLoaded, onProgress }) => {
+const VehicleModel = ({ onLoaded }) => {
   const gltf = useGLTF('/Car.glb', true);
   const { scrollYProgress } = useScroll();
 
@@ -12,18 +12,6 @@ const VehicleModel = ({ onLoaded, onProgress }) => {
       onLoaded();
     }
   }, [gltf.scene, onLoaded]);
-
-  useEffect(() => {
-    if (gltf.__$ && onProgress) {
-      const interval = setInterval(() => {
-        const progress = gltf.__$.manager.itemSize
-          ? gltf.__$.manager.loaded / gltf.__$.manager.itemSize * 100
-          : 0;
-        onProgress(Math.min(progress, 99));
-      }, 100);
-      return () => clearInterval(interval);
-    }
-  }, [gltf.__$, onProgress]);
 
 
   useFrame(() => {
@@ -68,7 +56,7 @@ const VehicleModel = ({ onLoaded, onProgress }) => {
   );
 };
 
-const Background3D = ({ onLoaded, onProgress }) => {
+const Background3D = ({ onLoaded }) => {
   return (
     <div className="fixed inset-0 -z-10">
       <Canvas
@@ -87,7 +75,7 @@ const Background3D = ({ onLoaded, onProgress }) => {
         <directionalLight position={[-10, -10, -5]} intensity={0.4} />
 
         <Suspense fallback={null}>
-          <VehicleModel onLoaded={onLoaded} onProgress={onProgress} />  {/* 传递回调 */}
+          <VehicleModel onLoaded={onLoaded} />  {/* 传递回调 */}
         </Suspense>
 
         <OrbitControls
