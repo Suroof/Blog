@@ -53,3 +53,12 @@ export const PERSONAL_INFO_CARDS = [
     backgroundImage: "/luv.jpeg"
   }
 ];
+
+export const CRITICAL_IMAGES = [
+  "/3D.png",
+  "/zn1.png",
+  "/tea.jpg",
+  "/muti.jpg",
+  "/旅游页面.png",
+  "/购物网站.jpg",
+];
