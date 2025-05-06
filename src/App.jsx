@@ -150,42 +150,37 @@ function App() {
             )}
 
             <div className="relative z-10">
-              {isModelLoaded ? (
-                // 原有页面内容
-                <>
-                  <Navbar />
+              <>
+                <Navbar />
 
-                  {/* 使用更高级的加载指示器提升用户体验 */}
-                  <Suspense fallback={<ProgressLoader minDuration={800} />}>
-                    <Routes>
-                      <Route path="/" element={<Home />} />
-                      <Route path="/about" element={<About />} />
-                      <Route path="/articles" element={<Articles />} />
-                      <Route path="/projects" element={<Projects />} />
-                      <Route path="/gallery" element={<Gallery />} />
-                      <Route path="/resources" element={<Resources />} />
-                      <Route path="/blog/:slug" element={<BlogPost />} />
-                      <Route
-                        path="/category/:categoryName"
-                        element={<Articles />}
-                      />
-                      <Route path="/history" element={<History />} />
-                      {/* Article category routes */}
-                      <Route path="/articles/work" element={<Work />} />
-                      <Route path="/articles/music" element={<Music />} />
-                      <Route path="/articles/life" element={<Life />} />
-                      <Route path="/articles/tech" element={<Tech />} />
-                      <Route path="/articles/projects" element={<Projects />} />
-                      <Route
-                        path="/articles/travel-stories"
-                        element={<TravelStories />}
-                      />
-                    </Routes>
-                  </Suspense>
-                </>
-              ) : (
-                <ProgressLoader minDuration={800} />
-              )}
+                {/* 使用更高级的加载指示器提升用户体验 */}
+                <Suspense fallback={<ProgressLoader minDuration={800} />}>
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/articles" element={<Articles />} />
+                    <Route path="/projects" element={<Projects />} />
+                    <Route path="/gallery" element={<Gallery />} />
+                    <Route path="/resources" element={<Resources />} />
+                    <Route path="/blog/:slug" element={<BlogPost />} />
+                    <Route
+                      path="/category/:categoryName"
+                      element={<Articles />}
+                    />
+                    <Route path="/history" element={<History />} />
+                    {/* Article category routes */}
+                    <Route path="/articles/work" element={<Work />} />
+                    <Route path="/articles/music" element={<Music />} />
+                    <Route path="/articles/life" element={<Life />} />
+                    <Route path="/articles/tech" element={<Tech />} />
+                    <Route path="/articles/projects" element={<Projects />} />
+                    <Route
+                      path="/articles/travel-stories"
+                      element={<TravelStories />}
+                    />
+                  </Routes>
+                </Suspense>
+              </>
             </div>
           </div>
         </RouteChangeHandler>

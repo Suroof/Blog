@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import { AnimatedCircularProgressBar } from "@/components/magicui/animated-circular-progress-bar";
+import { AnimatedCircularProgressBar } from "@/components/magicui/animated-circular-progress-bar";
 /**
  * 高级进度加载器组件
  * 用于在页面或组件加载时提供视觉反馈，提升用户体验
@@ -12,8 +12,8 @@ const ProgressLoader = ({ minDuration = 500, initialProgress = 0 }) => {
     const interval = setInterval(() => {
       setProgress(prev => {
         // 快速增加到 95%
-        if (prev < 90) {
-          return Math.min(prev + 1, 90); // 每次加1，直到95%
+        if (prev < 95) {
+          return Math.min(prev + 1, 95); // 每次加1，直到95%
         }
         // 最后阶段极慢增加，模拟等待实际加载完成
         return Math.min(prev + 0.1, 99); // 接近99时缓慢推进
@@ -48,21 +48,16 @@ const ProgressLoader = ({ minDuration = 500, initialProgress = 0 }) => {
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black bg-opacity-90 transition-opacity duration-500"
          style={{ opacity: progress === 100 ? 0 : 1 }}>
-      {/* 加载动画 */}
-      <div className="mb-8 relative">
-        <div className="w-16 h-16 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin"></div>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-xs font-medium text-blue-500">{Math.floor(progress)}%</span>
-        </div>
-      </div>
-
-      {/* 进度条 */}
-      <div className="w-64 h-1.5 bg-gray-800 rounded-full overflow-hidden mb-4">
-        <div
-          className="h-full bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 ease-out"
-          style={{ width: `${progress}%` }}
-        />
-      </div>
+      {/* 圆形进度条动画 */}
+      <AnimatedCircularProgressBar
+        progress={progress}
+        size={64}
+        strokeWidth={4}
+        trackColor="#3b82f633"
+        progressColor="#3b82f6"
+        className="mb-8"
+      />
+      <span className="text-xs font-medium text-blue-500 mb-4">{Math.floor(progress)}%</span>
 
       {/* 加载提示 */}
       <div className="text-center">
