@@ -50,24 +50,16 @@ const ProgressLoader = ({ minDuration = 500, initialProgress = 0 }) => {
          style={{ opacity: progress === 100 ? 0 : 1 }}>
       {/* 圆形进度条动画 */}
       <AnimatedCircularProgressBar
-        progress={progress}
-        size={64}
-        strokeWidth={4}
-        trackColor="#3b82f633"
-        progressColor="#3b82f6"
+        value={progress}
+        max={100}
+        min={0}
+        gaugePrimaryColor="#3b82f6"
+        gaugeSecondaryColor="#3b82f633"
         className="mb-8"
       />
-      <span className="text-xs font-medium text-blue-500 mb-4">{Math.floor(progress)}%</span>
 
       {/* 加载提示 */}
-      <div className="text-center">
-        <p className="text-white text-sm font-medium mb-1">Just a second...</p>
-        <p className="text-gray-400 text-xs">
-          {progress < 40 ? 'Waiting' :
-           progress < 70 ? 'Loading' :
-           progress < 90 ? 'Almost here' :'Let\'s go!'}
-        </p>
-      </div>
+
     </div>
   );
 };

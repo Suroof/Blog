@@ -62,3 +62,7 @@ export const CRITICAL_IMAGES = [
   "/旅游页面.png",
   "/购物网站.jpg",
 ];
+
+export const HISTORY_IMAGES = [
+    
+]
