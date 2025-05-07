@@ -15,52 +15,52 @@ export const PERSONAL_INFO_CARDS = [
     description: "查看我的工作经历和项目案例",
     icon: "👨‍💻",
     link: "/articles/work",
-    backgroundImage: "/air.jpeg"
+    backgroundImage: "/air.webp"
   },
   {
     title: "Travel Stories",
     description: "分享旅行见闻与风景",
     icon: "✈️",
     link: "/articles/travel-stories",
-    backgroundImage: "/dog.jpeg"
+    backgroundImage: "/dog.webp"
   },
   {
     title: "Music Collection",
     description: "我的音乐收藏和推荐歌单",
     icon: "🎸",
     link: "/articles/music",
-    backgroundImage: "/fly.jpeg"
+    backgroundImage: "/fly.webp"
   },
   {
     title: "Life Stories",
     description: "记录生活，分享故事",
     icon: "🌆",
     link: "/articles/life",
-    backgroundImage: "/street.jpeg"
+    backgroundImage: "/street.webp"
   },
   {
     title: "Design Portfolio",
     description: "我的设计作品集与UI/UX案例",
     icon: "🎨",
     link: "/projects",
-    backgroundImage: "/water.jpg"
+    backgroundImage: "/water.webp"
   },
   {
     title: "Tech Explorer",
     description: "技术探索与学习笔记",
     icon: "🚀",
     link: "/articles/tech",
-    backgroundImage: "/luv.jpeg"
+    backgroundImage: "/luv.webp"
   }
 ];
 
 export const CRITICAL_IMAGES = [
-  "/3D.png",
-  "/zn1.png",
-  "/tea.jpg",
-  "/muti.jpg",
-  "/旅游页面.png",
-  "/购物网站.jpg",
+  "/3D.webp",
+  "/zn1.webp",
+  "/tea.webp",
+  "/muti.webp",
+  "/旅游页面.webp",
+  "/购物网站.webp",
 ];
 
 export const HISTORY_IMAGES = [

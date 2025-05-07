@@ -15,7 +15,7 @@ const Projects = () => {
       description:
         "融合了3D效果、动态交互和现代设计语言的项目。采用深色主题，强调内容的可读性和视觉层次。",
       tools: ["Three", "Blender", "Framer"],
-      image: "/3D.png",
+      image: "/3D.webp",
       link: "https://3dcool.netlify.app/",
     },
     {
@@ -24,7 +24,7 @@ const Projects = () => {
       description:
         "专注于用户体验的点餐系统设计，包含完整的购物流程、个性化推荐和社交功能。采用极简设计风格。",
       tools: ["Springboot", "Vue.js", "微信开发者工具"],
-      image: "/zn1.png",
+      image: "/zn1.webp",
       link: "https://github.com/Suroof/Sunroof",
     },
     {
@@ -33,7 +33,7 @@ const Projects = () => {
       description:
         "旅游网站的设计，包含旅游路线规划、景点介绍、用户评价和在线预订等功能。采用现代设计风格。",
       tools: ["React", "Tailwind", "Vite"],
-      image: "/旅游页面.png",
+      image: "/旅游页面.webp",
       link: "https://github.com/Suroof/Travel",
     },
     {
@@ -41,7 +41,7 @@ const Projects = () => {
       type: "Dashboard Design",
       description: "企业品牌展示，产品，门店，联系等页面。",
       tools: ["Vue", "Tailwind"],
-      image: "/tea.jpg",
+      image: "/tea.webp",
       link: "https://tea4u.netlify.app/",
     },
     {
@@ -49,7 +49,7 @@ const Projects = () => {
       type: "uni-app",
       description: "综合生活各个方面的app",
       tools: ["Uni-app", "​Vue.js", "CSS"],
-      image: "/muti.jpg",
+      image: "/muti.webp",
       link: "https://github.com/Suroof/MutiLife",
     },
     {
@@ -57,7 +57,7 @@ const Projects = () => {
       type: "uni-app",
       description: "综合生活各个方面的app",
       tools: ["Uni-app", "​Vue.js", "CSS"],
-      image: "/购物网站.jpg",
+      image: "/购物网站.webp",
       link: "https://shanghop.netlify.app/",
     },
   ];

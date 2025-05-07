@@ -6,63 +6,63 @@ const GALLERY_IMAGES = [
   {
     id: 1,
     title: '城市天际线',
-    src: '/skyline.jpg',
+    src: '/skyline.webp',
     category: 'urban',
     date: '2023-04-15'
   },
   {
     id: 2,
     title: '山脉日落',
-    src: '/mout.jpg',
+    src: '/mout.webp',
     category: 'nature',
     date: '2023-05-22'
   },
   {
     id: 3,
     title: '海滩风光',
-    src: '/sunset.jpg',
+    src: '/sunset.webp',
     category: 'travel',
     date: '2023-06-10'
   },
   {
     id: 4,
     title: '街头艺术',
-    src: '/streetart.jpg',
+    src: '/streetart.webp',
     category: 'urban',
     date: '2023-07-05'
   },
   {
     id: 5,
     title: '森林小径',
-    src: '/forest.jpg',
+    src: '/forest.webp',
     category: 'nature',
     date: '2023-08-12'
   },
   {
     id: 6,
     title: '咖啡馆一角',
-    src: '/cafeee.jpg',
+    src: '/cafeee.webp',
     category: 'lifestyle',
     date: '2023-09-01'
   },
   {
     id: 7,
     title: '建筑之美',
-    src: '/church.jpg',
+    src: '/church.webp',
     category: 'architecture',
     date: '2023-10-19'
   },
   {
     id: 8,
     title: '极光奇观',
-    src: '/aurora.jpg',
+    src: '/aurora.webp',
     category: 'nature',
     date: '2023-11-24'
   },
   {
     id: 9,
     title: '城市夜景',
-    src: '/bridge.jpg',
+    src: '/bridge.webp',
     category: 'urban',
     date: '2023-12-30'
   }

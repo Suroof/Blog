@@ -6,7 +6,7 @@ export const BLOG_POSTS = [
     slug: "learning-vue",
     date: "2024-01-20",
     author: "博主",
-    authorAvatar: "/author.jpeg",
+    authorAvatar: "/author.webp",
     categories: ["前端", "Vue", "JavaScript"],
     description: "布局，对接，依赖，响应式",
     content: [
@@ -55,7 +55,7 @@ export const BLOG_POSTS = [
     slug: "threejs-exploration",
     date: "2024-08-15",
     author: "博主",
-    authorAvatar: "/author.jpeg",
+    authorAvatar: "/author.webp",
     categories: ["前端", "3D", "WebGL"],
     description: "canvas,leva，建模",
     content: [
@@ -108,7 +108,7 @@ export const BLOG_POSTS = [
     slug: "stoicism-philosophy",
     date: "2024-06-20",
     author: "博主",
-    authorAvatar: "/author.jpeg",
+    authorAvatar: "/author.webp",
     categories: ["哲学", "随想"],
     description: "探讨斯多葛主义哲学及其在现代生活中的应用",
     content: [
@@ -122,7 +122,7 @@ export const BLOG_POSTS = [
       "(尼布尔并不真正以斯多葛主义者而闻名，但这句话很好地总结了这一思想。感谢我最喜欢的人告诉我这句名言)",
       {
         type: "image",
-        src: "/leaves.jpg",
+        src: "/leaves.webp",
         alt: "平静的自然风光",
         caption: "平静的自然景观，象征斯多葛主义的内心平和",
       },
@@ -170,7 +170,7 @@ export const BLOG_POSTS = [
     slug: "learning-react",
     date: "2024-6-15",
     author: "博主",
-    authorAvatar: "/author.jpeg",
+    authorAvatar: "/author.webp",
     categories: ["前端", "React", "JavaScript"],
     description: "组件化，响应式",
     content: [
@@ -182,7 +182,7 @@ export const BLOG_POSTS = [
       "在深入学习React的过程中，最深刻的体会是它重新定义了构建用户界面的思维方式。组件化开发让复杂的UI像搭积木一样清晰可控，每个组件独立管理状态和逻辑的设计，既提升了复用性，又通过单向数据流规避了混乱的数据依赖。使用Vue构建用户界面的关键步骤包括：",
       {
         type: "image",
-        src: "/react.jpg",
+        src: "/react.webp",
         alt: "代码编辑器中的React代码",
         caption: "React不仅是一个UI库",
       },
@@ -216,7 +216,7 @@ export const BLOG_POSTS = [
     slug: "learning-tailwind",
     date: "2024-12-03",
     author: "博主",
-    authorAvatar: "/author.jpeg",
+    authorAvatar: "/author.webp",
     categories: ["CSS", "Tailwind"],
     description: "原子化CSS，响应式设计，主题定制",
     content: [
@@ -262,7 +262,7 @@ export const BLOG_POSTS = [
     slug: "learning-nodejs",
     date: "2024-8-11",
     author: "博主",
-    authorAvatar: "/author.jpeg",
+    authorAvatar: "/author.webp",
     categories: ["后端", "Node.js", "JavaScript"],
     description: "异步编程，事件驱动，服务端开发",
     content: [
@@ -312,7 +312,7 @@ export const BLOG_POSTS = [
     slug: "vue2-vs-vue3",
     date: "2024-11-25",
     author: "博主",
-    authorAvatar: "/author.jpeg",
+    authorAvatar: "/author.webp",
     categories: ["前端", "Vue", "JavaScript"],
     description: "选项式API vs 组合式API，性能优化，新特性解析",
     content: [

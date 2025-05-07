@@ -166,7 +166,7 @@ const Home = () => {
                     {/* 图片容器 - 优化图片加载 */}
                     <div className="h-64 overflow-hidden">
                       <img
-                        src="/camera.jpg"
+                        src="/camera.webp"
                         alt="相册预览"
                         loading="lazy" // 懒加载图片
                         className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
@@ -238,7 +238,7 @@ const Home = () => {
                     {/* 图片容器 */}
                     <div className="h-64 overflow-hidden">
                       <img
-                        src="/sourse.jpg"
+                        src="/sourse.webp"
                         alt="资源预览"
                         loading="lazy"
                         className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
