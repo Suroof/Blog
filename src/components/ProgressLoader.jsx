@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { AnimatedCircularProgressBar } from "@/components/magicui/animated-circular-progress-bar";
 /**
  * 高级进度加载器组件
  * 用于在页面或组件加载时提供视觉反馈，提升用户体验

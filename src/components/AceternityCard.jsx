@@ -105,7 +105,7 @@ const AceternityCard = () => {
         </CardItem>
         <CardItem translateZ="100" className="w-full mt-4">
           <img
-            src="/astronaut.jpg"
+            src="/astronaut.webp"
             className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
             alt="thumbnail"
           />
