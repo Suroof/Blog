@@ -1,12 +1,12 @@
 //六张3D卡片
 export const NAVIGATION_LINKS = [
-  { path: '/', label: 'Home' ,icon:'https://pic1.imgdb.cn/item/68133b6958cb8da5c8d60fdf.png'},
-  { path: '/about', label: 'About' ,icon:'https://pic1.imgdb.cn/item/68133b6958cb8da5c8d60fdd.png' },
-  { path: '/articles', label: 'Articles'  ,icon:'https://pic1.imgdb.cn/item/68133b6958cb8da5c8d60fde.png'},
-  { path: '/projects', label: 'Projects' ,icon:'https://pic1.imgdb.cn/item/68133b6958cb8da5c8d60fe0.png' },
-  { path: '/gallery', label: 'Photo' ,icon:'https://pic1.imgdb.cn/item/6814497a58cb8da5c8d6770f.png' },
-  { path: '/resources', label: 'Resourse' ,icon:'https://pic1.imgdb.cn/item/6814493c58cb8da5c8d675d5.png' },
-  { path: '/history', label: 'history' ,icon:'https://pic1.imgdb.cn/item/6814491958cb8da5c8d67548.png' },
+  { path: '/', label: 'Home' ,icon:'/public/icon/home.png'},
+  { path: '/about', label: 'About' ,icon:'/public/icon/about.png' },
+  { path: '/articles', label: 'Articles'  ,icon:'/public/icon/article.png'},
+  { path: '/projects', label: 'Projects' ,icon:'/public/icon/project.png' },
+  { path: '/gallery', label: 'Photo' ,icon:'/public/icon/gallery.png' },
+  { path: '/resources', label: 'Resourse' ,icon:'/public/icon/resource.png' },
+  { path: '/history', label: 'history' ,icon:'/public/icon/history.png' },
 ];
 
 export const PERSONAL_INFO_CARDS = [
