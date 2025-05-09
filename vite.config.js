@@ -123,7 +123,7 @@ export default defineConfig({
       polyfill: true,
       resolveDependencies: (filename, deps, { hostId, hostType }) => {
         // 为关键图像添加预加载
-        const criticalAssets = ['/images/astronaut/astronaut.webp'];
+        const criticalAssets = ['/images/astronaut/astronaut.avif'];
 
         // 将关键资源添加到依赖列表中以确保预加载
         return [...deps, ...criticalAssets.filter(asset => !deps.includes(asset))];

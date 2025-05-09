@@ -70,7 +70,7 @@ const optimizeImage = async (inputPath, outputDir, options = {}) => {
 const main = async () => {
   const imagesToOptimize = [
     {
-      input: path.join(__dirname, '../public/astronaut.webp'),
+      input: path.join(__dirname, '../public/astronaut.avif'),
       outputDir: path.join(__dirname, '../public/images/astronaut')
     }
   ];

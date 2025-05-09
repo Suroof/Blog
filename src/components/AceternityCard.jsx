@@ -163,7 +163,7 @@ const AceternityCard = () => {
         </CardItem>
         <CardItem translateZ="100" className="w-full mt-4">
           <OptimizedImage
-            src="/images/astronaut/astronaut.webp"
+            src="/images/astronaut/astronaut.avif"
             alt="thumbnail"
             className="h-60 w-full rounded-xl group-hover/card:shadow-xl"
           />
