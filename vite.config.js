@@ -41,7 +41,7 @@ export default defineConfig({
     // 开发环境启用CSS源码映射
     devSourcemap: true,
   },
-  assetsInclude: ['**/*.glb'],
+  assetsInclude: ['**/*.glb', '**/*.webp'],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
@@ -90,14 +90,12 @@ export default defineConfig({
           if (assetInfo.name.endsWith('.css')) {
             return 'assets/css/[name]-[hash][extname]';
           }
+          // 图像文件的特殊处理
+          if (/\.(png|jpe?g|webp|gif|svg|avif)$/.test(assetInfo.name)) {
+            return 'assets/img/[name]-[hash][extname]';
+          }
           // 根据文件类型分类存放
           const extType = {
-            'png': 'img',
-            'jpg': 'img',
-            'jpeg': 'img',
-            'gif': 'img',
-            'svg': 'img',
-            'webp': 'img',
             'woff': 'fonts',
             'woff2': 'fonts',
             'ttf': 'fonts',
@@ -123,6 +121,13 @@ export default defineConfig({
     // 启用预加载
     modulePreload: {
       polyfill: true,
+      resolveDependencies: (filename, deps, { hostId, hostType }) => {
+        // 为关键图像添加预加载
+        const criticalAssets = ['/images/astronaut/astronaut.webp'];
+
+        // 将关键资源添加到依赖列表中以确保预加载
+        return [...deps, ...criticalAssets.filter(asset => !deps.includes(asset))];
+      }
     },
     // 输出目录
     outDir: 'dist',
@@ -135,6 +140,15 @@ export default defineConfig({
     hmr: true,
     // 启用压缩
     compress: true,
+    // 启用HTTP/2
+    http2: true,
+    // 添加响应头来优化图像加载
+    headers: {
+      'Cache-Control': 'public, max-age=31536000', // 一年缓存
+      'X-Content-Type-Options': 'nosniff',
+      'Accept-CH': 'DPR, Width, Viewport-Width',
+      'Accept-CH-Lifetime': '86400', // 24小时
+    }
   },
   // 预构建优化
   optimizeDeps: {

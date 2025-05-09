@@ -32,7 +32,7 @@ const BlogPost = () => {
               <Link
                 key={index}
                 to={`/category/${category.toLowerCase()}`}
-                className="bg-gray-700/50 text-gray-300 hover:bg-gray-700 px-3 py-1 rounded-full text-sm"
+                className="bg-white text-gray-500 hover:bg-gray-700 hover:text-white  px-3 py-1 rounded-full text-sm"
               >
                 {category}
               </Link>
@@ -41,15 +41,14 @@ const BlogPost = () => {
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 md:px-6">
+      <div className="max-w-4xl mx-auto px-4 md:px-6 bg-white rounded-[16px]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
           {/* 文章标题和作者信息 */}
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">{post.title}</h1>
-
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-700 mb-6 pt-6">{post.title}</h1>
           <div className="flex items-center mb-8">
             <div className="flex items-center">
               <span className="text-gray-400 text-sm">
@@ -64,7 +63,7 @@ const BlogPost = () => {
               // 处理特殊格式：引用
               if (paragraph.type === 'quote') {
                 return (
-                  <blockquote key={index} className="border-l-4 border-gray-500 pl-4 py-1 my-6 text-gray-300 italic">
+                  <blockquote key={index} className="border-l-4 border-gray-500 pl-4 py-1 my-6 text-gray-400 italic">
                     {paragraph.content.split('\n').map((line, i) => (
                       <p key={i}>{line}</p>
                     ))}
@@ -78,7 +77,7 @@ const BlogPost = () => {
               // 处理特殊格式：标题
               if (paragraph.type === 'heading') {
                 return (
-                  <h2 key={index} className="text-2xl font-bold mt-10 mb-6 text-white">
+                  <h2 key={index} className="text-2xl font-bold mt-10 mb-6 text-gray-700">
                     {paragraph.content}
                   </h2>
                 );
@@ -104,7 +103,7 @@ const BlogPost = () => {
 
               // 普通段落
               return (
-                <p key={index} className="text-gray-300 mb-6 leading-relaxed">
+                <p key={index} className="text-gray-800 mb-6 leading-relaxed">
                   {paragraph.content || paragraph}
                 </p>
               );
@@ -156,7 +155,7 @@ const BlogPost = () => {
             {post.nextPost ? (
               <Link
                 to={`/blog/${post.nextPost.slug}`}
-                className="group flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors"
+                className="group flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors mb-6"
               >
                 <span>下一篇: {post.nextPost.title}</span>
                 <svg

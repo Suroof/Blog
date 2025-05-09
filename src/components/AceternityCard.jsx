@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useRef, useState } from 'react';
+import React, { createContext, useContext, useRef, useState, useEffect } from 'react';
 
 // 创建鼠标进入状态的上下文
 const MouseEnterContext = createContext(undefined);
@@ -85,6 +85,64 @@ const CardItem = ({
   );
 };
 
+// 优化的图像组件
+const OptimizedImage = ({ src, alt, className }) => {
+  const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState(false);
+  const imgRef = useRef(null);
+
+  // 检测图像是否已经缓存
+  useEffect(() => {
+    if (imgRef.current && imgRef.current.complete) {
+      setLoaded(true);
+    }
+  }, []);
+
+  // LQIP (Low Quality Image Placeholder) 路径生成
+  const getPlaceholderPath = (path) => {
+    // 这里我们假设路径格式为 "/image.webp"
+    const parts = path.split('.');
+    return parts.length > 1
+      ? `${parts[0]}-placeholder.${parts[1]}`
+      : `${path}-placeholder`;
+  };
+
+  // 为不同设备生成不同大小的图像路径
+  const generateSrcSet = (path) => {
+    const parts = path.split('.');
+    const basePath = parts[0];
+    const ext = parts[1] || 'webp';
+
+    return [
+      `${basePath}-small.${ext} 400w`,
+      `${basePath}-medium.${ext} 800w`,
+      `${basePath}.${ext} 1200w`
+    ].join(', ');
+  };
+
+  return (
+    <div className={`${className} relative overflow-hidden`}>
+      {/* 低质量图像占位符，在主图像加载时显示 */}
+      {!loaded && !error && (
+        <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+      )}
+
+      <img
+        ref={imgRef}
+        src={src}
+        srcSet={generateSrcSet(src)}
+        sizes="(max-width: 640px) 400px, (max-width: 1024px) 800px, 1200px"
+        alt={alt}
+        className={`transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'} w-full h-full object-cover`}
+        loading="eager" // 确保LCP图像立即加载
+        fetchpriority="high" // 高优先级获取
+        onLoad={() => setLoaded(true)}
+        onError={() => setError(true)}
+      />
+    </div>
+  );
+};
+
 // 主卡片组件
 const AceternityCard = () => {
   return (
@@ -104,10 +162,10 @@ const AceternityCard = () => {
           Live and Learn
         </CardItem>
         <CardItem translateZ="100" className="w-full mt-4">
-          <img
-            src="/astronaut.webp"
-            className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+          <OptimizedImage
+            src="/images/astronaut/astronaut.webp"
             alt="thumbnail"
+            className="h-60 w-full rounded-xl group-hover/card:shadow-xl"
           />
         </CardItem>
         <CardItem
@@ -116,7 +174,6 @@ const AceternityCard = () => {
           className="mt-4 text-sm text-neutral-100 dark:text-neutral-300 leading-relaxed"
         >
           自学前端，热爱永不停止！
-
         </CardItem>
       </CardBody>
     </CardContainer>
