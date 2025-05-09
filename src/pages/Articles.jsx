@@ -42,7 +42,7 @@ const Articles = () => {
     "sonarqube",
     "figma",
   ];
-   
+
   const images = slugs.map(
     (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`,
   );
@@ -54,7 +54,7 @@ const Articles = () => {
           <Link
             key={index}
             to={`/category/${category.name.toLowerCase()}`}
-            className="bg-gray-800/50 hover:bg-gray-700/70 text-gray-300 px-3 py-1 rounded-full text-sm transition-colors"
+            className="bg-white hover:bg-gray-700/70 text-gray-600 hover:text-white px-3 py-1 rounded-full text-sm transition-colors"
           >
             {category.name} ({category.count})
           </Link>
@@ -75,13 +75,13 @@ const Articles = () => {
           >
             <Link
               to={`/blog/${article.slug}`}
-              className="block bg-gray-900/50 backdrop-blur-sm rounded-lg p-6 hover:shadow-lg hover:shadow-blue-500/10 transition-all"
+              className="block bg-gray-50/40 backdrop-blur-sm rounded-lg p-6 hover:shadow-lg hover:shadow-blue-500/10 transition-all"
             >
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
                 <h2 className="text-2xl font-bold mb-2 sm:mb-0 text-white">
                   {article.title}
                 </h2>
-                <p className="text-gray-400 text-sm">{article.date}</p>
+                <p className="text-gray-100 text-sm">{article.date}</p>
               </div>
 
               <p className="text-gray-300 mb-5">{article.description}</p>

@@ -22,7 +22,7 @@ export default defineConfig({
       algorithm: 'gzip',
       ext: '.gz',
     }),
-    // 也可以添加 Brotli 压缩
+    // 添加 Brotli 压缩
     viteCompression({
       verbose: true,
       disable: false,
@@ -32,15 +32,14 @@ export default defineConfig({
     }),
   ],
   css: {
+    // 使用项目根目录下的postcss.config.js
     postcss: true,
-    // 优化CSS处理
-    preprocessorOptions: {
-      // 如果使用SCSS或LESS，可以在这里配置
-    },
-    // 启用CSS代码分割
+    // 启用CSS代码分割和模块化
     modules: {
       scopeBehaviour: 'local',
     },
+    // 开发环境启用CSS源码映射
+    devSourcemap: true,
   },
   assetsInclude: ['**/*.glb'],
   resolve: {
@@ -65,6 +64,8 @@ export default defineConfig({
     },
     // 启用CSS代码分割
     cssCodeSplit: true,
+    // CSS最小化配置
+    cssMinify: 'lightningcss', // 使用更现代的CSS压缩器，速度更快、压缩率更高
     // 配置代码分割策略
     rollupOptions: {
       output: {
@@ -76,12 +77,18 @@ export default defineConfig({
           'three-vendor': ['three', '@react-three/fiber', '@react-three/drei'],
           // 动画相关库打包在一起
           'animation-vendor': ['framer-motion', '@react-spring/web'],
+          // CSS和样式相关库单独打包
+          'style-vendor': ['tailwindcss', 'autoprefixer', 'postcss'],
         },
-        // 资源文件命名规则
+        // 将CSS文件分离到独立文件夹
         assetFileNames: (assetInfo) => {
           // 特殊处理3D模型文件（.glb）
           if (assetInfo.name.endsWith('.glb')) {
             return 'assets/model/[name]-[hash][extname]'; // 添加hash值
+          }
+          // CSS文件放入css文件夹
+          if (assetInfo.name.endsWith('.css')) {
+            return 'assets/css/[name]-[hash][extname]';
           }
           // 根据文件类型分类存放
           const extType = {
