@@ -21,12 +21,12 @@
 
 ## 🛠️ 技术栈
 
-前端框架: React 18
-3D渲染: Three.js + React Three Fiber + React Three Drei
-动画效果: Framer Motion 
-样式方案: TailwindCSS
-构建工具: Vite
-路由管理: React Router
+- 前端框架: React 18
+- 3D渲染: Three.js + React Three Fiber + React Three Drei
+- 动画效果: Framer Motion 
+- 样式方案: TailwindCSS
+- 构建工具: Vite
+- 路由管理: React Router
 
 📦 快速开始
 环境要求
