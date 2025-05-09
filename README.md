@@ -1,5 +1,5 @@
 # 🚀 3D个人博客网站
-
+[➡️ 访问在线演示](https://sroof.netlify.app/)
 [![项目预览](https://github.com/user-attachments/assets/93dafe6f-cb7d-43ec-bb97-e2358e648c92)](https://sroof.netlify.app/)  
 **技术标签**: React | Three.js | Vite | TailwindCSS  
 
@@ -49,7 +49,7 @@ Blog/
 └── config/               # 构建配置
 ```
 
-[➡️ 访问在线演示](https://sroof.netlify.app/)
+
 
 安装步骤
 ```plaintext
