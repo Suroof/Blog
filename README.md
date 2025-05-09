@@ -20,7 +20,7 @@
 | 资源分享            | `Home.jsx`     | 工具和学习资源聚合中心                                               |
 
 ## 🛠️ 技术栈
-```plaintext
+
 前端框架: React 18
 3D渲染: Three.js + React Three Fiber + React Three Drei
 动画效果: Framer Motion 
@@ -28,3 +28,37 @@
 构建工具: Vite
 路由管理: React Router
 
+📦 快速开始
+环境要求
+Node.js ≥14.0
+npm/yarn
+
+🔍 项目结构
+Blog/
+├── src/                  # 源代码
+│   ├── components/       # 复用组件
+│   │   └── Background3D/ # 3D背景组件
+│   ├── pages/            # 页面组件
+│   │   ├── Home.jsx      # 首页
+│   │   ├── About.jsx     # 关于页
+│   │   └── Articles.jsx  # 文章列表
+│   ├── utils/            # 工具函数
+│   └── main.jsx          # 入口文件
+├── public/               # 静态资源
+└── config/               # 构建配置
+➡️ 访问在线演示
+
+安装步骤
+```plaintext
+# 克隆仓库
+git clone https://github.com/Suroof/Blog.git
+cd Blog
+
+# 安装依赖
+npm install
+
+# 启动开发
+npm run dev
+
+# 生产构建
+npm run build
