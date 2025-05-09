@@ -42,7 +42,8 @@
     "gltf-pipeline": "^4.1.0",
     "tailwindcss-animate": "^1.0.7",
     "typescript-eslint": "^8.31.1",
-    "vite": "^5.0.8"
+    "vite": "^5.0.8",
+    "vite-plugin-compression": "^0.5.1"
   },
   "description": "博客连接:https://sroof.netlify.app/\r ![b491eaea698acf70bd1fce60cfa9970](https://github.com/user-attachments/assets/285a9e64-64df-4816-8a54-ac97bfaca7fa)",
   "main": "postcss.config.js",
