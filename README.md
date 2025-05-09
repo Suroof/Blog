@@ -1,5 +1,5 @@
 # 🚀 3D个人博客网站
-
+[➡️ 访问在线演示](https://sroof.netlify.app/)
 [![项目预览](https://github.com/user-attachments/assets/93dafe6f-cb7d-43ec-bb97-e2358e648c92)](https://sroof.netlify.app/)  
 **技术标签**: React | Three.js | Vite | TailwindCSS  
 
@@ -29,15 +29,16 @@
 - 路由管理: React Router
 
 📦 快速开始
-环境要求
-Node.js ≥14.0
-npm/yarn
+- 环境要求
+ Node.js ≥14.0
+ npm
 
-🔍 项目结构
+## 🔍 项目结构
+```plaintext
 Blog/
 ├── src/                  # 源代码
 │   ├── components/       # 复用组件
-│   │   └── Background3D/ # 3D背景组件
+│   │   └── Background3D/  # 3D背景组件
 │   ├── pages/            # 页面组件
 │   │   ├── Home.jsx      # 首页
 │   │   ├── About.jsx     # 关于页
@@ -46,7 +47,9 @@ Blog/
 │   └── main.jsx          # 入口文件
 ├── public/               # 静态资源
 └── config/               # 构建配置
-➡️ 访问在线演示
+```
+
+
 
 安装步骤
 ```plaintext
