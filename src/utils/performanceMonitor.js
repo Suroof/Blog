@@ -95,7 +95,6 @@ export const initPerformanceMonitoring = (options = {}) => {
   // 监控累积布局偏移 (CLS)
   try {
     let clsValue = 0;
-    let clsEntries = [];
     let sessionValue = 0;
     let sessionEntries = [];
 
@@ -141,7 +140,6 @@ export const initPerformanceMonitoring = (options = {}) => {
           // 如果当前会话值大于存储的 CLS 值，则更新 CLS
           if (sessionValue > clsValue) {
             clsValue = sessionValue;
-            clsEntries = [...sessionEntries];
 
             // 更新度量
             metrics.CLS = clsValue;
