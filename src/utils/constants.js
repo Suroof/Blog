@@ -1,12 +1,12 @@
 //六张3D卡片
 export const NAVIGATION_LINKS = [
-  { path: '/', label: 'Home' ,icon:'/public/icon/home.png'},
-  { path: '/about', label: 'About' ,icon:'/public/icon/about.png' },
-  { path: '/articles', label: 'Articles'  ,icon:'/public/icon/article.png'},
-  { path: '/projects', label: 'Projects' ,icon:'/public/icon/project.png' },
-  { path: '/gallery', label: 'Photo' ,icon:'/public/icon/gallery.png' },
-  { path: '/resources', label: 'Resourse' ,icon:'/public/icon/resource.png' },
-  { path: '/history', label: 'history' ,icon:'/public/icon/history.png' },
+  { path: '/', label: 'Home' ,icon:'/icon/home.png'},
+  { path: '/about', label: 'About' ,icon:'/icon/about.png' },
+  { path: '/articles', label: 'Articles'  ,icon:'/icon/article.png'},
+  { path: '/projects', label: 'Projects' ,icon:'/icon/project.png' },
+  { path: '/gallery', label: 'Photo' ,icon:'/icon/gallery.png' },
+  { path: '/resources', label: 'Resourse' ,icon:'/icon/resource.png' },
+  { path: '/history', label: 'history' ,icon:'/icon/history.png' },
 ];
 
 export const PERSONAL_INFO_CARDS = [

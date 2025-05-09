@@ -36,7 +36,7 @@ export const initPerformanceMonitoring = (options = {}) => {
   } = options;
 
   // 只在支持Performance API的浏览器中运行
-  if (!('performance' in window) || !('PerformanceObserver' in window)) {
+  if (typeof window === 'undefined' || !('performance' in window) || !('PerformanceObserver' in window)) {
     console.warn('Performance API not supported in this browser');
     return;
   }
@@ -45,9 +45,13 @@ export const initPerformanceMonitoring = (options = {}) => {
   try {
     const fcpObserver = new PerformanceObserver((entryList) => {
       const entries = entryList.getEntries();
+      if (!entries || entries.length === 0) return;
+
       const fcpEntry = entries[entries.length - 1];
-      metrics.FCP = fcpEntry.startTime;
-      if (reportToConsole) console.log('FCP:', metrics.FCP);
+      if (fcpEntry) {
+        metrics.FCP = fcpEntry.startTime;
+        if (reportToConsole) console.log('FCP:', metrics.FCP);
+      }
     });
     fcpObserver.observe({ type: 'paint', buffered: true });
   } catch (e) {
@@ -58,9 +62,13 @@ export const initPerformanceMonitoring = (options = {}) => {
   try {
     const lcpObserver = new PerformanceObserver((entryList) => {
       const entries = entryList.getEntries();
+      if (!entries || entries.length === 0) return;
+
       const lcpEntry = entries[entries.length - 1];
-      metrics.LCP = lcpEntry.startTime;
-      if (reportToConsole) console.log('LCP:', metrics.LCP);
+      if (lcpEntry) {
+        metrics.LCP = lcpEntry.startTime;
+        if (reportToConsole) console.log('LCP:', metrics.LCP);
+      }
     });
     lcpObserver.observe({ type: 'largest-contentful-paint', buffered: true });
   } catch (e) {
@@ -71,9 +79,13 @@ export const initPerformanceMonitoring = (options = {}) => {
   try {
     const fidObserver = new PerformanceObserver((entryList) => {
       const entries = entryList.getEntries();
+      if (!entries || entries.length === 0) return;
+
       const fidEntry = entries[entries.length - 1];
-      metrics.FID = fidEntry.processingStart - fidEntry.startTime;
-      if (reportToConsole) console.log('FID:', metrics.FID);
+      if (fidEntry) {
+        metrics.FID = fidEntry.processingStart - fidEntry.startTime;
+        if (reportToConsole) console.log('FID:', metrics.FID);
+      }
     });
     fidObserver.observe({ type: 'first-input', buffered: true });
   } catch (e) {
@@ -86,23 +98,41 @@ export const initPerformanceMonitoring = (options = {}) => {
     let clsEntries = [];
     let sessionValue = 0;
     let sessionEntries = [];
-    let clsObserver;
+
+    // 确保数据是安全的
+    const safeSessionEntries = () => {
+      if (!Array.isArray(sessionEntries) || sessionEntries.length === 0) {
+        sessionEntries = [];
+        return false;
+      }
+      return true;
+    };
 
     const entryHandler = (entries) => {
+      // 确保entries是数组且有内容
+      if (!entries || !Array.isArray(entries) || entries.length === 0) {
+        return;
+      }
+
       entries.forEach((entry) => {
         // 只有不涉及最近用户输入的布局偏移才计入 CLS
-        if (!entry.hadRecentInput) {
-          const firstSessionEntry = sessionEntries[0];
-          const lastSessionEntry = sessionEntries[sessionEntries.length - 1];
+        if (!entry || !entry.hadRecentInput) {
+          // 防止首次运行时没有sessionEntries
+          if (sessionValue > 0 && safeSessionEntries()) {
+            const firstSessionEntry = sessionEntries[0];
+            const lastSessionEntry = sessionEntries[sessionEntries.length - 1];
 
-          // 如果条目与上一个条目的间隔小于 1 秒且与第一个条目的间隔小于 5 秒，则将其添加到当前会话
-          if (
-            sessionValue &&
-            entry.startTime - lastSessionEntry.startTime < 1000 &&
-            entry.startTime - firstSessionEntry.startTime < 5000
-          ) {
-            sessionValue += entry.value;
-            sessionEntries.push(entry);
+            // 如果条目与上一个条目的间隔小于1秒且与第一个条目的间隔小于5秒，则将其添加到当前会话
+            if (
+              entry.startTime - lastSessionEntry.startTime < 1000 &&
+              entry.startTime - firstSessionEntry.startTime < 5000
+            ) {
+              sessionValue += entry.value;
+              sessionEntries.push(entry);
+            } else {
+              sessionValue = entry.value;
+              sessionEntries = [entry];
+            }
           } else {
             sessionValue = entry.value;
             sessionEntries = [entry];
@@ -111,7 +141,7 @@ export const initPerformanceMonitoring = (options = {}) => {
           // 如果当前会话值大于存储的 CLS 值，则更新 CLS
           if (sessionValue > clsValue) {
             clsValue = sessionValue;
-            clsEntries = sessionEntries;
+            clsEntries = [...sessionEntries];
 
             // 更新度量
             metrics.CLS = clsValue;
@@ -121,7 +151,17 @@ export const initPerformanceMonitoring = (options = {}) => {
       });
     };
 
-    clsObserver = new PerformanceObserver(entryHandler);
+    const clsObserver = new PerformanceObserver((entryList) => {
+      try {
+        const entries = entryList.getEntries();
+        if (entries && Array.isArray(entries)) {
+          entryHandler(entries);
+        }
+      } catch (err) {
+        console.warn('Error processing CLS entries:', err);
+      }
+    });
+
     clsObserver.observe({ type: 'layout-shift', buffered: true });
   } catch (e) {
     console.warn('CLS monitoring not supported', e);
@@ -130,7 +170,7 @@ export const initPerformanceMonitoring = (options = {}) => {
   // 监控首次字节时间 (TTFB)
   try {
     const navigationEntries = performance.getEntriesByType('navigation');
-    if (navigationEntries.length > 0) {
+    if (navigationEntries && navigationEntries.length > 0) {
       metrics.TTFB = navigationEntries[0].responseStart;
       if (reportToConsole) console.log('TTFB:', metrics.TTFB);
     }
@@ -143,13 +183,17 @@ export const initPerformanceMonitoring = (options = {}) => {
     setTimeout(() => {
       if (reportToAnalytics && analyticsEndpoint) {
         // 发送数据到分析服务
-        fetch(analyticsEndpoint, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(metrics),
-        }).catch(e => console.error('Failed to report metrics:', e));
+        try {
+          fetch(analyticsEndpoint, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(metrics),
+          }).catch(e => console.error('Failed to report metrics:', e));
+        } catch (e) {
+          console.warn('Error reporting metrics:', e);
+        }
       }
     }, 2000); // 等待2秒以确保所有指标都已收集
   });
@@ -168,7 +212,7 @@ export const recordCustomMetric = (name, value, reportToConsole = true) => {
 
   metrics.custom[name].push({
     value,
-    timestamp: performance.now(),
+    timestamp: typeof performance !== 'undefined' ? performance.now() : Date.now(),
   });
 
   if (reportToConsole) {
@@ -182,10 +226,11 @@ export const recordCustomMetric = (name, value, reportToConsole = true) => {
  * @returns {function} - 停止测量并记录结果的函数
  */
 export const startMeasure = (name) => {
-  const startTime = performance.now();
+  const startTime = typeof performance !== 'undefined' ? performance.now() : Date.now();
 
   return () => {
-    const duration = performance.now() - startTime;
+    const endTime = typeof performance !== 'undefined' ? performance.now() : Date.now();
+    const duration = endTime - startTime;
     recordCustomMetric(name, duration);
     return duration;
   };
@@ -204,20 +249,34 @@ export const getPerformanceMetrics = () => {
  */
 export const monitorResourceLoading = () => {
   try {
-    const resourceObserver = new PerformanceObserver((list) => {
-      const resources = list.getEntries();
+    // 确保浏览器环境
+    if (typeof window === 'undefined' || !('PerformanceObserver' in window)) {
+      return;
+    }
 
-      resources.forEach(resource => {
-        // 只关注大型资源或加载时间长的资源
-        if (resource.duration > 500 || resource.transferSize > 500000) {
-          console.warn('Slow resource:', {
-            name: resource.name,
-            type: resource.initiatorType,
-            duration: resource.duration + 'ms',
-            size: (resource.transferSize / 1024).toFixed(2) + 'KB',
-          });
+    const resourceObserver = new PerformanceObserver((list) => {
+      try {
+        const resources = list.getEntries();
+        if (!resources || !Array.isArray(resources) || resources.length === 0) {
+          return;
         }
-      });
+
+        resources.forEach(resource => {
+          if (!resource) return;
+
+          // 只关注大型资源或加载时间长的资源
+          if (resource.duration > 500 || resource.transferSize > 500000) {
+            console.warn('Slow resource:', {
+              name: resource.name || 'unknown',
+              type: resource.initiatorType || 'unknown',
+              duration: (resource.duration || 0) + 'ms',
+              size: ((resource.transferSize || 0) / 1024).toFixed(2) + 'KB',
+            });
+          }
+        });
+      } catch (err) {
+        console.warn('Error processing resource entries:', err);
+      }
     });
 
     resourceObserver.observe({ type: 'resource', buffered: true });
@@ -231,14 +290,30 @@ export const monitorResourceLoading = () => {
  */
 export const monitorLongTasks = () => {
   try {
+    // 确保浏览器环境
+    if (typeof window === 'undefined' || !('PerformanceObserver' in window)) {
+      return;
+    }
+
     const longTaskObserver = new PerformanceObserver((list) => {
-      list.getEntries().forEach(entry => {
-        console.warn('Long task detected:', {
-          duration: entry.duration + 'ms',
-          startTime: entry.startTime,
-          attribution: entry.attribution,
+      try {
+        const entries = list.getEntries();
+        if (!entries || !Array.isArray(entries)) {
+          return;
+        }
+
+        entries.forEach(entry => {
+          if (!entry) return;
+
+          console.warn('Long task detected:', {
+            duration: (entry.duration || 0) + 'ms',
+            startTime: entry.startTime || 0,
+            attribution: entry.attribution || 'unknown',
+          });
         });
-      });
+      } catch (err) {
+        console.warn('Error processing long task entries:', err);
+      }
     });
 
     longTaskObserver.observe({ type: 'longtask', buffered: true });
