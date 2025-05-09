@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useState, useEffect, useRef } from "react";
+import React, { Suspense, useState, useEffect, useRef } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -15,30 +15,22 @@ import {
   preloadImages,
 } from "./utils/performance";
 import { CRITICAL_IMAGES } from "./utils/constants";
+import {
+  Home, About, Articles, Projects, Gallery, Resources,
+  History, BlogPost, Work, Music, Life, Tech, TravelStories,
+  preloadCommonRoutes, preloadRelatedRoutes
+} from "./utils/lazyRoutes";
 
-// 预先加载主页组件
-const Home = lazy(() => import("./pages/Home"));
-
-// 使用懒加载导入其他页面组件
-const About = lazy(() => import("./pages/About"));
-const Articles = lazy(() => import("./pages/Articles"));
-const Projects = lazy(() => import("./pages/Projects"));
-const Work = lazy(() => import("./pages/articles/Work"));
-const Music = lazy(() => import("./pages/articles/Music"));
-const Life = lazy(() => import("./pages/articles/Life"));
-const Tech = lazy(() => import("./pages/articles/Tech"));
-const TravelStories = lazy(() => import("./pages/articles/TravelStories"));
-const History = lazy(() => import("./pages/History"));
-const Gallery = lazy(() => import("./pages/Gallery"));
-const Resources = lazy(() => import("./pages/Resources"));
-const BlogPost = lazy(() => import("./pages/BlogPost"));
 // 路由变更处理组件 - 用于路由变化时优化
 const RouteChangeHandler = ({ children }) => {
   const location = useLocation();
   const navigating = useRef(false);
+  const prevPathname = useRef('');
 
   useEffect(() => {
     preloadImages(CRITICAL_IMAGES).then(() => {});
+    // 初始化时预加载常用路由
+    preloadCommonRoutes();
   }, []);
 
   useEffect(() => {
@@ -50,6 +42,9 @@ const RouteChangeHandler = ({ children }) => {
           left: 0,
           behavior: "instant",
         });
+
+        // 预加载与当前路由相关的页面
+        preloadRelatedRoutes(location.pathname);
       }, 100);
 
       return () => clearTimeout(timer);
@@ -62,6 +57,12 @@ const RouteChangeHandler = ({ children }) => {
       left: 0,
       behavior: "instant",
     });
+
+    // 路由变化时预加载相关页面
+    if (prevPathname.current !== location.pathname) {
+      prevPathname.current = location.pathname;
+      preloadRelatedRoutes(location.pathname);
+    }
 
     return () => {
       navigating.current = false;
