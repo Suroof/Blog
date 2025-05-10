@@ -356,6 +356,137 @@ export const BLOG_POSTS = [
       slug: "threejs-exploration",
     },
   },
+    {
+    id: 8,
+    title: "Webpack优化策略",
+    slug: "webpack-optimization",
+    date: "2025-03-18",
+    author: "Sroof",
+    authorAvatar: "/author.webp",
+    categories: ["前端", "Webpack", "性能优化"],
+    description: "Webpack构建优化，资源压缩，代码分割，缓存策略",
+    content: [
+      "Webpack作为现代前端工程化的核心工具，性能优化是提升项目质量和开发体验的关键。本文将全面讲解Webpack的优化策略，从构建效率到产物质量，助你打造高性能的前端应用。",
+      {
+        type: "heading",
+        content: "构建效率优化：加速打包进程",
+      },
+      "### 精准加载范围\n\n- **缩小Loader作用域**：通过`include/exclude`精准匹配文件，避免无意义遍历。\n```javascript\nmodule: {\n  rules: [{\n    test: /\\.js$/,\n    exclude: /node_modules/,\n    use: ['babel-loader']\n  }]\n}\n```\n\n- **缓存为王**：利用`cache-loader`或Webpack5内置缓存机制，避免重复编译。\n```javascript\nmodule.exports = {\n  cache: {\n    type: 'filesystem', // Webpack5+ 持久化缓存\n  },\n};\n```",
+      {
+        type: "heading",
+        content: "构建时间优化",
+      },
+      "将缓存和多进程打包都放在费时间的loader前面，比如babel-loader：\n```javascript\nnpm i thread-loader -D\nnpm i cache-loader -D\n```\n\n```javascript\n// webpack.base.js\n{\n  test: /\\.js$/,\n  use: [\n    'cache-loader',\n    'thread-loader',\n    'babel-loader'\n  ],\n}\n```",
+      {
+        type: "heading",
+        content: "产物质量优化：精简输出体积",
+      },
+      "### 代码分离（Code Splitting）\n\n- **动态导入**：使用ES6语法按需加载模块\n```javascript\n// React示例\nconst LazyComponent = React.lazy(() => import('./LazyComponent'));\n// Vue示例\nconst AsyncComp = defineAsyncComponent(() => import('./AsyncComp.vue'));\n```\n\n- **SplitChunks智能分包**：配置拆包策略，提取公共模块与第三方库。\n```javascript\noptimization: {\n  splitChunks: {\n    chunks: 'all',\n    cacheGroups: {\n      vendors: {\n        test: /[\\\\/]node_modules[\\\\/]/,\n        name: 'vendors',\n        chunks: 'all',\n      },\n    },\n  },\n}\n```",
+      {
+        type: "image",
+        src: "https://pic1.imgdb.cn/item/6844904f14195aa594761513.jpg",
+        alt: "Webpack优化示意图",
+        caption: "Webpack优化策略示意图",
+      },
+      {
+        type: "heading",
+        content: "资源压缩",
+      },
+      "- **JS压缩**：TerserPlugin默认集成，可定制压缩策略。\n```javascript\noptimization: {\n  minimize: true,\n  minimizer: [\n    new TerserPlugin({\n      parallel: true, // 多进程压缩\n      terserOptions: {\n        compress: { drop_console: true }, // 移除console\n      },\n    }),\n  ],\n}\n```\n\n- **CSS压缩**：`css-minimizer-webpack-plugin`搭配cssnano优化。\n```javascript\nconst CssMinimizerPlugin = require('css-minimizer-webpack-plugin');\n\noptimization: {\n  minimizer: [new CssMinimizerPlugin()],\n}\n```",
+      {
+        type: "heading",
+        content: "高级优化技巧",
+      },
+      "### Tree Shaking深度清理\n\n- **JS Tree Shaking**：确保ES Module语法，配置`sideEffects`标记副作用。\n  * usedExports：通过标记某些函数是否被使用，之后通过Terser来进行优化\n  * sideEffects：跳过整个模块/文件，直接查看该文件是否有副作用\n\n- **CSS Tree Shaking**：PurgeCSS移除未使用样式，适用于组件库项目。",
+      {
+        type: "heading",
+        content: "缓存策略优化",
+      },
+      "**哈希指纹**：根据内容使用`contenthash`命名，最大化利用浏览器缓存。\n```javascript\noutput: {\n   filename: 'js/[name].[contenthash:8].js',    // 主入口文件\n   chunkFilename: 'js/[name].[chunkhash:8].js'  // 异步块\n},\n```\n\n**分离第三方依赖（Vendor Bundle）**：通过 `SplitChunksPlugin` 将 `node_modules` 代码独立打包，避免业务代码更新导致公共库缓存失效。",
+      {
+        type: "quote",
+        content: "每一次构建优化，都是用户体验的提升。不要等到项目变慢了才考虑优化，优化应该成为开发流程中的一部分。",
+        author: "FoolBuddy",
+      },
+      {
+        type: "heading",
+        content: "Webpack文件压缩：优化性能",
+      },
+      "**GZIP压缩**：基于DEFLATE算法（LZ77 + 哈夫曼编码），能将文本文件压缩至原大小的40%。全平台支持，配置简单：\n```javascript\nconst CompressionPlugin = require('compression-webpack-plugin');\n\nmodule.exports = {\n  plugins: [\n    new CompressionPlugin()\n  ]\n};\n```\n\n**Brotli压缩**：由Google开发，比GZIP高10-25%的压缩率，需HTTPS支持：\n```javascript\nconst CompressionPlugin = require('compression-webpack-plugin');\n\nmodule.exports = {\n  plugins: [\n    new CompressionPlugin({\n      filename: '[path][base].br',\n      algorithm: 'brotliCompress',\n      test: /\\.(js|css|html|svg)$/,\n      threshold: 10240,\n      minRatio: 0.8\n    })\n  ]\n};\n```",
+      "Webpack优化是一个系统工程，需根据项目特性灵活组合策略。记住两个核心原则：构建阶段减少计算量并善用缓存与并行；产物阶段实现按需加载、极致压缩及合理缓存。掌握这些优化技巧，将显著提升项目性能和开发体验。",
+    ],
+    prevPost: {
+      title: "Vue2与Vue3对比学习",
+      slug: "vue2-vs-vue3",
+    },
+    nextPost: {
+      title: "Vite优化策略",
+      slug: "vite-optimization",
+    },
+  },
+  {
+    id: 9,
+    title: "Vite优化策略",
+    slug: "vite-optimization",
+    date: "2025-02-10",
+    author: "Sroof",
+    authorAvatar: "/author.webp",
+    categories: ["前端", "Vite", "性能优化"],
+    description: "Vite构建优化，按需加载，预编译，路由懒加载",
+    content: [
+      "Vite作为新一代的前端构建工具，以其极速的开发体验和优化的生产构建而闻名。本文将深入探讨Vite的各种优化策略，帮助你在享受极速开发体验的同时，构建出高性能的现代化前端应用。",
+      {
+        type: "heading",
+        content: "Vite的核心优势",
+      },
+      "Vite基于ESM（ES模块）实现了开发环境的无打包（No-Bundle）策略，这带来了以下核心优势：\n\n1. **快速的冷启动**：不需要先打包整个应用\n2. **即时的模块热更新（HMR）**：只需精确地重新编译修改的文件\n3. **按需编译**：只编译浏览器当前请求的模块",
+      {
+        type: "image",
+        src: "https://pic1.imgdb.cn/item/6817424358cb8da5c8ddc425.jpg",
+        alt: "Vite开发服务器架构",
+        caption: "Vite的开发服务器架构示意图",
+      },
+      {
+        type: "heading",
+        content: "开发环境优化",
+      },
+      "### 依赖预构建优化\n\nVite使用esbuild预构建依赖，可通过以下配置优化：\n\n```javascript\n// vite.config.js\nexport default {\n  optimizeDeps: {\n    // 强制预构建的依赖\n    include: ['lodash-es', 'vue'],\n    // 不进行预构建的依赖\n    exclude: ['large-module-not-used-immediately']\n  }\n}\n```\n\n### 缓存优化\n\nVite的缓存机制可以进一步优化：\n\n```javascript\nexport default {\n  cacheDir: '.vite-cache', // 自定义缓存目录\n  server: {\n    fs: {\n      // 限制哪些文件可以通过服务器访问\n      strict: true,\n      allow: ['.']\n    }\n  }\n}\n```",
+      {
+        type: "quote",
+        content: "Vite不仅仅是一个构建工具，它重新定义了前端开发的体验和流程，让开发者能够更专注于创造而非等待。",
+        author: "Evan You - Vue.js和Vite创始人",
+      },
+      {
+        type: "heading",
+        content: "生产环境优化",
+      },
+      "### 构建优化\n\nVite使用Rollup进行生产构建，可通过以下配置优化：\n\n```javascript\nexport default {\n  build: {\n    // 最小化输出包体积\n    minify: 'terser',\n    terserOptions: {\n      compress: {\n        drop_console: true, // 移除console\n        drop_debugger: true // 移除debugger\n      }\n    },\n    // 启用gzip压缩\n    brotliSize: true,\n    // CSS代码分割\n    cssCodeSplit: true,\n    // 自定义分块策略\n    rollupOptions: {\n      output: {\n        manualChunks: {\n          'vendor': ['vue', 'vue-router'],\n          'ui-lib': ['element-plus']\n        }\n      }\n    },\n    // 设置最大块大小警告\n    chunkSizeWarningLimit: 500 // 单位kb\n  }\n};\n```",
+      {
+        type: "heading",
+        content: "路由懒加载优化",
+      },
+      "在Vue或React应用中，可以结合Vite的动态导入功能实现路由懒加载：\n\n```javascript\n// Vue Router示例\nconst routes = [\n  {\n    path: '/',\n    component: () => import('./views/Home.vue') // 懒加载路由组件\n  },\n  {\n    path: '/about',\n    // 使用注释指定预加载和预获取行为\n    component: () => import(/* webpackChunkName: \"about\", webpackPrefetch: true */ './views/About.vue')\n  }\n];\n```",
+      {
+        type: "heading",
+        content: "资源优化",
+      },
+      "### 静态资源处理\n\nVite提供了丰富的静态资源处理能力：\n\n```javascript\nexport default {\n  build: {\n    // 小于此阈值的资源将被内联为base64\n    assetsInlineLimit: 4096,\n    // 指定生成静态资源的目录\n    assetsDir: 'assets'\n  },\n  // 自定义资源处理\n  assetsInclude: ['**/*.gltf']\n};\n```\n\n### 图片优化\n\n通过插件优化图片资源：\n\n```javascript\nimport viteImagemin from 'vite-plugin-imagemin';\n\nexport default {\n  plugins: [\n    viteImagemin({\n      gifsicle: { optimizationLevel: 7 },\n      mozjpeg: { quality: 65 },\n      pngquant: { quality: [0.65, 0.9], speed: 4 },\n      webp: { quality: 75 }\n    })\n  ]\n};\n```",
+      {
+        type: "heading",
+        content: "高级优化技巧",
+      },
+      "### 多页面应用优化\n\nVite原生支持多页面应用（MPA）：\n\n```javascript\nexport default {\n  build: {\n    rollupOptions: {\n      input: {\n        main: resolve(__dirname, 'index.html'),\n        nested: resolve(__dirname, 'nested/index.html')\n      }\n    }\n  }\n};\n```\n\n### 预渲染与SSR\n\n结合`vite-plugin-ssr`或`@vitejs/plugin-vue-jsx`实现预渲染或服务端渲染，进一步优化首屏加载性能和SEO。",
+      "通过实施这些优化策略，Vite不仅能提供极速的开发体验，还能生成高度优化的生产代码。在现代前端开发中，Vite已成为众多开发者的首选工具，尤其在构建Vue、React或Svelte等现代化框架应用时，其优势更为明显。掌握这些优化技巧，将帮助你构建更快、更高效的Web应用。",
+    ],
+    prevPost: {
+      title: "Webpack优化策略",
+      slug: "webpack-optimization",
+    },
+    nextPost: {
+      title: "学习Tailwind",
+      slug: "learning-tailwind",
+    },
+  },
 ];
 
 // 博客分类
