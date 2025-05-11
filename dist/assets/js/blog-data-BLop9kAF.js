@@ -12,7 +12,7 @@ const e=[{id:1,title:"学习Vue",slug:"learning-vue",date:"2024-01-20",author:"S
 4. 加快了开发速度`,{type:"image",src:"https://pic1.imgdb.cn/item/6817321058cb8da5c8db5e37.jpg",alt:"Tailwind CSS示例代码",caption:"使用Tailwind CSS构建现代化界面"},{type:"heading",content:"响应式设计"},"Tailwind提供了直观的响应式设计方案，通过简单的前缀（如sm:、md:、lg:）就能实现不同屏幕尺寸下的样式适配。这种方式使得构建响应式界面变得异常简单和灵活。",`响应式设计示例：
 class="text-sm md:text-base lg:text-lg"
 这行代码实现了文本在不同屏幕尺寸下的大小自动调整。`,{type:"quote",content:"不要让CSS成为你开发的瓶颈，让Tailwind帮你构建快速、灵活、可维护的用户界面。",author:"Adam Wathan - Tailwind CSS创始人"},{type:"heading",content:"主题定制与深色模式"},"Tailwind的配置系统非常强大，通过tailwind.config.js文件，我们可以自定义颜色、间距、断点等各种设计标准。这种集中式的配置确保了整个项目的设计一致性。",`深色模式支持也是Tailwind的一大特色，通过dark:前缀，我们可以轻松实现暗色主题的样式切换：
-class="bg-white dark:bg-gray-800 text-black dark:text-white"`,"在实际项目中，Tailwind的JIT（即时编译）模式大大提升了开发体验，按需生成的CSS确保了最终打包文件的最小化。结合现代化的构建工具，Tailwind已经成为前端开发不可或缺的工具之一。"],nextPost:{slug:"vue2-vs-vue3",title:"Vue2与Vue3对比学习"}},{id:6,title:"学习Node.js",slug:"learning-nodejs",date:"2024-8-11",author:"Sroof",authorAvatar:"/author.webp",categories:["后端","Node.js","JavaScript"],description:"异步编程，事件驱动，服务端开发",content:["Node.js是一个基于Chrome V8引擎的JavaScript运行时环境，它让JavaScript突破了浏览器的限制，能够在服务器端运行。它的非阻塞I/O和事件驱动特性使其成为构建高性能、可扩展应用的理想选择。",{type:"heading",content:"异步编程模型"},`Node.js的异步编程模型是其最显著的特性之一。通过回调函数、Promise和async/await，我们可以高效处理并发操作：
+class="bg-white dark:bg-gray-800 text-black dark:text-white"`,"在实际项目中，Tailwind的JIT（即时编译）模式大大提升了开发体验，按需生成的CSS确保了最终打包文件的最小化。结合现代化的构建工具，Tailwind已经成为前端开发不可或缺的工具之一。"],prevPost:{title:"Vite优化策略",slug:"vite-optimization"},nextPost:{slug:"vue2-vs-vue3",title:"Vue2与Vue3对比学习"}},{id:6,title:"学习Node.js",slug:"learning-nodejs",date:"2024-8-11",author:"Sroof",authorAvatar:"/author.webp",categories:["后端","Node.js","JavaScript"],description:"异步编程，事件驱动，服务端开发",content:["Node.js是一个基于Chrome V8引擎的JavaScript运行时环境，它让JavaScript突破了浏览器的限制，能够在服务器端运行。它的非阻塞I/O和事件驱动特性使其成为构建高性能、可扩展应用的理想选择。",{type:"heading",content:"异步编程模型"},`Node.js的异步编程模型是其最显著的特性之一。通过回调函数、Promise和async/await，我们可以高效处理并发操作：
 1. 避免阻塞主线程
 2. 提高I/O操作效率
 3. 更好地处理并发请求
@@ -59,4 +59,253 @@ export default defineComponent({
   setup() {
     // 组合式API代码
   }
-})`,"选择合适的版本需要考虑项目规模、团队熟悉度、性能需求等因素。对于新项目，Vue3是更好的选择；而对于现有Vue2项目，可以采用渐进式迁移策略，逐步引入Vue3的新特性。Vue3的生态系统日趋完善，主流库都提供了对应的支持版本。"],prevPost:{title:"学习Tailwind",slug:"learning-tailwind"},nextPost:{title:"Three.js",slug:"threejs-exploration"}}],t=[{name:"前端",count:6},{name:"Vue",count:1},{name:"JavaScript",count:1},{name:"3D",count:1},{name:"WebGL",count:1},{name:"哲学",count:1},{name:"随想",count:1}];export{e as B,t as a};
+})`,"选择合适的版本需要考虑项目规模、团队熟悉度、性能需求等因素。对于新项目，Vue3是更好的选择；而对于现有Vue2项目，可以采用渐进式迁移策略，逐步引入Vue3的新特性。Vue3的生态系统日趋完善，主流库都提供了对应的支持版本。"],prevPost:{title:"学习Tailwind",slug:"learning-tailwind"},nextPost:{title:"Three.js",slug:"threejs-exploration"}},{id:8,title:"Webpack优化策略",slug:"webpack-optimization",date:"2025-03-18",author:"Sroof",authorAvatar:"/author.webp",categories:["前端","Webpack","性能优化"],description:"Webpack构建优化，资源压缩，代码分割，缓存策略",content:["Webpack作为现代前端工程化的核心工具，性能优化是提升项目质量和开发体验的关键。本文将全面讲解Webpack的优化策略，从构建效率到产物质量，助你打造高性能的前端应用。",{type:"heading",content:"构建效率优化：加速打包进程"},`### 精准加载范围
+
+- **缩小Loader作用域**：通过\`include/exclude\`精准匹配文件，避免无意义遍历。
+\`\`\`javascript
+module: {
+  rules: [{
+    test: /\\.js$/,
+    exclude: /node_modules/,
+    use: ['babel-loader']
+  }]
+}
+\`\`\`
+
+- **缓存为王**：利用\`cache-loader\`或Webpack5内置缓存机制，避免重复编译。
+\`\`\`javascript
+module.exports = {
+  cache: {
+    type: 'filesystem', // Webpack5+ 持久化缓存
+  },
+};
+\`\`\``,{type:"heading",content:"构建时间优化"},`将缓存和多进程打包都放在费时间的loader前面，比如babel-loader：
+\`\`\`javascript
+npm i thread-loader -D
+npm i cache-loader -D
+\`\`\`
+
+\`\`\`javascript
+// webpack.base.js
+{
+  test: /\\.js$/,
+  use: [
+    'cache-loader',
+    'thread-loader',
+    'babel-loader'
+  ],
+}
+\`\`\``,{type:"heading",content:"产物质量优化：精简输出体积"},`### 代码分离（Code Splitting）
+
+- **动态导入**：使用ES6语法按需加载模块
+\`\`\`javascript
+// React示例
+const LazyComponent = React.lazy(() => import('./LazyComponent'));
+// Vue示例
+const AsyncComp = defineAsyncComponent(() => import('./AsyncComp.vue'));
+\`\`\`
+
+- **SplitChunks智能分包**：配置拆包策略，提取公共模块与第三方库。
+\`\`\`javascript
+optimization: {
+  splitChunks: {
+    chunks: 'all',
+    cacheGroups: {
+      vendors: {
+        test: /[\\\\/]node_modules[\\\\/]/,
+        name: 'vendors',
+        chunks: 'all',
+      },
+    },
+  },
+}
+\`\`\``,{type:"image",src:"https://pic1.imgdb.cn/item/6844904f14195aa594761513.jpg",alt:"Webpack优化示意图",caption:"Webpack优化策略示意图"},{type:"heading",content:"资源压缩"},`- **JS压缩**：TerserPlugin默认集成，可定制压缩策略。
+\`\`\`javascript
+optimization: {
+  minimize: true,
+  minimizer: [
+    new TerserPlugin({
+      parallel: true, // 多进程压缩
+      terserOptions: {
+        compress: { drop_console: true }, // 移除console
+      },
+    }),
+  ],
+}
+\`\`\`
+
+- **CSS压缩**：\`css-minimizer-webpack-plugin\`搭配cssnano优化。
+\`\`\`javascript
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+
+optimization: {
+  minimizer: [new CssMinimizerPlugin()],
+}
+\`\`\``,{type:"heading",content:"高级优化技巧"},`### Tree Shaking深度清理
+
+- **JS Tree Shaking**：确保ES Module语法，配置\`sideEffects\`标记副作用。
+  * usedExports：通过标记某些函数是否被使用，之后通过Terser来进行优化
+  * sideEffects：跳过整个模块/文件，直接查看该文件是否有副作用
+
+- **CSS Tree Shaking**：PurgeCSS移除未使用样式，适用于组件库项目。`,{type:"heading",content:"缓存策略优化"},"**哈希指纹**：根据内容使用`contenthash`命名，最大化利用浏览器缓存。\n```javascript\noutput: {\n   filename: 'js/[name].[contenthash:8].js',    // 主入口文件\n   chunkFilename: 'js/[name].[chunkhash:8].js'  // 异步块\n},\n```\n\n**分离第三方依赖（Vendor Bundle）**：通过 `SplitChunksPlugin` 将 `node_modules` 代码独立打包，避免业务代码更新导致公共库缓存失效。",{type:"quote",content:"每一次构建优化，都是用户体验的提升。不要等到项目变慢了才考虑优化，优化应该成为开发流程中的一部分。",author:"FoolBuddy"},{type:"heading",content:"Webpack文件压缩：优化性能"},`**GZIP压缩**：基于DEFLATE算法（LZ77 + 哈夫曼编码），能将文本文件压缩至原大小的40%。全平台支持，配置简单：
+\`\`\`javascript
+const CompressionPlugin = require('compression-webpack-plugin');
+
+module.exports = {
+  plugins: [
+    new CompressionPlugin()
+  ]
+};
+\`\`\`
+
+**Brotli压缩**：由Google开发，比GZIP高10-25%的压缩率，需HTTPS支持：
+\`\`\`javascript
+const CompressionPlugin = require('compression-webpack-plugin');
+
+module.exports = {
+  plugins: [
+    new CompressionPlugin({
+      filename: '[path][base].br',
+      algorithm: 'brotliCompress',
+      test: /\\.(js|css|html|svg)$/,
+      threshold: 10240,
+      minRatio: 0.8
+    })
+  ]
+};
+\`\`\``,"Webpack优化是一个系统工程，需根据项目特性灵活组合策略。记住两个核心原则：构建阶段减少计算量并善用缓存与并行；产物阶段实现按需加载、极致压缩及合理缓存。掌握这些优化技巧，将显著提升项目性能和开发体验。"],prevPost:{title:"Vue2与Vue3对比学习",slug:"vue2-vs-vue3"},nextPost:{title:"Vite优化策略",slug:"vite-optimization"}},{id:9,title:"Vite优化策略",slug:"vite-optimization",date:"2025-02-10",author:"Sroof",authorAvatar:"/author.webp",categories:["前端","Vite","性能优化"],description:"Vite构建优化，按需加载，预编译，路由懒加载",content:["Vite作为新一代的前端构建工具，以其极速的开发体验和优化的生产构建而闻名。本文将深入探讨Vite的各种优化策略，帮助你在享受极速开发体验的同时，构建出高性能的现代化前端应用。",{type:"heading",content:"Vite的核心优势"},`Vite基于ESM（ES模块）实现了开发环境的无打包（No-Bundle）策略，这带来了以下核心优势：
+
+1. **快速的冷启动**：不需要先打包整个应用
+2. **即时的模块热更新（HMR）**：只需精确地重新编译修改的文件
+3. **按需编译**：只编译浏览器当前请求的模块`,{type:"image",src:"https://pic1.imgdb.cn/item/6817424358cb8da5c8ddc425.jpg",alt:"Vite开发服务器架构",caption:"Vite的开发服务器架构示意图"},{type:"heading",content:"开发环境优化"},`### 依赖预构建优化
+
+Vite使用esbuild预构建依赖，可通过以下配置优化：
+
+\`\`\`javascript
+// vite.config.js
+export default {
+  optimizeDeps: {
+    // 强制预构建的依赖
+    include: ['lodash-es', 'vue'],
+    // 不进行预构建的依赖
+    exclude: ['large-module-not-used-immediately']
+  }
+}
+\`\`\`
+
+### 缓存优化
+
+Vite的缓存机制可以进一步优化：
+
+\`\`\`javascript
+export default {
+  cacheDir: '.vite-cache', // 自定义缓存目录
+  server: {
+    fs: {
+      // 限制哪些文件可以通过服务器访问
+      strict: true,
+      allow: ['.']
+    }
+  }
+}
+\`\`\``,{type:"quote",content:"Vite不仅仅是一个构建工具，它重新定义了前端开发的体验和流程，让开发者能够更专注于创造而非等待。",author:"Evan You - Vue.js和Vite创始人"},{type:"heading",content:"生产环境优化"},`### 构建优化
+
+Vite使用Rollup进行生产构建，可通过以下配置优化：
+
+\`\`\`javascript
+export default {
+  build: {
+    // 最小化输出包体积
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true, // 移除console
+        drop_debugger: true // 移除debugger
+      }
+    },
+    // 启用gzip压缩
+    brotliSize: true,
+    // CSS代码分割
+    cssCodeSplit: true,
+    // 自定义分块策略
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor': ['vue', 'vue-router'],
+          'ui-lib': ['element-plus']
+        }
+      }
+    },
+    // 设置最大块大小警告
+    chunkSizeWarningLimit: 500 // 单位kb
+  }
+};
+\`\`\``,{type:"heading",content:"路由懒加载优化"},`在Vue或React应用中，可以结合Vite的动态导入功能实现路由懒加载：
+
+\`\`\`javascript
+// Vue Router示例
+const routes = [
+  {
+    path: '/',
+    component: () => import('./views/Home.vue') // 懒加载路由组件
+  },
+  {
+    path: '/about',
+    // 使用注释指定预加载和预获取行为
+    component: () => import(/* webpackChunkName: "about", webpackPrefetch: true */ './views/About.vue')
+  }
+];
+\`\`\``,{type:"heading",content:"资源优化"},`### 静态资源处理
+
+Vite提供了丰富的静态资源处理能力：
+
+\`\`\`javascript
+export default {
+  build: {
+    // 小于此阈值的资源将被内联为base64
+    assetsInlineLimit: 4096,
+    // 指定生成静态资源的目录
+    assetsDir: 'assets'
+  },
+  // 自定义资源处理
+  assetsInclude: ['**/*.gltf']
+};
+\`\`\`
+
+### 图片优化
+
+通过插件优化图片资源：
+
+\`\`\`javascript
+import viteImagemin from 'vite-plugin-imagemin';
+
+export default {
+  plugins: [
+    viteImagemin({
+      gifsicle: { optimizationLevel: 7 },
+      mozjpeg: { quality: 65 },
+      pngquant: { quality: [0.65, 0.9], speed: 4 },
+      webp: { quality: 75 }
+    })
+  ]
+};
+\`\`\``,{type:"heading",content:"高级优化技巧"},`### 多页面应用优化
+
+Vite原生支持多页面应用（MPA）：
+
+\`\`\`javascript
+export default {
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        nested: resolve(__dirname, 'nested/index.html')
+      }
+    }
+  }
+};
+\`\`\`
+
+### 预渲染与SSR
+
+结合\`vite-plugin-ssr\`或\`@vitejs/plugin-vue-jsx\`实现预渲染或服务端渲染，进一步优化首屏加载性能和SEO。`,"通过实施这些优化策略，Vite不仅能提供极速的开发体验，还能生成高度优化的生产代码。在现代前端开发中，Vite已成为众多开发者的首选工具，尤其在构建Vue、React或Svelte等现代化框架应用时，其优势更为明显。掌握这些优化技巧，将帮助你构建更快、更高效的Web应用。"],prevPost:{title:"Webpack优化策略",slug:"webpack-optimization"},nextPost:{title:"学习Tailwind",slug:"learning-tailwind"}}],n=[{name:"前端",count:6},{name:"Vue",count:1},{name:"JavaScript",count:1},{name:"3D",count:1},{name:"WebGL",count:1},{name:"哲学",count:1},{name:"随想",count:1}];export{e as B,n as a};

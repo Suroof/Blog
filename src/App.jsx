@@ -104,7 +104,7 @@ function App() {
   const [_isFirstLoad, setIsFirstLoad] = useState(true);
   const [showBackground, setShowBackground] = useState(false);
   const [_appConfig, setAppConfig] = useState(null);
-  const [isModelLoaded, setIsModelLoaded] = useState(false);
+  const [_isModelLoaded, setIsModelLoaded] = useState(false);
 
   // 初始化应用配置和性能监控
   useEffect(() => {

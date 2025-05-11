@@ -74,3 +74,24 @@ export const HISTORY_IMAGES = [
   { src: "https://pic1.imgdb.cn/item/68175d8458cb8da5c8dc5457.png", alt: "cards template" },
   { src: "https://pic1.imgdb.cn/item/68175e3e58cb8da5c8dc5494.jpg", alt: "hero template" },
 ]
+
+// 预加载函数 - 在应用启动时就开始预加载，而不是等到组件加载
+export const preloadHistoryImages = () => {
+  if (typeof window !== 'undefined') { // 确保在浏览器环境中执行
+    HISTORY_IMAGES.forEach(image => {
+      const img = new Image();
+      img.src = image.src;
+    });
+  }
+};
+
+// 自动执行预加载
+if (typeof window !== 'undefined') {
+  // 使用requestIdleCallback（如果可用）在浏览器空闲时预加载
+  if (window.requestIdleCallback) {
+    window.requestIdleCallback(() => preloadHistoryImages());
+  } else {
+    // 回退到setTimeout
+    setTimeout(preloadHistoryImages, 1000);
+  }
+}

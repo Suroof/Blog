@@ -251,6 +251,10 @@ export const BLOG_POSTS = [
       "深色模式支持也是Tailwind的一大特色，通过dark:前缀，我们可以轻松实现暗色主题的样式切换：\nclass=\"bg-white dark:bg-gray-800 text-black dark:text-white\"",
       "在实际项目中，Tailwind的JIT（即时编译）模式大大提升了开发体验，按需生成的CSS确保了最终打包文件的最小化。结合现代化的构建工具，Tailwind已经成为前端开发不可或缺的工具之一。",
     ],
+    prevPost:{
+      title: "Vite优化策略",
+      slug: "vite-optimization",
+    },
     nextPost: {
       slug: "vue2-vs-vue3",
       title: "Vue2与Vue3对比学习",
@@ -384,9 +388,9 @@ export const BLOG_POSTS = [
       "### 代码分离（Code Splitting）\n\n- **动态导入**：使用ES6语法按需加载模块\n```javascript\n// React示例\nconst LazyComponent = React.lazy(() => import('./LazyComponent'));\n// Vue示例\nconst AsyncComp = defineAsyncComponent(() => import('./AsyncComp.vue'));\n```\n\n- **SplitChunks智能分包**：配置拆包策略，提取公共模块与第三方库。\n```javascript\noptimization: {\n  splitChunks: {\n    chunks: 'all',\n    cacheGroups: {\n      vendors: {\n        test: /[\\\\/]node_modules[\\\\/]/,\n        name: 'vendors',\n        chunks: 'all',\n      },\n    },\n  },\n}\n```",
       {
         type: "image",
-        src: "https://pic1.imgdb.cn/item/6844904f14195aa594761513.jpg",
-        alt: "Webpack优化示意图",
-        caption: "Webpack优化策略示意图",
+        src: "https://pic1.imgdb.cn/item/68200b8858cb8da5c8eb9b2f.png",
+        alt: "Webpack示意图",
+        caption: "Webpack",
       },
       {
         type: "heading",
@@ -442,9 +446,9 @@ export const BLOG_POSTS = [
       "Vite基于ESM（ES模块）实现了开发环境的无打包（No-Bundle）策略，这带来了以下核心优势：\n\n1. **快速的冷启动**：不需要先打包整个应用\n2. **即时的模块热更新（HMR）**：只需精确地重新编译修改的文件\n3. **按需编译**：只编译浏览器当前请求的模块",
       {
         type: "image",
-        src: "https://pic1.imgdb.cn/item/6817424358cb8da5c8ddc425.jpg",
-        alt: "Vite开发服务器架构",
-        caption: "Vite的开发服务器架构示意图",
+        src: "https://pic1.imgdb.cn/item/68200bd758cb8da5c8eb9b48.png",
+        alt: "Vite",
+        caption: "Vite",
       },
       {
         type: "heading",

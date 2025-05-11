@@ -1,14 +1,49 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Timeline } from "@/components/ui/timeline";
-import { HISTORY_IMAGES } from "@/utils/constants";
+import { HISTORY_IMAGES, preloadHistoryImages } from "@/utils/constants";
 
 const History = () => {
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [_loadingProgress, setLoadingProgress] = useState(0);
+
   useEffect(() => {
-    HISTORY_IMAGES.forEach(image => {
-      const img = new Image();
-      img.src = image.src;
-    });
+    // 在组件挂载时也执行一次预加载，确保图片加载
+    if (!imagesLoaded) {
+      // 提取HISTORY_IMAGES中的所有图片URL
+      const historyPageImages = HISTORY_IMAGES.map(image => image.src);
+      let loadedCount = 0;
+      const totalImages = historyPageImages.length;
+
+      // 预加载所有图片并跟踪进度
+      historyPageImages.forEach(url => {
+        const img = new Image();
+        img.onload = () => {
+          loadedCount++;
+          // 更新加载进度
+          const progress = Math.round((loadedCount / totalImages) * 100);
+          setLoadingProgress(progress);
+          if (loadedCount === totalImages) {
+            setImagesLoaded(true);
+          }
+        };
+        img.onerror = () => {
+          // 即使加载失败也计数，以避免永远不触发完成状态
+          loadedCount++;
+          const progress = Math.round((loadedCount / totalImages) * 100);
+          setLoadingProgress(progress);
+          if (loadedCount === totalImages) {
+            setImagesLoaded(true);
+          }
+        };
+        img.src = url;
+      });
+    }
+  }, [imagesLoaded]);
+
+  // 调用这个函数尝试再次触发预加载（以防constants.js中的预加载未完成）
+  useEffect(() => {
+    preloadHistoryImages();
   }, []);
 
   const data = [
@@ -57,10 +92,10 @@ const History = () => {
       content: (
         <div>
           <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-           学习Java和python，但那时还没有接触框架，只是跟着学校进度走
+           学习Java和python，但那时还没有接触框架
           </p>
           <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
-            同一时刻学习路html和css,也就是这时，开始了真正意义上前后端的学习，为后面选择方向埋下伏笔
+            同一时刻学习路html和css,也就是这时，开始了真正意义上前后端的学习
           </p>
           <div className="grid grid-cols-2 gap-4">
             <img
@@ -119,15 +154,17 @@ const History = () => {
 
   return (
     <div className="min-h-screen pt-20 px-4 md:px-8 w-full mx-auto">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="relative w-full overflow-clip">
-          <Timeline data={data} />
-        </div>
-      </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="relative w-full overflow-clip">
+            <Timeline data={data} />
+          </div>
+        </motion.div>
+
     </div>
   );
 };
