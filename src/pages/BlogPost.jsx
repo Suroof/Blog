@@ -7,6 +7,53 @@ const BlogPost = () => {
   const { slug } = useParams();
   const post = BLOG_POSTS.find(post => post.slug === slug);
 
+  // 格式化文本，识别代码块
+  const formatContent = (text) => {
+    if (!text) return '';
+
+    // 检查是否包含代码块，代码块通常使用 ```javascript 和 ``` 包裹
+    if (text.includes('```')) {
+      const parts = text.split('```');
+
+      // 返回格式化后的JSX
+      return parts.map((part, i) => {
+        // 奇数索引表示代码块内容
+        if (i % 2 === 1) {
+          // 处理语言标识符，如javascript、css等
+          let code = part;
+          let language = '';
+
+          if (part.indexOf('\n') > 0) {
+            const firstLine = part.substring(0, part.indexOf('\n')).trim();
+            // 如果第一行是语言标识符
+            if (firstLine && !firstLine.includes(' ')) {
+              language = firstLine;
+              code = part.substring(part.indexOf('\n')).trim();
+            }
+          }
+
+          return (
+            <div key={i} className="my-4">
+              {language && (
+                <div className="bg-gray-800 text-gray-200 text-xs rounded-t-lg px-4 py-1">
+                  {language}
+                </div>
+              )}
+              <pre className={`bg-gray-800 text-gray-200 p-4 overflow-x-auto rounded-lg ${language ? 'rounded-t-none' : ''}`}>
+                <code>{code}</code>
+              </pre>
+            </div>
+          );
+        }
+
+        // 非代码块内容
+        return part ? <span key={i}>{part}</span> : null;
+      });
+    }
+
+    return text;
+  };
+
   if (!post) {
     return (
       <div className="min-h-screen pt-20 px-4 md:px-8 max-w-4xl mx-auto text-center">
@@ -101,10 +148,20 @@ const BlogPost = () => {
                 );
               }
 
+              // 普通段落，检查是否包含代码块
+              const content = paragraph.content || paragraph;
+              if (typeof content === 'string' && content.includes('```')) {
+                return (
+                  <div key={index} className="text-gray-800 mb-6 leading-relaxed">
+                    {formatContent(content)}
+                  </div>
+                );
+              }
+
               // 普通段落
               return (
                 <p key={index} className="text-gray-800 mb-6 leading-relaxed">
-                  {paragraph.content || paragraph}
+                  {content}
                 </p>
               );
             })}
