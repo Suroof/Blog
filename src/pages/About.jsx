@@ -75,6 +75,9 @@ const About = () => {
                   <p className="text-lg leading-relaxed">
                     我希望能在互联网的世界不断学习，拓展技术栈，同时提高自我的认知，不断深掘人在旅途的意义，思考人的一生，在有限的一生中留下哪怕一丝足迹。
                   </p>
+                  <p className="text-lg leading-relaxed">
+                   联系我：2663159189@qq.com
+                  </p>
                 </div>
               </motion.div>
 

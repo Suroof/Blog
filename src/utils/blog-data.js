@@ -237,10 +237,11 @@ export const BLOG_POSTS = [
         content: "响应式设计",
       },
       "Tailwind提供了直观的响应式设计方案，通过简单的前缀（如sm:、md:、lg:）就能实现不同屏幕尺寸下的样式适配。这种方式使得构建响应式界面变得异常简单和灵活。",
-      "响应式设计示例：\nclass=\"text-sm md:text-base lg:text-lg\"\n这行代码实现了文本在不同屏幕尺寸下的大小自动调整。",
+      '响应式设计示例：\nclass="text-sm md:text-base lg:text-lg"\n这行代码实现了文本在不同屏幕尺寸下的大小自动调整。',
       {
         type: "quote",
-        content: "不要让CSS成为你开发的瓶颈，让Tailwind帮你构建快速、灵活、可维护的用户界面。",
+        content:
+          "不要让CSS成为你开发的瓶颈，让Tailwind帮你构建快速、灵活、可维护的用户界面。",
         author: "Adam Wathan - Tailwind CSS创始人",
       },
       {
@@ -248,10 +249,10 @@ export const BLOG_POSTS = [
         content: "主题定制与深色模式",
       },
       "Tailwind的配置系统非常强大，通过tailwind.config.js文件，我们可以自定义颜色、间距、断点等各种设计标准。这种集中式的配置确保了整个项目的设计一致性。",
-      "深色模式支持也是Tailwind的一大特色，通过dark:前缀，我们可以轻松实现暗色主题的样式切换：\nclass=\"bg-white dark:bg-gray-800 text-black dark:text-white\"",
+      '深色模式支持也是Tailwind的一大特色，通过dark:前缀，我们可以轻松实现暗色主题的样式切换：\nclass="bg-white dark:bg-gray-800 text-black dark:text-white"',
       "在实际项目中，Tailwind的JIT（即时编译）模式大大提升了开发体验，按需生成的CSS确保了最终打包文件的最小化。结合现代化的构建工具，Tailwind已经成为前端开发不可或缺的工具之一。",
     ],
-    prevPost:{
+    prevPost: {
       title: "Vite优化策略",
       slug: "vite-optimization",
     },
@@ -290,7 +291,8 @@ export const BLOG_POSTS = [
       "事件驱动示例：\nconst eventEmitter = new EventEmitter();\neventEmitter.on('data', (data) => {\n  console.log('收到数据:', data);\n});\neventEmitter.emit('data', '这是一些数据');",
       {
         type: "quote",
-        content: "Node.js改变了我们构建服务器应用的方式，它让JavaScript成为了一个全栈解决方案。",
+        content:
+          "Node.js改变了我们构建服务器应用的方式，它让JavaScript成为了一个全栈解决方案。",
         author: "Ryan Dahl - Node.js创始人",
       },
       {
@@ -340,7 +342,8 @@ export const BLOG_POSTS = [
       "代码对比示例：\n// Vue2 选项式API\nexport default {\n  data() {\n    return { count: 0 }\n  },\n  methods: {\n    increment() {\n      this.count++\n    }\n  }\n}\n\n// Vue3 组合式API\nimport { ref } from 'vue'\nexport default {\n  setup() {\n    const count = ref(0)\n    const increment = () => count.value++\n    return { count, increment }\n  }\n}",
       {
         type: "quote",
-        content: "组合式API让我们可以基于逻辑关注点组织代码，这在大型项目中特别有用。",
+        content:
+          "组合式API让我们可以基于逻辑关注点组织代码，这在大型项目中特别有用。",
         author: "尤雨溪 - Vue.js创始人",
       },
       {
@@ -360,7 +363,7 @@ export const BLOG_POSTS = [
       slug: "threejs-exploration",
     },
   },
-    {
+  {
     id: 8,
     title: "Webpack优化策略",
     slug: "webpack-optimization",
@@ -375,7 +378,7 @@ export const BLOG_POSTS = [
         type: "heading",
         content: "构建效率优化：加速打包进程",
       },
-      "### 精准加载范围\n\n- **缩小Loader作用域**：通过`include/exclude`精准匹配文件，避免无意义遍历。\n```javascript\nmodule: {\n  rules: [{\n    test: /\\.js$/,\n    exclude: /node_modules/,\n    use: ['babel-loader']\n  }]\n}\n```\n\n- **缓存为王**：利用`cache-loader`或Webpack5内置缓存机制，避免重复编译。\n```javascript\nmodule.exports = {\n  cache: {\n    type: 'filesystem', // Webpack5+ 持久化缓存\n  },\n};\n```",
+      "精准加载范围\n\n- 缩小Loader作用域：通过include/exclude精准匹配文件，避免无意义遍历。\n```javascript\nmodule: {\n  rules: [{\n    test: /\\.js$/,\n    exclude: /node_modules/,\n    use: ['babel-loader']\n  }]\n}\n```\n\n- 缓存为王：利用`cache-loader`或Webpack5内置缓存机制，避免重复编译。\n```javascript\nmodule.exports = {\n  cache: {\n    type: 'filesystem', // Webpack5+ 持久化缓存\n  },\n};\n```",
       {
         type: "heading",
         content: "构建时间优化",
@@ -385,7 +388,7 @@ export const BLOG_POSTS = [
         type: "heading",
         content: "产物质量优化：精简输出体积",
       },
-      "### 代码分离（Code Splitting）\n\n- **动态导入**：使用ES6语法按需加载模块\n```javascript\n// React示例\nconst LazyComponent = React.lazy(() => import('./LazyComponent'));\n// Vue示例\nconst AsyncComp = defineAsyncComponent(() => import('./AsyncComp.vue'));\n```\n\n- **SplitChunks智能分包**：配置拆包策略，提取公共模块与第三方库。\n```javascript\noptimization: {\n  splitChunks: {\n    chunks: 'all',\n    cacheGroups: {\n      vendors: {\n        test: /[\\\\/]node_modules[\\\\/]/,\n        name: 'vendors',\n        chunks: 'all',\n      },\n    },\n  },\n}\n```",
+      "代码分离（Code Splitting）\n\n-动态导入：使用ES6语法按需加载模块\n```javascript\n// React示例\nconst LazyComponent = React.lazy(() => import('./LazyComponent'));\n// Vue示例\nconst AsyncComp = defineAsyncComponent(() => import('./AsyncComp.vue'));\n```\n\n- SplitChunks智能分包：配置拆包策略，提取公共模块与第三方库。\n```javascript\noptimization: {\n  splitChunks: {\n    chunks: 'all',\n    cacheGroups: {\n      vendors: {\n        test: /[\\\\/]node_modules[\\\\/]/,\n        name: 'vendors',\n        chunks: 'all',\n      },\n    },\n  },\n}\n```",
       {
         type: "image",
         src: "https://pic1.imgdb.cn/item/68200b8858cb8da5c8eb9b2f.png",
@@ -396,27 +399,28 @@ export const BLOG_POSTS = [
         type: "heading",
         content: "资源压缩",
       },
-      "- **JS压缩**：TerserPlugin默认集成，可定制压缩策略。\n```javascript\noptimization: {\n  minimize: true,\n  minimizer: [\n    new TerserPlugin({\n      parallel: true, // 多进程压缩\n      terserOptions: {\n        compress: { drop_console: true }, // 移除console\n      },\n    }),\n  ],\n}\n```\n\n- **CSS压缩**：`css-minimizer-webpack-plugin`搭配cssnano优化。\n```javascript\nconst CssMinimizerPlugin = require('css-minimizer-webpack-plugin');\n\noptimization: {\n  minimizer: [new CssMinimizerPlugin()],\n}\n```",
+      "-JS压缩：TerserPlugin默认集成，可定制压缩策略。\n```javascript\noptimization: {\n  minimize: true,\n  minimizer: [\n    new TerserPlugin({\n      parallel: true, // 多进程压缩\n      terserOptions: {\n        compress: { drop_console: true }, // 移除console\n      },\n    }),\n  ],\n}\n```\n\n- CSS压缩：`css-minimizer-webpack-plugin`搭配cssnano优化。\n```javascript\nconst CssMinimizerPlugin = require('css-minimizer-webpack-plugin');\n\noptimization: {\n  minimizer: [new CssMinimizerPlugin()],\n}\n```",
       {
         type: "heading",
         content: "高级优化技巧",
       },
-      "### Tree Shaking深度清理\n\n- **JS Tree Shaking**：确保ES Module语法，配置`sideEffects`标记副作用。\n  * usedExports：通过标记某些函数是否被使用，之后通过Terser来进行优化\n  * sideEffects：跳过整个模块/文件，直接查看该文件是否有副作用\n\n- **CSS Tree Shaking**：PurgeCSS移除未使用样式，适用于组件库项目。",
+      "Tree Shaking深度清理\n\n-JS Tree Shaking：确保ES Module语法，配置`sideEffects`标记副作用。\n  * usedExports：通过标记某些函数是否被使用，之后通过Terser来进行优化\n  * sideEffects：跳过整个模块/文件，直接查看该文件是否有副作用\n\n- CSS Tree Shaking：PurgeCSS移除未使用样式，适用于组件库项目。",
       {
         type: "heading",
         content: "缓存策略优化",
       },
-      "**哈希指纹**：根据内容使用`contenthash`命名，最大化利用浏览器缓存。\n```javascript\noutput: {\n   filename: 'js/[name].[contenthash:8].js',    // 主入口文件\n   chunkFilename: 'js/[name].[chunkhash:8].js'  // 异步块\n},\n```\n\n**分离第三方依赖（Vendor Bundle）**：通过 `SplitChunksPlugin` 将 `node_modules` 代码独立打包，避免业务代码更新导致公共库缓存失效。",
+      "哈希指纹：根据内容使用contenthash命名，最大化利用浏览器缓存。\n```javascript\noutput: {\n   filename: 'js/[name].[contenthash:8].js',    // 主入口文件\n   chunkFilename: 'js/[name].[chunkhash:8].js'  // 异步块\n},\n```\n\n分离第三方依赖（Vendor Bundle）：通过 `SplitChunksPlugin` 将 `node_modules` 代码独立打包，避免业务代码更新导致公共库缓存失效。",
       {
         type: "quote",
-        content: "每一次构建优化，都是用户体验的提升。不要等到项目变慢了才考虑优化，优化应该成为开发流程中的一部分。",
+        content:
+          "每一次构建优化，都是用户体验的提升。不要等到项目变慢了才考虑优化，优化应该成为开发流程中的一部分。",
         author: "FoolBuddy",
       },
       {
         type: "heading",
         content: "Webpack文件压缩：优化性能",
       },
-      "**GZIP压缩**：基于DEFLATE算法（LZ77 + 哈夫曼编码），能将文本文件压缩至原大小的40%。全平台支持，配置简单：\n```javascript\nconst CompressionPlugin = require('compression-webpack-plugin');\n\nmodule.exports = {\n  plugins: [\n    new CompressionPlugin()\n  ]\n};\n```\n\n**Brotli压缩**：由Google开发，比GZIP高10-25%的压缩率，需HTTPS支持：\n```javascript\nconst CompressionPlugin = require('compression-webpack-plugin');\n\nmodule.exports = {\n  plugins: [\n    new CompressionPlugin({\n      filename: '[path][base].br',\n      algorithm: 'brotliCompress',\n      test: /\\.(js|css|html|svg)$/,\n      threshold: 10240,\n      minRatio: 0.8\n    })\n  ]\n};\n```",
+      "GZIP压缩：基于DEFLATE算法（LZ77 + 哈夫曼编码），能将文本文件压缩至原大小的40%。全平台支持，配置简单：\n```javascript\nconst CompressionPlugin = require('compression-webpack-plugin');\n\nmodule.exports = {\n  plugins: [\n    new CompressionPlugin()\n  ]\n};\n```\n\nBrotli压缩：由Google开发，比GZIP高10-25%的压缩率，需HTTPS支持：\n```javascript\nconst CompressionPlugin = require('compression-webpack-plugin');\n\nmodule.exports = {\n  plugins: [\n    new CompressionPlugin({\n      filename: '[path][base].br',\n      algorithm: 'brotliCompress',\n      test: /\\.(js|css|html|svg)$/,\n      threshold: 10240,\n      minRatio: 0.8\n    })\n  ]\n};\n```",
       "Webpack优化是一个系统工程，需根据项目特性灵活组合策略。记住两个核心原则：构建阶段减少计算量并善用缓存与并行；产物阶段实现按需加载、极致压缩及合理缓存。掌握这些优化技巧，将显著提升项目性能和开发体验。",
     ],
     prevPost: {
@@ -443,7 +447,7 @@ export const BLOG_POSTS = [
         type: "heading",
         content: "Vite的核心优势",
       },
-      "Vite基于ESM（ES模块）实现了开发环境的无打包（No-Bundle）策略，这带来了以下核心优势：\n\n1. **快速的冷启动**：不需要先打包整个应用\n2. **即时的模块热更新（HMR）**：只需精确地重新编译修改的文件\n3. **按需编译**：只编译浏览器当前请求的模块",
+      "Vite基于ESM（ES模块）实现了开发环境的无打包（No-Bundle）策略，这带来了以下核心优势：\n\n1. 快速的冷启动：不需要先打包整个应用\n2. 即时的模块热更新（HMR）：只需精确地重新编译修改的文件\n3. 按需编译：只编译浏览器当前请求的模块",
       {
         type: "image",
         src: "https://pic1.imgdb.cn/item/68200bd758cb8da5c8eb9b48.png",
@@ -454,17 +458,18 @@ export const BLOG_POSTS = [
         type: "heading",
         content: "开发环境优化",
       },
-      "### 依赖预构建优化\n\nVite使用esbuild预构建依赖，可通过以下配置优化：\n\n```javascript\n// vite.config.js\nexport default {\n  optimizeDeps: {\n    // 强制预构建的依赖\n    include: ['lodash-es', 'vue'],\n    // 不进行预构建的依赖\n    exclude: ['large-module-not-used-immediately']\n  }\n}\n```\n\n### 缓存优化\n\nVite的缓存机制可以进一步优化：\n\n```javascript\nexport default {\n  cacheDir: '.vite-cache', // 自定义缓存目录\n  server: {\n    fs: {\n      // 限制哪些文件可以通过服务器访问\n      strict: true,\n      allow: ['.']\n    }\n  }\n}\n```",
+      "依赖预构建优化\n\nVite使用esbuild预构建依赖，可通过以下配置优化：\n\n```javascript\n// vite.config.js\nexport default {\n  optimizeDeps: {\n    // 强制预构建的依赖\n    include: ['lodash-es', 'vue'],\n    // 不进行预构建的依赖\n    exclude: ['large-module-not-used-immediately']\n  }\n}\n```\n\n缓存优化\n\nVite的缓存机制可以进一步优化：\n\n```javascript\nexport default {\n  cacheDir: '.vite-cache', // 自定义缓存目录\n  server: {\n    fs: {\n      // 限制哪些文件可以通过服务器访问\n      strict: true,\n      allow: ['.']\n    }\n  }\n}\n```",
       {
         type: "quote",
-        content: "Vite不仅仅是一个构建工具，它重新定义了前端开发的体验和流程，让开发者能够更专注于创造而非等待。",
+        content:
+          "Vite不仅仅是一个构建工具，它重新定义了前端开发的体验和流程，让开发者能够更专注于创造而非等待。",
         author: "Evan You - Vue.js和Vite创始人",
       },
       {
         type: "heading",
         content: "生产环境优化",
       },
-      "### 构建优化\n\nVite使用Rollup进行生产构建，可通过以下配置优化：\n\n```javascript\nexport default {\n  build: {\n    // 最小化输出包体积\n    minify: 'terser',\n    terserOptions: {\n      compress: {\n        drop_console: true, // 移除console\n        drop_debugger: true // 移除debugger\n      }\n    },\n    // 启用gzip压缩\n    brotliSize: true,\n    // CSS代码分割\n    cssCodeSplit: true,\n    // 自定义分块策略\n    rollupOptions: {\n      output: {\n        manualChunks: {\n          'vendor': ['vue', 'vue-router'],\n          'ui-lib': ['element-plus']\n        }\n      }\n    },\n    // 设置最大块大小警告\n    chunkSizeWarningLimit: 500 // 单位kb\n  }\n};\n```",
+      "构建优化\n\nVite使用Rollup进行生产构建，可通过以下配置优化：\n\n```javascript\nexport default {\n  build: {\n    // 最小化输出包体积\n    minify: 'terser',\n    terserOptions: {\n      compress: {\n        drop_console: true, // 移除console\n        drop_debugger: true // 移除debugger\n      }\n    },\n    // 启用gzip压缩\n    brotliSize: true,\n    // CSS代码分割\n    cssCodeSplit: true,\n    // 自定义分块策略\n    rollupOptions: {\n      output: {\n        manualChunks: {\n          'vendor': ['vue', 'vue-router'],\n          'ui-lib': ['element-plus']\n        }\n      }\n    },\n    // 设置最大块大小警告\n    chunkSizeWarningLimit: 500 // 单位kb\n  }\n};\n```",
       {
         type: "heading",
         content: "路由懒加载优化",
@@ -474,12 +479,12 @@ export const BLOG_POSTS = [
         type: "heading",
         content: "资源优化",
       },
-      "### 静态资源处理\n\nVite提供了丰富的静态资源处理能力：\n\n```javascript\nexport default {\n  build: {\n    // 小于此阈值的资源将被内联为base64\n    assetsInlineLimit: 4096,\n    // 指定生成静态资源的目录\n    assetsDir: 'assets'\n  },\n  // 自定义资源处理\n  assetsInclude: ['**/*.gltf']\n};\n```\n\n### 图片优化\n\n通过插件优化图片资源：\n\n```javascript\nimport viteImagemin from 'vite-plugin-imagemin';\n\nexport default {\n  plugins: [\n    viteImagemin({\n      gifsicle: { optimizationLevel: 7 },\n      mozjpeg: { quality: 65 },\n      pngquant: { quality: [0.65, 0.9], speed: 4 },\n      webp: { quality: 75 }\n    })\n  ]\n};\n```",
+      "静态资源处理\n\nVite提供了丰富的静态资源处理能力：\n\n```javascript\nexport default {\n  build: {\n    // 小于此阈值的资源将被内联为base64\n    assetsInlineLimit: 4096,\n    // 指定生成静态资源的目录\n    assetsDir: 'assets'\n  },\n  // 自定义资源处理\n  assetsInclude: ['**/*.gltf']\n};\n```\n\n图片优化\n\n通过插件优化图片资源：\n\n```javascript\nimport viteImagemin from 'vite-plugin-imagemin';\n\nexport default {\n  plugins: [\n    viteImagemin({\n      gifsicle: { optimizationLevel: 7 },\n      mozjpeg: { quality: 65 },\n      pngquant: { quality: [0.65, 0.9], speed: 4 },\n      webp: { quality: 75 }\n    })\n  ]\n};\n```",
       {
         type: "heading",
         content: "高级优化技巧",
       },
-      "### 多页面应用优化\n\nVite原生支持多页面应用（MPA）：\n\n```javascript\nexport default {\n  build: {\n    rollupOptions: {\n      input: {\n        main: resolve(__dirname, 'index.html'),\n        nested: resolve(__dirname, 'nested/index.html')\n      }\n    }\n  }\n};\n```\n\n### 预渲染与SSR\n\n结合`vite-plugin-ssr`或`@vitejs/plugin-vue-jsx`实现预渲染或服务端渲染，进一步优化首屏加载性能和SEO。",
+      "多页面应用优化\n\nVite原生支持多页面应用（MPA）：\n\n```javascript\nexport default {\n  build: {\n    rollupOptions: {\n      input: {\n        main: resolve(__dirname, 'index.html'),\n        nested: resolve(__dirname, 'nested/index.html')\n      }\n    }\n  }\n};\n```\n\n预渲染与SSR\n\n结合`vite-plugin-ssr`或`@vitejs/plugin-vue-jsx`实现预渲染或服务端渲染，进一步优化首屏加载性能和SEO。",
       "通过实施这些优化策略，Vite不仅能提供极速的开发体验，还能生成高度优化的生产代码。在现代前端开发中，Vite已成为众多开发者的首选工具，尤其在构建Vue、React或Svelte等现代化框架应用时，其优势更为明显。掌握这些优化技巧，将帮助你构建更快、更高效的Web应用。",
     ],
     prevPost: {
@@ -489,6 +494,68 @@ export const BLOG_POSTS = [
     nextPost: {
       title: "学习Tailwind",
       slug: "learning-tailwind",
+    },
+  },
+  {
+    id: 10,
+    title: "理解闭包",
+    slug: "Clousure",
+    date: "2025-05-17",
+    author: "Sroof",
+    authorAvatar: "/author.webp",
+    categories: ["前端", "JavaScript"],
+    description:
+      "闭包是指​​能够访问另一个函数作用域中变量的函数​​，即使外部函数已经执行完毕。用更专业的术语来说，闭包是一个函数和其词法环境(Lexical Environment)的组合，这个组合使得函数可以访问其被创建时的作用域链 ",
+
+    content: [
+      "闭包作为JavaScript中最重要且最具特色的概念之一，深刻影响着代码的执行机制和内存管理。本文将深入探讨闭包的原理、应用场景和最佳实践，帮助你掌握这一核心概念，写出更优雅、更高效的JavaScript代码。",
+      {
+        type: "heading",
+        content: "闭包的核心特性",
+      },
+      "闭包是指函数能够访问其词法作用域中的变量，即使在其定义的作用域之外执行也是如此。这带来了以下核心特性：\n\n1. 数据私有化：创建私有变量和方法\n2. 状态保持：函数执行后仍能保持内部状态\n3. 延迟执行：将函数的执行推迟到合适的时机",
+      {
+        type: "image",
+        src: "https://pic1.imgdb.cn/item/686fc81a58cb8da5c89aafd3.png",
+        alt: "JavaScript闭包",
+        caption: "防抖函数的闭包",
+      },
+      {
+        type: "heading",
+        content: "闭包的基本形式",
+      },
+      "基础闭包示例\n\n最简单的闭包形式，展示了内部函数访问外部函数变量的能力：\n\n```javascript\nfunction outerFunction(x) {\n  // 外部函数的变量\n  let outerVariable = x;\n  \n  // 内部函数（闭包）\n  function innerFunction(y) {\n    console.log(outerVariable + y); // 访问外部变量\n  }\n  \n  return innerFunction;\n}\n\nconst closure = outerFunction(10);\nclosure(5); // 输出: 15\n```\n\n立即执行函数表达式（IIFE）闭包\n\nIIFE创建的闭包可以避免全局命名空间污染：\n\n```javascript\nconst module = (function() {\n  let privateVariable = 0;\n  \n  return {\n    increment: function() {\n      privateVariable++;\n      return privateVariable;\n    },\n    decrement: function() {\n      privateVariable--;\n      return privateVariable;\n    },\n    getValue: function() {\n      return privateVariable;\n    }\n  };\n})();\n\nconsole.log(module.increment()); // 1\nconsole.log(module.getValue());  // 1\n```",
+      {
+        type: "quote",
+        content:
+          "闭包不是你学习的东西，而是你认识到你已经在使用的东西。理解闭包就是理解JavaScript的精髓。",
+        author: "Kyle Simpson - You Don't Know JS系列作者",
+      },
+      {
+        type: "heading",
+        content: "实际应用场景",
+      },
+      "模块模式\n\n闭包是实现模块模式的核心机制，提供数据封装和接口暴露：\n\n```javascript\nconst Calculator = (function() {\n  let result = 0;\n  let history = [];\n  \n  function logOperation(operation, value) {\n    history.push(`${operation}: ${value} = ${result}`);\n  }\n  \n  return {\n    add: function(value) {\n      result += value;\n      logOperation('ADD', value);\n      return this;\n    },\n    subtract: function(value) {\n      result -= value;\n      logOperation('SUBTRACT', value);\n      return this;\n    },\n    multiply: function(value) {\n      result *= value;\n      logOperation('MULTIPLY', value);\n      return this;\n    },\n    getResult: function() {\n      return result;\n    },\n    getHistory: function() {\n      return [...history]; // 返回历史记录副本\n    },\n    clear: function() {\n      result = 0;\n      history = [];\n      return this;\n    }\n  };\n})();\n\n// 链式调用\nconst finalResult = Calculator\n  .add(10)\n  .multiply(2)\n  .subtract(5)\n  .getResult(); // 15\n```",
+      {
+        type: "heading",
+        content: "事件处理和回调",
+      },
+      "在事件处理中，闭包能够保持状态并提供更灵活的事件处理机制：\n\n```javascript\n// 创建带状态的事件处理器\nfunction createCounter(element, initialValue = 0) {\n  let count = initialValue;\n  \n  return function(event) {\n    count++;\n    element.textContent = `点击次数: ${count}`;\n    \n    // 可以访问闭包中的所有变量\n    if (count % 5 === 0) {\n      console.log(`达到5的倍数: ${count}`);\n    }\n  };\n}\n\n// 使用\nconst button = document.getElementById('myButton');\nconst counterHandler = createCounter(button, 0);\nbutton.addEventListener('click', counterHandler);\n```\n\n防抖和节流函数\n\n闭包在实现防抖和节流功能时发挥重要作用：\n\n```javascript\n// 防抖函数\nfunction debounce(func, delay) {\n  let timeoutId;\n  \n  return function(...args) {\n    const context = this;\n    \n    clearTimeout(timeoutId);\n    timeoutId = setTimeout(function() {\n      func.apply(context, args);\n    }, delay);\n  };\n}\n\n// 节流函数\nfunction throttle(func, limit) {\n  let inThrottle;\n  \n  return function(...args) {\n    const context = this;\n    \n    if (!inThrottle) {\n      func.apply(context, args);\n      inThrottle = true;\n      setTimeout(() => inThrottle = false, limit);\n    }\n  };\n}\n```",
+      {
+        type: "heading",
+        content: "高级闭包模式",
+      },
+      "柯里化（Currying）\n\n闭包使得函数柯里化成为可能，提高函数的复用性：\n\n```javascript\nfunction curry(fn) {\n  return function curried(...args) {\n    if (args.length >= fn.length) {\n      return fn.apply(this, args);\n    } else {\n      return function(...args2) {\n        return curried.apply(this, args.concat(args2));\n      };\n    }\n  };\n}\n\n// 使用示例\nfunction add(a, b, c) {\n  return a + b + c;\n}\n\nconst curriedAdd = curry(add);\nconsole.log(curriedAdd(1)(2)(3)); // 6\nconsole.log(curriedAdd(1, 2)(3)); // 6\nconsole.log(curriedAdd(1)(2, 3)); // 6\n```\n\n记忆化（Memoization）\n\n利用闭包实现函数结果缓存，优化重复计算：\n\n```javascript\nfunction memoize(fn) {\n  const cache = new Map();\n  \n  return function(...args) {\n    const key = JSON.stringify(args);\n    \n    if (cache.has(key)) {\n      console.log('从缓存获取结果');\n      return cache.get(key);\n    }\n    \n    const result = fn.apply(this, args);\n    cache.set(key, result);\n    console.log('计算并缓存结果');\n    return result;\n  };\n}\n\n// 斐波那契数列示例\nconst fibonacci = memoize(function(n) {\n  if (n <= 1) return n;\n  return fibonacci(n - 1) + fibonacci(n - 2);\n});\n\nconsole.log(fibonacci(10)); // 计算并缓存\nconsole.log(fibonacci(10)); // 从缓存获取\n```",
+      {
+        type: "heading",
+        content: "性能和内存管理",
+      },
+      "内存泄漏预防\n\n正确管理闭包以避免内存泄漏：\n\n```javascript\n// 潜在的内存泄漏\nfunction problematicClosure() {\n  const largeData = new Array(1000000).fill('data');\n  \n  return function(index) {\n    return largeData[index]; // 整个数组被保持在内存中\n  };\n}\n\n// 优化版本\nfunction optimizedClosure() {\n  const largeData = new Array(1000000).fill('data');\n  \n  return function(index) {\n    const result = largeData[index];\n    // 如果不再需要，可以显式清理\n    if (someCondition) {\n      largeData = null;\n    }\n    return result;\n  };\n}\n```",
+      "掌握闭包是成为JavaScript高手的必经之路。通过理解闭包的工作原理和应用场景，你不仅能写出更优雅的代码，还能更好地理解JavaScript的执行机制。闭包虽然概念抽象，但一旦掌握，它将成为你编程工具箱中最强大的工具之一，帮助你解决复杂的编程问题，创建更加模块化和可维护的代码结构。",
+    ],
+    nextPost: {
+      title: "Webpack优化策略",
+      slug: "webpack-optimization",
     },
   },
 ];
@@ -502,4 +569,5 @@ export const BLOG_CATEGORIES = [
   { name: "WebGL", count: 1 },
   { name: "哲学", count: 1 },
   { name: "随想", count: 1 },
+  { name: "性能优化", count: 2 },
 ];
