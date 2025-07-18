@@ -3,7 +3,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, useGLTF, PerspectiveCamera } from '@react-three/drei';
 import { useScroll } from 'framer-motion';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-
+/* eslint-disable react/prop-types */
 const VehicleModel = ({ onLoaded }) => {
   // 加载低质量模型
   const lowQualityModel = useGLTF('../assets/model/Car_secondCompressed.glb', true);
