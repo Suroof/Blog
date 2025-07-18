@@ -12,8 +12,6 @@ const __dirname = path.dirname(__filename)
 export default defineConfig({
   plugins: [
     react(),
-    // 添加代码分割插件
-    splitVendorChunkPlugin(),
     // 添加资源压缩插件
     viteCompression({
       verbose: true,
