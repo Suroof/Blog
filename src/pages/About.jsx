@@ -153,7 +153,7 @@ const About = () => {
                 transition={{ duration: 0.6, delay: 0.8 }}
               >
                 <blockquote className="border-l-4 border-blue-500 pl-4 italic text-gray-300">
-                  "人生就像骑自行车，为了保持平衡，你必须保持运动。"
+                  `人生就像骑自行车，为了保持平衡，你必须保持运动。`
                   <footer className="text-right mt-2 text-gray-400">— 阿尔伯特·爱因斯坦</footer>
                 </blockquote>
               </motion.div>

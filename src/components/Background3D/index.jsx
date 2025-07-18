@@ -30,8 +30,6 @@ const VehicleModel = ({ onLoaded }) => {
   useEffect(() => {
     const loadHighQualityModel = async () => {
       try {
-        console.log("开始加载高质量模型...");
-        // 使用loader手动加载高质量模型
         const gltfLoader = new GLTFLoader();
         gltfLoader.load(
           '../assets/model/Car.glb',

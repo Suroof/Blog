@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { applyLazyLoading, applyProgressiveLoading } from '../utils/imageOptimizer';
-
+/* eslint-disable react/prop-types */
 /**
  * 优化的图片组件
  * 支持懒加载、渐进式加载和响应式图片
