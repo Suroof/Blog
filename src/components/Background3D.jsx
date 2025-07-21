@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useScroll } from 'framer-motion';
 import { OrbitControls } from '@react-three/drei';
